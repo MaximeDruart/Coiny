@@ -1,0 +1,81 @@
+const router = require('express').Router()
+const bcrypt = require("bcryptjs")
+const jwt = require("jsonwebtoken")
+const keys = require("../config/keys")
+
+
+const validateBusinessRegistrationInput = require('../validation/businessRegister')
+const validateLoginInput = require('../validation/login')
+
+let Business = require('../models/business.model')
+
+router.get('/', (req, res) => {
+    // Business.find()
+    // .then(exercises => res.json(exercises))
+    // .catch(err => res.status(400).json('Error: ' + err))
+})
+
+router.post('/register', (req, res) => {
+    const {
+        errors,
+        isValid
+    } = validateBusinessRegistrationInput(req.body)
+    if (!isValid) return res.status(400).json(errors)
+
+    Business.findOne({email: req.body.email}).then(business => {
+        if (business) return res.status(400).json({email : "email already taken" })
+        const newBusiness = new Business({
+            email: req.body.email,
+            name: req.body.name,
+            password: req.body.password,
+            phoneNumber: req.body.phoneNumber
+        })
+
+        bcrypt.genSalt(10, (err, salt) => {
+            bcrypt.hash(newBusiness.password, salt, (err, hash) => {
+                if (err) throw err;
+                newBusiness.password = hash;
+                newBusiness.save()
+                    .then(business => res.json(business))
+                    .catch(err => console.log(err))
+            })
+        })
+    })
+})
+
+router.post('/login', (req, res) => {
+    const { errors, isValid } = validateLoginInput(req.body)
+    if (!isValid) return res.status(400).json(errors)
+
+    const email = req.body.email
+    const password = req.body.password
+
+    Business.findOne({ email }).then(business => {
+        if (!business) return res.status(404).json({emailNotFound : "email not found"})    
+        
+        bcrypt.compare(password, business.password).then(isMatch => {
+            if (!isMatch) return res.status(400).json({passwordIncorrect : "password incorrect"})
+            
+            const payload = {
+                id : business.id,
+                firstName : business.firstName
+            }
+    
+            jwt.sign(
+                payload,
+                keys.secretOrKey,
+                {expiresIn: 38000},
+                (err, token) => {
+                    res.json({
+                        success: true,
+                        token : "Bearer " + token
+                    })
+                }
+            )
+        })
+    })
+
+})
+
+
+module.exports = router
