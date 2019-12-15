@@ -12,7 +12,7 @@ class LoginContextProvider extends Component {
     this.state = {
       isAuthenticated: false,
       user: null,
-      errors: {},
+      errors: "",
       loading: false
     }
   }
@@ -34,7 +34,9 @@ class LoginContextProvider extends Component {
           loading: false
         })
       })
-      .catch(error => this.setState({ errors: error.response.data }))
+      .catch(error =>
+        this.setState({ errors: error.response.data, loading: false })
+      )
   }
 
   logout = () => {

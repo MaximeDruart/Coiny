@@ -2,7 +2,14 @@ import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { LoginContext } from "../contexts/LoginContext"
 
-import { Form, Jumbotron, Alert, Container, Button } from "react-bootstrap"
+import {
+  Form,
+  Jumbotron,
+  Alert,
+  Container,
+  Button,
+  FormControl
+} from "react-bootstrap"
 
 class Login extends Component {
   static contextType = LoginContext
@@ -34,12 +41,6 @@ class Login extends Component {
             <Link to='/'>
               <Button>Go back</Button>
             </Link>
-            {loginContext.errors &&
-              Object.keys(loginContext.errors).map(key => (
-                <Alert variant='danger' key={key}>
-                  {loginContext.errors[key]}
-                </Alert>
-              ))}
             <Form
               noValidate
               onSubmit={e => {
@@ -57,7 +58,11 @@ class Login extends Component {
                   type='email'
                   value={this.state.email}
                   onChange={this.handleChange}
+                  isInvalid={!!loginContext.errors.email}
                 />
+                <Form.Control.Feedback type='invalid'>
+                  {loginContext.errors.email}
+                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
                 <Form.Label> Password :</Form.Label>
@@ -66,7 +71,11 @@ class Login extends Component {
                   type='password'
                   value={this.state.password}
                   onChange={this.handleChange}
+                  isInvalid={!!loginContext.errors.password}
                 />
+                <Form.Control.Feedback type='invalid'>
+                  {loginContext.errors.password}
+                </Form.Control.Feedback>
               </Form.Group>
               <Button
                 block

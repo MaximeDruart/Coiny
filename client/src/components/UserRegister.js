@@ -1,7 +1,14 @@
 import React, { Component } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-import { Form, Jumbotron, Alert, Container, Row, Button } from "react-bootstrap"
+import {
+  Form,
+  Jumbotron,
+  Alert,
+  Container,
+  Button,
+  FormControl
+} from "react-bootstrap"
 
 class UserRegister extends Component {
   constructor(props) {
@@ -48,12 +55,6 @@ class UserRegister extends Component {
         <Link to='/'>
           <Button>Go back</Button>
         </Link>
-        {this.state.errors &&
-          Object.keys(errors).map(key => (
-            <Alert key={key} variant='danger'>
-              {errors[key]}
-            </Alert>
-          ))}
         <Form noValidate onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Label> First name:</Form.Label>
@@ -63,7 +64,11 @@ class UserRegister extends Component {
               type='text'
               value={this.state.firstName}
               onChange={this.handleChange}
+              isInvalid={!!errors.firstName}
             />
+            <Form.Control.Feedback type='invalid'>
+              {errors.firstName}
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
@@ -74,7 +79,11 @@ class UserRegister extends Component {
               type='text'
               value={this.state.lastName}
               onChange={this.handleChange}
+              isInvalid={!!errors.lastName}
             />
+            <Form.Control.Feedback type='invalid'>
+              {errors.lastName}
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
@@ -85,7 +94,11 @@ class UserRegister extends Component {
               type='email'
               value={this.state.email}
               onChange={this.handleChange}
+              isInvalid={!!errors.email}
             />
+            <Form.Control.Feedback type='invalid'>
+              {errors.email}
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
@@ -96,7 +109,11 @@ class UserRegister extends Component {
               type='password'
               value={this.state.password}
               onChange={this.handleChange}
+              isInvalid={!!errors.password}
             />
+            <Form.Control.Feedback type='invalid'>
+              {errors.password}
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
@@ -107,9 +124,15 @@ class UserRegister extends Component {
               type='password'
               value={this.state.password2}
               onChange={this.handleChange}
+              isInvalid={!!errors.password2}
             />
+            <Form.Control.Feedback type='invalid'>
+              {errors.password2}
+            </Form.Control.Feedback>
           </Form.Group>
-          <Form.Control size='lg' type='submit' value='Submit' />
+          <Button size='lg' type='submit' variant='outline-primary'>
+            Submit
+          </Button>
         </Form>
       </Container>
     )

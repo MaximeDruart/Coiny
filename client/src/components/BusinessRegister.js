@@ -1,7 +1,14 @@
 import React, { Component } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
-import { Form, Jumbotron, Alert, Container, Row, Button } from "react-bootstrap"
+import {
+  Form,
+  Jumbotron,
+  Alert,
+  Container,
+  Button,
+  FormControl
+} from "react-bootstrap"
 
 class BusinessRegister extends Component {
   constructor(props) {
@@ -52,63 +59,79 @@ class BusinessRegister extends Component {
         <Link to='/'>
           <Button>Go back</Button>
         </Link>
-        {this.state.errors &&
-          Object.keys(errors).map(key => (
-            <Alert variant='danger' key={key}>
-              {errors[key]}
-            </Alert>
-          ))}
         <Form noValidate onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Label> Business name:</Form.Label>
             <Form.Control
+              isInvalid={!!errors.name}
               name='name'
               type='text'
               value={this.state.name}
               onChange={this.handleChange}
             />
+            <Form.Control.Feedback type='invalid'>
+              {errors.name}
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
             <Form.Label> Phone number:</Form.Label>
             <Form.Control
+              isInvalid={!!errors.phoneNumber}
               name='phoneNumber'
               type='text'
               value={this.state.phoneNumber}
               onChange={this.handleChange}
             />
+            <Form.Control.Feedback type='invalid'>
+              {errors.phoneNumber}
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
             <Form.Label> Email:</Form.Label>
             <Form.Control
+              isInvalid={!!errors.email}
               name='email'
               type='email'
               value={this.state.email}
               onChange={this.handleChange}
             />
+            <Form.Control.Feedback type='invalid'>
+              {errors.email}
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
             <Form.Label> Password :</Form.Label>
             <Form.Control
+              isInvalid={!!errors.password}
               name='password'
               type='password'
               value={this.state.password}
               onChange={this.handleChange}
             />
+            <Form.Control.Feedback type='invalid'>
+              {errors.password}
+            </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
             <Form.Label> Confirm your password :</Form.Label>
             <Form.Control
+              isInvalid={!!errors.password2}
               name='password2'
               type='password'
               value={this.state.password2}
               onChange={this.handleChange}
             />
+            <Form.Control.Feedback type='invalid'>
+              {errors.password2}
+            </Form.Control.Feedback>
           </Form.Group>
-          <Form.Control type='submit' value='Submit' />
+          <Button variant='outline-primary' type='submit'>
+            Submit
+          </Button>
         </Form>
       </Container>
     )
