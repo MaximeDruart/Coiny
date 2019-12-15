@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios"
+import { Link } from "react-router-dom"
+import { Form, Jumbotron, Alert, Container, Row, Button } from "react-bootstrap"
 
 class BusinessRegister extends Component {
   constructor(props) {
@@ -24,11 +26,9 @@ class BusinessRegister extends Component {
       password: this.state.password,
       password2: this.state.password2
     }
-    console.log(business, "post")
     axios
       .post("/business/register", business)
       .then(res => {
-        console.log("submitted")
         this.props.history.push("/login")
       })
       .catch(error => this.setState({ errors: error.response.data }))
@@ -45,63 +45,72 @@ class BusinessRegister extends Component {
   render() {
     let { errors } = this.state
     return (
-      <form noValidate onSubmit={this.handleSubmit}>
-        <h3>Business register</h3>
-        <h4>
-          {this.state.errors &&
-            Object.keys(errors).map(key => <div key={key}>{errors[key]}</div>)}
-        </h4>
-        <fieldset>
-          <label> Business name:</label>
-          <input
-            name='name'
-            type='text'
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-        </fieldset>
+      <Container>
+        <Jumbotron>
+          <h2>Business register</h2>
+        </Jumbotron>
+        <Link to='/'>
+          <Button>Go back</Button>
+        </Link>
+        {this.state.errors &&
+          Object.keys(errors).map(key => (
+            <Alert variant='danger' key={key}>
+              {errors[key]}
+            </Alert>
+          ))}
+        <Form noValidate onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Label> Business name:</Form.Label>
+            <Form.Control
+              name='name'
+              type='text'
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
 
-        <fieldset>
-          <label> Phone number:</label>
-          <input
-            name='phoneNumber'
-            type='text'
-            value={this.state.phoneNumber}
-            onChange={this.handleChange}
-          />
-        </fieldset>
+          <Form.Group>
+            <Form.Label> Phone number:</Form.Label>
+            <Form.Control
+              name='phoneNumber'
+              type='text'
+              value={this.state.phoneNumber}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
 
-        <fieldset>
-          <label> Email:</label>
-          <input
-            name='email'
-            type='email'
-            value={this.state.email}
-            onChange={this.handleChange}
-          />
-        </fieldset>
+          <Form.Group>
+            <Form.Label> Email:</Form.Label>
+            <Form.Control
+              name='email'
+              type='email'
+              value={this.state.email}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
 
-        <fieldset>
-          <label> Password :</label>
-          <input
-            name='password'
-            type='password'
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-        </fieldset>
+          <Form.Group>
+            <Form.Label> Password :</Form.Label>
+            <Form.Control
+              name='password'
+              type='password'
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
 
-        <fieldset>
-          <label> Confirm your password :</label>
-          <input
-            name='password2'
-            type='password'
-            value={this.state.password2}
-            onChange={this.handleChange}
-          />
-        </fieldset>
-        <input type='submit' value='Submit' />
-      </form>
+          <Form.Group>
+            <Form.Label> Confirm your password :</Form.Label>
+            <Form.Control
+              name='password2'
+              type='password'
+              value={this.state.password2}
+              onChange={this.handleChange}
+            />
+          </Form.Group>
+          <Form.Control type='submit' value='Submit' />
+        </Form>
+      </Container>
     )
   }
 }

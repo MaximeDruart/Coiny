@@ -12,12 +12,14 @@ class LoginContextProvider extends Component {
     this.state = {
       isAuthenticated: false,
       user: null,
-      errors: {}
+      errors: {},
+      loading: false
     }
   }
   // but you can also provide functions to mutate this data
 
   login = userData => {
+    this.setState({ loading: true })
     axios
       .post("/users/login", userData)
       .then(res => {
@@ -28,7 +30,8 @@ class LoginContextProvider extends Component {
         const decodedData = jwt_decode(token)
         this.setState({
           isAuthenticated: true,
-          user: decodedData
+          user: decodedData,
+          loading: false
         })
       })
       .catch(error => this.setState({ errors: error.response.data }))

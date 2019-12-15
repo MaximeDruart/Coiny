@@ -1,25 +1,35 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
+import Button from "react-bootstrap/button"
+import Container from "react-bootstrap/Container"
+import Row from "react-bootstrap/Row"
+import { Jumbotron } from "react-bootstrap"
 
-class Home extends Component {
-  render() {
-    return (
-      <div>
+const Home = () => {
+  return (
+    <Container className='home'>
+      <Jumbotron>
         <h1>This is home</h1>
-        <button>
-          <Link to='/userregister'>Register as user</Link>
-        </button>
-        <br></br>
-        <button>
-          <Link to='/businessregister'>Register as business</Link>
-        </button>
-        <br></br>
-        <button>
-          <Link to='/login'>Login to your account</Link>
-        </button>
+      </Jumbotron>
+      <div className='links'>
+        <Link to='/userregister'>
+          <Button className='spaced-link' block variant='outline-primary'>
+            Register as user
+          </Button>
+        </Link>
+        <Link to='/businessregister'>
+          <Button className='spaced-link' block variant='outline-primary'>
+            Register as business
+          </Button>
+        </Link>
+        <Link to='/login'>
+          <Button className='spaced-link' block variant='outline-primary'>
+            Login
+          </Button>
+        </Link>
       </div>
-    )
-  }
+    </Container>
+  )
 }
 
 export default Home

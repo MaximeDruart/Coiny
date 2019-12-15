@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+.App {
+  padding: 10px;
+
+  .home {
+    .links {
+      .spaced-link {
+        margin-top: 10px;
+      }
+    }
+  }
+}

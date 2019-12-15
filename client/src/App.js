@@ -1,5 +1,8 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route } from "react-router-dom"
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./main.scss"
+
 import UserRegister from "./components/UserRegister"
 import BusinessRegister from "./components/BusinessRegister"
 import Home from "./components/Home"
@@ -7,6 +10,7 @@ import Login from "./components/Login"
 import Profile from "./components/Profile"
 import PrivateRoute from "./components/PrivateRoute"
 import privateComponent from "./components/privateComponent"
+
 import LoginContextProvider from "./contexts/LoginContext"
 
 class App extends Component {
@@ -20,7 +24,6 @@ class App extends Component {
       <Router>
         <LoginContextProvider>
           <div className='App'>
-            <h1>Common item to all routes</h1>
             <Route path='/' exact component={Home}></Route>
             <Route path='/userregister' component={UserRegister}></Route>
             <Route

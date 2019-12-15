@@ -1,6 +1,8 @@
 import React, { Component } from "react"
-import "react-router-dom"
+import { Link } from "react-router-dom"
 import { LoginContext } from "../contexts/LoginContext"
+
+import { Form, Jumbotron, Alert, Container, Button } from "react-bootstrap"
 
 class Login extends Component {
   static contextType = LoginContext
@@ -25,43 +27,57 @@ class Login extends Component {
     return (
       <LoginContext.Consumer>
         {loginContext => (
-          <form
-            noValidate
-            onSubmit={e => {
-              e.preventDefault()
-              loginContext.login({
-                email: this.state.email,
-                password: this.state.password
-              })
-            }}
-          >
-            <h3>User register</h3>
-            <h4>
-              {loginContext.errors &&
-                Object.keys(loginContext.errors).map(key => (
-                  <div key={key}>{loginContext.errors[key]}</div>
-                ))}
-            </h4>
-            <fieldset>
-              <label> Email:</label>
-              <input
-                name='email'
-                type='email'
-                value={this.state.email}
-                onChange={this.handleChange}
-              />
-            </fieldset>
-            <fieldset>
-              <label> Password :</label>
-              <input
-                name='password'
-                type='password'
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-            </fieldset>
-            <input type='submit' value='Submit' />
-          </form>
+          <Container>
+            <Jumbotron>
+              <h3>User register</h3>
+            </Jumbotron>
+            <Link to='/'>
+              <Button>Go back</Button>
+            </Link>
+            {loginContext.errors &&
+              Object.keys(loginContext.errors).map(key => (
+                <Alert variant='danger' key={key}>
+                  {loginContext.errors[key]}
+                </Alert>
+              ))}
+            <Form
+              noValidate
+              onSubmit={e => {
+                e.preventDefault()
+                loginContext.login({
+                  email: this.state.email,
+                  password: this.state.password
+                })
+              }}
+            >
+              <Form.Group>
+                <Form.Label> Email:</Form.Label>
+                <Form.Control
+                  name='email'
+                  type='email'
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label> Password :</Form.Label>
+                <Form.Control
+                  name='password'
+                  type='password'
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+              </Form.Group>
+              <Button
+                block
+                variant='outline-primary'
+                disabled={loginContext.loading}
+                type='submit'
+              >
+                {loginContext.isLoading ? "Loading..." : "Submit"}
+              </Button>
+            </Form>
+          </Container>
         )}
       </LoginContext.Consumer>
     )
