@@ -1,36 +1,42 @@
 import React, { Component } from "react"
 import axios from "axios"
 
-class UserRegister extends Component {
+class BusinessRegister extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      firstName: "",
-      lastName: "",
+      name: "",
+      phoneNumber: "",
       email: "",
       password: "",
       password2: "",
-      errors: ""
+      errors: {}
     }
   }
 
   handleSubmit = event => {
+    this.setState({ errors: {} })
     event.preventDefault()
-    const user = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
+    const business = {
+      name: this.state.name,
+      phoneNumber: this.state.phoneNumber,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2
     }
+    console.log(business, "post")
     axios
-      .post("/users/register", user)
-      .then(res => this.props.history.push("/login"))
+      .post("/business/register", business)
+      .then(res => {
+        console.log("submitted")
+        this.props.history.push("/login")
+      })
       .catch(error => this.setState({ errors: error.response.data }))
   }
 
   handleChange = event => {
     let { name, value } = event.target
+
     this.setState({
       [name]: value
     })
@@ -40,27 +46,27 @@ class UserRegister extends Component {
     let { errors } = this.state
     return (
       <form noValidate onSubmit={this.handleSubmit}>
-        <h3>User register</h3>
+        <h3>Business register</h3>
         <h4>
           {this.state.errors &&
-            Object.keys(errors).map(key => <div>{errors[key]}</div>)}
+            Object.keys(errors).map(key => <div key={key}>{errors[key]}</div>)}
         </h4>
         <fieldset>
-          <label> First name:</label>
+          <label> Business name:</label>
           <input
-            name='firstName'
+            name='name'
             type='text'
-            value={this.state.firstName}
+            value={this.state.name}
             onChange={this.handleChange}
           />
         </fieldset>
 
         <fieldset>
-          <label> Last name:</label>
+          <label> Phone number:</label>
           <input
-            name='lastName'
+            name='phoneNumber'
             type='text'
-            value={this.state.lastName}
+            value={this.state.phoneNumber}
             onChange={this.handleChange}
           />
         </fieldset>
@@ -100,4 +106,4 @@ class UserRegister extends Component {
   }
 }
 
-export default UserRegister
+export default BusinessRegister
