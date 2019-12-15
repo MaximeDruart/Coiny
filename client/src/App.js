@@ -3,11 +3,10 @@ import { BrowserRouter as Router, Route } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
 import "./main.scss"
 
-import UserRegister from "./components/UserRegister"
-import BusinessRegister from "./components/BusinessRegister"
+import UserRegister from "./authComponents/UserRegister"
+import BusinessRegister from "./authComponents/BusinessRegister"
+import Login from "./authComponents/Login"
 import Home from "./components/Home"
-import Login from "./components/Login"
-import Profile from "./components/Profile"
 import PrivateRoute from "./components/PrivateRoute"
 import privateComponent from "./components/privateComponent"
 
@@ -31,7 +30,6 @@ class App extends Component {
               component={BusinessRegister}
             ></Route>
             <Route path='/login' component={Login}></Route>
-            <Route path='/profile' component={Profile}></Route>
             <PrivateRoute
               path='/private'
               component={privateComponent}
