@@ -13,7 +13,8 @@ class LoginContextProvider extends Component {
       isAuthenticated: false,
       user: null,
       errors: "",
-      loading: false
+      loading: false,
+      userData: null
     }
   }
   // but you can also provide functions to mutate this data
@@ -39,6 +40,17 @@ class LoginContextProvider extends Component {
       )
   }
 
+  getExtendedData = () => {
+    if (this.state.user) {
+      axios
+        .post("/users/find", {
+          id: this.state.user.id
+        })
+        .then(res => this.setState({ userData: res.data }))
+        .catch(error => this.setState({ errors: error.response.data }))
+    }
+  }
+
   logout = () => {
     // removing token from local storage
     localStorage.removeItem("jwtToken")
@@ -50,6 +62,7 @@ class LoginContextProvider extends Component {
         isAuthenticated: false,
         user: null
       },
+      // gotta use history.push
       (window.location = "/login")
     )
   }
@@ -72,7 +85,12 @@ class LoginContextProvider extends Component {
   render() {
     return (
       <LoginContext.Provider
-        value={{ ...this.state, login: this.login, logout: this.logout }}
+        value={{
+          ...this.state,
+          login: this.login,
+          logout: this.logout,
+          getExtendedData: this.getExtendedData
+        }}
       >
         {this.props.children}
       </LoginContext.Provider>

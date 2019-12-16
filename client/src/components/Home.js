@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { Jumbotron, Container, Button } from "react-bootstrap"
+import Profile from "./UserProfile"
 
 const Home = () => {
   return (
@@ -25,6 +26,7 @@ const Home = () => {
           </Button>
         </Link>
       </div>
+      {/* <Profile></Profile> */}
     </Container>
   )
 }

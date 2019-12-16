@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
-import { LoginContext } from "../contexts/LoginContext"
+import { LoginContext } from "../../contexts/LoginContext"
 
 import {
   Form,

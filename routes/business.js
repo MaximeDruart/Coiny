@@ -8,10 +8,12 @@ const validateLoginInput = require("../validation/login")
 
 let Business = require("../models/business.model")
 
-router.get("/", (req, res) => {
-  // Business.find()
-  // .then(exercises => res.json(exercises))
-  // .catch(err => res.status(400).json('Error: ' + err))
+router.post("/find", (req, res) => {
+  User.findById(req.body.id)
+    .then(user => {
+      res.json(user)
+    })
+    .catch(err => res.status(404).json(err))
 })
 
 router.post("/register", (req, res) => {
