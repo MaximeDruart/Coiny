@@ -90,9 +90,16 @@ router.post("/login", (req, res) => {
 })
 
 router.post("/search", (req, res) => {
-  const { query } = req.body
-
-  Business.find()
+  let { query, resultsNumber } = req.body
+  resultsNumber = resultsNumber ? resultsNumber : 10
+  Business.find(
+    { $text: { $search: query, $language: "fr" } },
+    { score: { $meta: "textScore" } }
+  )
+    .sort({ score: { $meta: "textScore" } })
+    .limit(resultsNumber)
+    .then(data => res.json(data))
+    .catch(err => res.status(400).json(err))
 })
 
 module.exports = router

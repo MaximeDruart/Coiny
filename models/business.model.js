@@ -58,6 +58,7 @@ const businessSchema = new mongoose.Schema(
   }
 )
 
+businessSchema.index({ name: "text" })
 const Business = mongoose.model("Business", businessSchema)
 
 module.exports = Business
