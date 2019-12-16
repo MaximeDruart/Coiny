@@ -47,6 +47,10 @@ const businessSchema = new mongoose.Schema(
     contributors: {
       type: Array,
       default: []
+    },
+    picture: {
+      type: String,
+      default: "https://icon-library.net/images/icon-shop/icon-shop-1.jpg"
     }
   },
   {

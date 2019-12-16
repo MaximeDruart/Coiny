@@ -45,7 +45,7 @@ router.post("/register", (req, res) => {
         newUser
           .save()
           .then(user => res.json(user))
-          .catch(err => console.log(err))
+          .catch(err => res.json(err))
       })
     })
   })
@@ -87,85 +87,73 @@ router.post("/login", (req, res) => {
 
 router.post("/donate", (req, res) => {
   let { user, donationData } = req.body
-
-  // donationData = {
-  //   amount: integer,
-  //   target: business id
-  // }
-  // get user for id passed
-  // add the donationData to the user's donation history
-  // increment the totalAmountPledged by the donation amount
-  // then add the amount to the business' money.
-  console.log(user, donationData)
+  let userIsValid = true,
+    businessIsValid = true
 
   User.findById(user.id)
-    .catch(err =>
-      res.status(404).json({ error: `No user found for id : ${user.id}` })
-    )
+    .catch(err => {
+      userIsValid = false
+      return res
+        .status(404)
+        .json({ error: `No user found for id : ${user.id}` })
+    })
     .then(() => {
       Business.findById(donationData.target)
-        .catch(err =>
-          res.status(404).json({
+        .catch(err => {
+          businessIsValid = false
+          return res.status(404).json({
             error: `No business found for id : ${donationData.target}`
           })
-        )
+        })
         .then(() => {
-          console.log("still going in then", donationData.target)
-          User.findOneAndUpdate(
-            user.id,
-            {
-              // equal to totalAmountPledged += donationData.amount
-              $inc: { totalAmountPledged: donationData.amount },
-              // equal to donationHistory.push(donationData)
-              $push: { donationHistory: donationData }
-            },
-            { new: true }
-          )
-            .catch(err => res.status(400).json(err))
-            .then(() => {
-              Business.findOneAndUpdate(
-                donationData.target,
-                {
-                  $inc: { moneyAllocated: donationData.amount },
-                  $push: { contributors: user.id }
-                },
-                { new: true }
-              )
-                .then(businessResponse => res.json(businessResponse))
-                .catch(err => res.status(400).json(err))
-            })
+          userIsValid &&
+            User.findOneAndUpdate(
+              { _id: user.id },
+              {
+                // equal to totalAmountPledged += donationData.amount
+                $inc: { totalAmountPledged: donationData.amount },
+                // equal to donationHistory.push(donationData)
+                $push: { donationHistory: donationData }
+              },
+              { new: true }
+            )
+              .catch(err => res.status(400).json(err))
+              .then(() => {
+                businessIsValid &&
+                  Business.findOneAndUpdate(
+                    { _id: donationData.target },
+                    {
+                      $inc: { moneyAllocated: donationData.amount },
+                      $push: { contributors: user.id }
+                    },
+                    { new: true }
+                  )
+                    .then(businessResponse => res.json(businessResponse))
+                    .catch(err => res.status(400).json(err))
+              })
         })
     })
+})
 
-  // User.findById(user.id)
-  //   .catch(err =>
-  //     res.status(404).json({ error: `No user found for id : ${req.body.id}` })
-  //   )
-  //   .then(() => {
-  //     User.findOneAndUpdate(
-  //       user.id,
-  //       {
-  //         // equal to totalAmountPledged += donationData.amount
-  //         $inc: { totalAmountPledged: donationData.amount },
-  //         // equal to donationHistory.push(donationData)
-  //         $push: { donationHistory: donationData }
-  //       },
-  //       { new: true }
-  //     )
-  //       .catch(err => res.status(400).json(err))
-  //       .then(() => {
-  //         Business.findOneAndUpdate(
-  //           donationData.target,
-  //           {
-  //             $inc: { moneyAllocated: donationData.amount },
-  //             $push: { contributors: user.id }
-  //           },
-  //           { new: true }
-  //         )
-  //           .then(businessResponse => res.json(businessResponse))
-  //           .catch(err => res.status(400).json(err))
-  //       })
-  //   })
+router.post("/accessprivilege", (req, res) => {
+  // no actual file checking
+  let userIsValid = true
+  const { id } = req.body
+  console.log(id)
+  User.findById(id)
+    .catch(err => {
+      userIsValid = false
+      return res.status(404).json({ error: `No user found for id : ${id}` })
+    })
+    .then(() => {
+      User.findOneAndUpdate(
+        { _id: id },
+        { $set: { receiverStatus: true } },
+        { new: true }
+      )
+        .then(user => res.json(user))
+        .catch(err => res.status(400).json(err))
+    })
 })
 
 module.exports = router

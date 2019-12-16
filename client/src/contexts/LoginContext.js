@@ -14,7 +14,8 @@ class LoginContextProvider extends Component {
       user: null,
       errors: "",
       loading: false,
-      userData: null
+      userData: null,
+      localStorageHasBeenRead: false
     }
   }
   // but you can also provide functions to mutate this data
@@ -72,7 +73,8 @@ class LoginContextProvider extends Component {
       if (localStorage.getItem("jwtToken") !== null) {
         this.setState({
           isAuthenticated: true,
-          user: jwt_decode(localStorage.getItem("jwtToken"))
+          user: jwt_decode(localStorage.getItem("jwtToken")),
+          localStorageHasBeenRead: true
         })
       }
     }

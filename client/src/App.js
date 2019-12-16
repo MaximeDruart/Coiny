@@ -2,14 +2,17 @@ import React, { Component } from "react"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 // import "bootstrap/dist/css/bootstrap.min.css"
 import "./styles/main.scss"
+
+import PrivateRoute from "./components/PrivateRoute"
+import PrivateComponent from "./components/privateComponent"
+import LoginContextProvider from "./contexts/LoginContext"
+
 import UserRegister from "./components/auth/UserRegister"
 import BusinessRegister from "./components/auth/BusinessRegister"
 import Login from "./components/auth/Login"
 import Home from "./components/Home"
-import PrivateRoute from "./components/PrivateRoute"
-import privateComponent from "./components/privateComponent"
 import Homepage from "./components/homepage"
-import LoginContextProvider from "./contexts/LoginContext"
+import UserProfile from "./components/UserProfile"
 
 class App extends Component {
   constructor() {
@@ -33,7 +36,12 @@ class App extends Component {
             <Route path='/login' component={Login}></Route>
             <PrivateRoute
               path='/private'
-              component={privateComponent}
+              component={PrivateComponent}
+            ></PrivateRoute>
+
+            <PrivateRoute
+              path='/userprofile'
+              component={UserProfile}
             ></PrivateRoute>
           </div>
         </LoginContextProvider>
