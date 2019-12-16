@@ -10,7 +10,7 @@ let Business = require("../models/business.model")
 
 router.post("/find", (req, res) => {
   Business.findById(req.body.id)
-    .then(business => 
+    .then(business =>
       !business
         ? res
             .status(404)
@@ -87,6 +87,12 @@ router.post("/login", (req, res) => {
       )
     })
   })
+})
+
+router.post("/search", (req, res) => {
+  const { query } = req.body
+
+  Business.find()
 })
 
 module.exports = router

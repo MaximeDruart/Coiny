@@ -30,7 +30,7 @@ class Login extends Component {
   }
 
   render() {
-    if (this.context.isAuthenticated) this.props.history.push("/home")
+    if (this.context.isAuthenticated) this.props.history.push("/homepage")
     return (
       <LoginContext.Consumer>
         {loginContext => (

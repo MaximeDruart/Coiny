@@ -76,6 +76,8 @@ class LoginContextProvider extends Component {
           user: jwt_decode(localStorage.getItem("jwtToken")),
           localStorageHasBeenRead: true
         })
+      } else {
+        this.setState({ localStorageHasBeenRead: true })
       }
     }
   }

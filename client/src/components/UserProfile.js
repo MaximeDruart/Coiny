@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
-import { Container } from "react-bootstrap"
+import { Container, Button } from "react-bootstrap"
 import { LoginContext } from "../contexts/LoginContext"
-
+import { Link } from "react-router-dom"
 const Profile = () => {
   const { user, getExtendedData, userData } = useContext(LoginContext)
 
@@ -21,6 +21,9 @@ const Profile = () => {
             } € since you signed up on
             ${new Date(userData.createdAt).toDateString()}.`}
           </h2>
+          <Link to='/privilegeaccess'>
+            <Button>Register for privileges</Button>
+          </Link>
         </Container>
       )}
     </Container>

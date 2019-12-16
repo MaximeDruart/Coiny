@@ -13,6 +13,7 @@ import Login from "./components/auth/Login"
 import Home from "./components/Home"
 import Homepage from "./components/homepage"
 import UserProfile from "./components/UserProfile"
+import PrivilegeAccess from "./components/PrivilegeAccess"
 
 class App extends Component {
   constructor() {
@@ -27,13 +28,14 @@ class App extends Component {
           <div className='App'>
             <Route path='/' exact component={Home}></Route>
             <Route path='/userregister' component={UserRegister}></Route>
-            <Route path='/userregister' component={UserRegister}></Route>
             <Route path='/homepage' component={Homepage}></Route>
             <Route
               path='/businessregister'
               component={BusinessRegister}
             ></Route>
             <Route path='/login' component={Login}></Route>
+
+            {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
             <PrivateRoute
               path='/private'
               component={PrivateComponent}
@@ -42,6 +44,10 @@ class App extends Component {
             <PrivateRoute
               path='/userprofile'
               component={UserProfile}
+            ></PrivateRoute>
+            <PrivateRoute
+              path='/privilegeaccess'
+              component={PrivilegeAccess}
             ></PrivateRoute>
           </div>
         </LoginContextProvider>

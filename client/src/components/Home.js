@@ -1,8 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import { Jumbotron, Container, Button } from "react-bootstrap"
-import Profile from "./UserProfile"
-import PrivilegeAccess from "./PrivilegeAccess"
 
 const Home = props => {
   return (
@@ -27,8 +25,6 @@ const Home = props => {
           </Button>
         </Link>
       </div>
-      {/* <Profile></Profile> */}
-      <PrivilegeAccess history={props.history}></PrivilegeAccess>
     </Container>
   )
 }
