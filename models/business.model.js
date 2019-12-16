@@ -43,6 +43,10 @@ const businessSchema = new mongoose.Schema(
     moneyAllocated: {
       type: Number,
       default: 0
+    },
+    contributors: {
+      type: Array,
+      default: []
     }
   },
   {

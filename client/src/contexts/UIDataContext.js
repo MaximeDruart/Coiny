@@ -1,8 +1,8 @@
 import React, { Component, createContext } from "react"
 
-export const activePageContext = createContext()
+export const UIDataContext = createContext()
 
-class activePageContextProvider extends Component {
+class UIDataContextProvider extends Component {
   // provider provides state data
   constructor(props) {
     super(props)
@@ -15,11 +15,11 @@ class activePageContextProvider extends Component {
 
   render() {
     return (
-      <LoginContext.Provider value={{ ...this.state }}>
+      <UIDataContext.Provider value={{ ...this.state }}>
         {this.props.children}
-      </LoginContext.Provider>
+      </UIDataContext.Provider>
     )
   }
 }
 
-export default activePageContextProvider
+export default UIDataContextProvider

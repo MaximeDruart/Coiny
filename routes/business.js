@@ -9,10 +9,20 @@ const validateLoginInput = require("../validation/login")
 let Business = require("../models/business.model")
 
 router.post("/find", (req, res) => {
-  User.findById(req.body.id)
-    .then(user => {
-      res.json(user)
-    })
+  Business.findById(req.body.id)
+    .then(business => 
+      !business
+        ? res
+            .status(404)
+            .json({ error: `No business found for id : ${req.body.id}` })
+        : res.json(business)
+    )
+    .catch(err => res.status(400).json(err))
+})
+
+router.get("/find/all", (req, res) => {
+  Business.find()
+    .then(business => res.json(business))
     .catch(err => res.status(404).json(err))
 })
 

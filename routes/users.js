@@ -7,18 +7,20 @@ const validateUserRegistrationInput = require("../validation/userRegister")
 const validateLoginInput = require("../validation/login")
 
 let User = require("../models/user.model")
+let Business = require("../models/business.model")
 
 router.post("/find", (req, res) => {
   User.findById(req.body.id)
-    .then(user => {
-      if (!user) {
-        res.status(404).json({ error: `No user found for id : ${req.body.id}` })
-      } else {
-        console.log("user sent")
-        res.json(user)
-      }
-    })
-    .catch(err => res.status(400).json(err))
+    .then(user => res.json(user))
+    .catch(err =>
+      res.status(404).json({ error: `No user found for id : ${req.body.id}` })
+    )
+})
+
+router.get("/find/all", (req, res) => {
+  User.find()
+    .then(user => res.json(user))
+    .catch(err => res.status(404).json(err))
 })
 
 router.post("/register", (req, res) => {
@@ -28,9 +30,7 @@ router.post("/register", (req, res) => {
   }
 
   User.findOne({ email: req.body.email }).then(user => {
-    if (user) {
-      return res.status(400).json({ error: "email already taken" })
-    }
+    if (user) return res.status(400).json({ error: "email already taken" })
     const newUser = new User({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -83,6 +83,89 @@ router.post("/login", (req, res) => {
       )
     })
   })
+})
+
+router.post("/donate", (req, res) => {
+  let { user, donationData } = req.body
+
+  // donationData = {
+  //   amount: integer,
+  //   target: business id
+  // }
+  // get user for id passed
+  // add the donationData to the user's donation history
+  // increment the totalAmountPledged by the donation amount
+  // then add the amount to the business' money.
+  console.log(user, donationData)
+
+  User.findById(user.id)
+    .catch(err =>
+      res.status(404).json({ error: `No user found for id : ${user.id}` })
+    )
+    .then(() => {
+      Business.findById(donationData.target)
+        .catch(err =>
+          res.status(404).json({
+            error: `No business found for id : ${donationData.target}`
+          })
+        )
+        .then(() => {
+          console.log("still going in then", donationData.target)
+          User.findOneAndUpdate(
+            user.id,
+            {
+              // equal to totalAmountPledged += donationData.amount
+              $inc: { totalAmountPledged: donationData.amount },
+              // equal to donationHistory.push(donationData)
+              $push: { donationHistory: donationData }
+            },
+            { new: true }
+          )
+            .catch(err => res.status(400).json(err))
+            .then(() => {
+              Business.findOneAndUpdate(
+                donationData.target,
+                {
+                  $inc: { moneyAllocated: donationData.amount },
+                  $push: { contributors: user.id }
+                },
+                { new: true }
+              )
+                .then(businessResponse => res.json(businessResponse))
+                .catch(err => res.status(400).json(err))
+            })
+        })
+    })
+
+  // User.findById(user.id)
+  //   .catch(err =>
+  //     res.status(404).json({ error: `No user found for id : ${req.body.id}` })
+  //   )
+  //   .then(() => {
+  //     User.findOneAndUpdate(
+  //       user.id,
+  //       {
+  //         // equal to totalAmountPledged += donationData.amount
+  //         $inc: { totalAmountPledged: donationData.amount },
+  //         // equal to donationHistory.push(donationData)
+  //         $push: { donationHistory: donationData }
+  //       },
+  //       { new: true }
+  //     )
+  //       .catch(err => res.status(400).json(err))
+  //       .then(() => {
+  //         Business.findOneAndUpdate(
+  //           donationData.target,
+  //           {
+  //             $inc: { moneyAllocated: donationData.amount },
+  //             $push: { contributors: user.id }
+  //           },
+  //           { new: true }
+  //         )
+  //           .then(businessResponse => res.json(businessResponse))
+  //           .catch(err => res.status(400).json(err))
+  //       })
+  //   })
 })
 
 module.exports = router

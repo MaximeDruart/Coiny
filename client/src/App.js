@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 import "bootstrap/dist/css/bootstrap.min.css"
-import "./main.scss"
+import "./styles/main.scss"
 
 import UserRegister from "./components/auth/UserRegister"
 import BusinessRegister from "./components/auth/BusinessRegister"
