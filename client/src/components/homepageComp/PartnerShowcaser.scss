@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Rift Demi";
+  src: url("../fonts/Rift-Demi.woff2") format("woff2"),
+    url("../fonts/Rift-Demi.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+
 .storeWindow {
   display: flex;
   flex-shrink: 0;
@@ -11,19 +19,38 @@
   border-radius: 10px;
   width: 146px;
   font-size: 0.6em;
-  &_.viewStore {
+  &_viewStore {
+    display: flex;
+    background-color: #781FF2;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    height: 100px;
+    height: 60%;
     overflow: hidden;
+    & img{
+      height: 100%;
+    }
   }
-
-  & img {
-    width: auto;
-    height: 83px;
-  }
-  & h3 {
-    margin: 3px;
-    text-align: center;
-    font-size: 18px;
+  &_text{
+    margin:0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40%;
+    & h3 {
+      color: black;
+      margin:0px;
+      text-align: center;
+      font-size: 18px;
+    }
+    & h4 {
+      font-family: "Rift Demi";
+      color: rgba(0, 0, 0, 0.4);
+      margin:5px 0px 5px 0px;
+      text-align: center;
+      font-size: 15px;
+    }
   }
 }
