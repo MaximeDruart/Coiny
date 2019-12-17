@@ -1,0 +1,101 @@
+@font-face {
+  font-family: "Rift Demi";
+  src: url("../../components/fonts/Rift-Demi.woff2") format("woff2"),
+    url("../../components/fonts/Rift-Demi.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+.main {
+  display: flex;
+  background: linear-gradient(#6300ec, #3f0d83);
+  padding: 40px;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(#6300ec, #3f0d83);
+  width: 100%;
+  height: 100%;
+}
+.main h1,
+.main h2,
+.main p {
+  font-family: europa, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: 60px;
+  line-height: 40px;
+  margin: 0;
+}
+.main h1 {
+  margin: 0px 10px 0px 10px;
+  font-family: europa, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: 60px;
+}
+.main h2 {
+  font-size: 30px;
+}
+.main p {
+  font-weight: 300;
+  color: white;
+  font-size: 20px;
+  line-height: 28px;
+}
+.main h6 {
+  font-family: "Rift Demi";
+  letter-spacing: 2px;
+  color: black;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 10%;
+}
+.welcome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 65%;
+  text-align: center;
+}
+.welcome_line {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 30px;
+  border-bottom: solid white 1px;
+}
+.welcome_picture {
+  margin: 50px 0px 40px 0px;
+  height: 40%;
+}
+.welcome_picture img {
+  height: 100%;
+}
+.welcome_next {
+  width: 20px;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out;
+}
+.welcome_next.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+.button {
+  width: 150px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0px 20px 50px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}

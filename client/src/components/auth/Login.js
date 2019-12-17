@@ -34,7 +34,7 @@ class Login extends Component {
     return (
       <LoginContext.Consumer>
         {loginContext => (
-          <Container class="connexion">
+          <div className="connexion">
             <Form
               className="home_form"
               noValidate
@@ -82,7 +82,7 @@ class Login extends Component {
                 {loginContext.isLoading ? "Loading..." : "Se connecter"}
               </Button>
             </Form>
-          </Container>
+          </div>
         )}
       </LoginContext.Consumer>
     )

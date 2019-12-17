@@ -14,38 +14,6 @@ TYPOGRAPHY
   font-style: normal;
 }
 
-// big title
-h1,
-h2,
-p {
-  font-family: europa, sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: white;
-  font-size: 60px;
-  line-height: 40px;
-  margin: 0;
-}
-
-h2 {
-  font-size: 30px;
-}
-
-// main text
-p {
-  font-weight: 300;
-  color: white;
-  font-size: 20px;
-  line-height: 28px;
-}
-
-// button
-h6 {
-  font-family: "Rift Demi";
-  letter-spacing: 2px;
-  color: black;
-}
-
 // Responsive Iphone X
 .main {
   display: flex;
@@ -58,18 +26,47 @@ h6 {
   background: $background;
   width: 100%;
   height: 100%;
+  & h1,
+  h2,
+  p {
+    font-family: europa, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: white;
+    font-size: 60px;
+    line-height: 40px;
+    margin: 0;
+  }
+  h1 {
+    margin: 0px 10px 0px 10px;
+    font-family: europa, sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    color: white;
+    font-size: 60px;
+  }
+
+  h2 {
+    font-size: 30px;
+  }
+
+  // main text
+  p {
+    font-weight: 300;
+    color: white;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  // button
+  h6 {
+    font-family: "Rift Demi";
+    letter-spacing: 2px;
+    color: black;
+  }
 }
 
 // Header
-// big title
-h1 {
-  margin: 0px 10px 0px 10px;
-  font-family: europa, sans-serif;
-  font-weight: 700;
-  font-style: normal;
-  color: white;
-  font-size: 60px;
-}
 
 .title {
   display: flex;
