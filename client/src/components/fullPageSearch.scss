@@ -85,17 +85,6 @@
             text-align: center;
           }
         }
-        .donate-btn {
-          color: white;
-          @include smooth-shadow();
-          border-radius: 13px;
-          height: 25px;
-          width: 80%;
-          padding: 2px;
-          background-color: $button-color;
-          text-align: center;
-          font-family: "Rift Demi";
-        }
 
         .logo-container {
           @include smooth-shadow-darker();
