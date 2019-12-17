@@ -5,7 +5,7 @@ import Topbar from "./homepageComp/Topbar"
 import SearchBar from "./homepageComp/SearchBar"
 import PartnerShowcase from "./homepageComp/PartnerShowcaser"
 import { UIDataContext } from "../contexts/UIDataContext"
-import { Link } from "react-router-dom"
+import StoreOfTheWeek from "./homepageComp/StoreOfTheWeek.jsx"
 
 const Homepage = props => {
   const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
@@ -15,15 +15,28 @@ const Homepage = props => {
   }, [])
 
   const getRenderedBusinesses = () => {
-    return businessQueryResults.map(business => (
-      <PartnerShowcase key={business.id} business={business}></PartnerShowcase>
-    ))
+    return businessQueryResults
+      .slice(3, 8)
+      .map(business => (
+        <PartnerShowcase
+          key={business.id}
+          business={business}
+        ></PartnerShowcase>
+      ))
   }
 
   const goToSearch = () => {
     if (props.location.pathname === "/homepage") {
       props.history.push("/search")
     }
+  }
+
+  const getWeeklyStore = () => {
+    return businessQueryResults
+      .slice(0, 4)
+      .map(business => (
+        <StoreOfTheWeek key={business.id} business={business}></StoreOfTheWeek>
+      ))
   }
 
   return (
@@ -44,9 +57,11 @@ const Homepage = props => {
           <div className='partnerBand'>
             <p>Des commerçants vous attendent</p>
           </div>
+
           <div className='partnerSlide'>
             {businessQueryResults ? getRenderedBusinesses() : ""}
           </div>
+
           <div className='blankSpace'></div>
         </div>
         <div className='featureFilterContainer'>
@@ -62,30 +77,10 @@ const Homepage = props => {
           <p>Des commerçants vous attendent</p>
         </div>
 
-        <div className='squareStoreOfTheWeek'>
-          <Link to='/storePage'>
-            <div>
-              <h2>Monoprix</h2>
-            </div>
-          </Link>
-          <Link to='/storePage'>
-            <div>
-              <h2>Monoprix</h2>
-            </div>
-          </Link>
-
-          <Link to='/storePage'>
-            <div>
-              <h2>Monoprix</h2>
-            </div>
-          </Link>
-
-          <Link to='/storePage'>
-            <div>
-              <h2>Monoprix</h2>
-            </div>
-          </Link>
+        <div className='weeklyContainer'>
+          {businessQueryResults ? getWeeklyStore() : ""}
         </div>
+
         <div className='blankSpace'></div>
         <div className='blankSpace'></div>
       </div>

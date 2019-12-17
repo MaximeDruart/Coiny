@@ -1,10 +1,10 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 // import "bootstrap/dist/css/bootstrap.min.css"
 
 import PrivateRoute from "./components/PrivateRoute"
 import PrivateComponent from "./components/privateComponent"
-import LoginContextProvider from "./contexts/LoginContext"
+import LoginContextProvider, { LoginContext } from "./contexts/LoginContext"
 import UIDataContextProvider from "./contexts/UIDataContext"
 
 import UserRegister from "./components/auth/UserRegister"
@@ -16,6 +16,7 @@ import PrivilegeAccess from "./components/PrivilegeAccess"
 import Welcome from "./components/welcomeComp/Welcome"
 import FullPageSearch from "./components/FullPageSearch"
 import StorePage from "./components/StorePage.jsx"
+import Bottombar from "./components/homepageComp/Bottombar"
 
 class App extends Component {
   constructor() {
@@ -28,9 +29,19 @@ class App extends Component {
       <Router>
         <UIDataContextProvider>
           <LoginContextProvider>
-            <div className='App' style={{height:'100vh'}}>
-              <Route path='/' exact component={Welcome}></Route>
-              <Route path='/getstarted' component={AuthDirection}></Route>
+            <div className='App' style={{ height: "100vh" }}>
+              <Switch>
+                <Route path='/' exact component={Welcome}></Route>
+                <Route path='/getstarted' component={AuthDirection}></Route>
+                <LoginContext.Consumer>
+                  {context =>
+                    context.localStorageHasBeenRead &&
+                    context.isAuthenticated && (
+                      <Route path='/' component={Bottombar}></Route>
+                    )
+                  }
+                </LoginContext.Consumer>
+              </Switch>
               <Route path='/userregister' component={UserRegister}></Route>
               <Route path='/storePage' component={StorePage}></Route>
               <Route
@@ -38,10 +49,12 @@ class App extends Component {
                 component={BusinessRegister}
               ></Route>
               {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
+
               <PrivateRoute
                 path='/homepage'
                 component={Homepage}
               ></PrivateRoute>
+
               <PrivateRoute
                 path='/private'
                 component={PrivateComponent}
