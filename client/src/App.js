@@ -28,7 +28,7 @@ class App extends Component {
       <Router>
         <UIDataContextProvider>
           <LoginContextProvider>
-            <div className='App'>
+            <div className='App' style={{height:'100vh'}}>
               <Route path='/' exact component={Welcome}></Route>
               <Route path='/getstarted' component={AuthDirection}></Route>
               <Route path='/userregister' component={UserRegister}></Route>
