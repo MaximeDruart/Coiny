@@ -25,10 +25,11 @@ function Homepage() {
             <p>Des commerçants vous attendent</p>
           </div>
           <div className="partnerSlide">
-            <PartnerShowcase />
-            <PartnerShowcase />
-            <PartnerShowcase />
-            <PartnerShowcase />
+
+
+{/* i need to map the <PartnerShowcase/ > here */}
+
+
           </div>
           <div className="blankSpace"></div>
         </div>
