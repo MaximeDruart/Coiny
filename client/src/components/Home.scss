@@ -51,12 +51,12 @@ $background: linear-gradient(#6300ec, #3f0d83);
     height: 80px;
     img {
       width: 15px;
-      margin : 0px;
+      margin: 0px;
     }
-    h5{
-        margin : 0px 5px 1px 5px;
-        color: white;
-        font-weight: 300;
+    h5 {
+      margin: 0px 5px 1px 5px;
+      color: white;
+      font-weight: 300;
     }
   }
   &_form {
@@ -74,6 +74,7 @@ $background: linear-gradient(#6300ec, #3f0d83);
       border-radius: 90px;
       box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.5);
       cursor: pointer;
+      outline: none;
     }
     & input {
       text-align: center;
@@ -82,7 +83,10 @@ $background: linear-gradient(#6300ec, #3f0d83);
       background: transparent;
       border-radius: 90px;
       border: solid 1px #87bcbf;
-      margin: 10px 0px 10px 0px;
+      margin: 15px 0px 15px 0px;
+      color: white;
+      font-size: 15px;
+      outline: none;
       &::placeholder {
         font-size: 13px;
         font-family: "Rift Demi";
@@ -101,15 +105,50 @@ $background: linear-gradient(#6300ec, #3f0d83);
   & button {
     width: 300px;
     height: 50px;
-    background: transparent;
+    background: white;
     border-radius: 90px;
     border: solid 1px #87bcbf;
     margin: 10px 0px 10px 0px;
+    outline: none;
   }
   &_spaced-link {
     font-size: 13px;
     font-family: "Rift Demi";
     letter-spacing: 2px;
-    color: white;
+    color: black;
+    outline: none;
   }
+}
+
+.register {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  & button {
+    width: 300px;
+    height: 50px;
+    background: transparent;
+    border-radius: 90px;
+    border: solid 1px #87bcbf;
+    margin: 10px 0px 10px 0px;
+  }
+  &_text {
+    color: white;
+    // font-family: europa, sans-serif;
+    // font-weight: 300;
+    font-size: 12px;
+    font-family: "Rift Demi";
+    letter-spacing: 2px;
+    cursor: pointer;
+    // text-decoration: underline;
+  }
+  &_text:hover{
+      color: #ff7590;
+  }
+}
+
+.invalid-feedback {
+  text-align: center;
+  color: rgb(253, 104, 78);
+  font-size: 13px;
 }

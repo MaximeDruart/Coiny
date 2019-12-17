@@ -8,23 +8,27 @@ const Home = props => {
   return (
     <Container className="home">
       <Jumbotron>
-        <h1>Welcome to Coiny</h1>
+        <h1>
+          Bienvenue <br></br>sur Coiny
+        </h1>
       </Jumbotron>
       <img src={logImg} alt="log"></img>
       <div className="links">
         <Link to="/login">
           <Button className="links_spaced-link" block variant="outline-primary">
-            Login
+            se connecter
           </Button>
         </Link>
+      </div>
+      <div class="register">
         <Link to="/userregister">
-          <Button className="links_spaced-link" block variant="outline-primary">
-            Register as user
+          <Button className="register_text" block variant="outline-primary">
+            inscription utilisateur
           </Button>
         </Link>
         <Link to="/businessregister">
-          <Button className="links_spaced-link" block variant="outline-primary">
-            Register as business
+          <Button className="register_text" block variant="outline-primary">
+            inscription commerçant
           </Button>
         </Link>
       </div>
