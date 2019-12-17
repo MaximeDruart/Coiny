@@ -5,6 +5,8 @@ import Topbar from "./homepageComp/Topbar"
 import SearchBar from "./homepageComp/SearchBar"
 import PartnerShowcase from "./homepageComp/PartnerShowcaser"
 import { UIDataContext } from "../contexts/UIDataContext"
+import { Link } from "react-router-dom"
+
 
 const Homepage = props => {
   const { getBusinessData, businessQueryResults } = React.useContext(
@@ -63,18 +65,32 @@ const Homepage = props => {
         </div>
 
         <div className='squareStoreOfTheWeek'>
+          <Link to='/storePage'>
           <div>
             <h2>Monoprix</h2>
           </div>
+          </Link>
+          <Link to='/storePage'>
+
           <div>
             <h2>Monoprix</h2>
           </div>
+          </Link>
+
+          <Link to='/storePage'>
+
           <div>
             <h2>Monoprix</h2>
           </div>
+          </Link>
+
+          <Link to='/storePage'>
+
           <div>
             <h2>Monoprix</h2>
           </div>
+          </Link>
+
         </div>
         <div className='blankSpace'></div>
         <div className='blankSpace'></div>

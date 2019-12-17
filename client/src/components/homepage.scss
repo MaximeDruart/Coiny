@@ -103,6 +103,11 @@ body {
   justify-content: space-evenly;
   flex-direction: column;
   align-items: center;
+  a{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }
 .squareStoreOfTheWeek div {
   width: 80%;
