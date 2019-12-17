@@ -13,21 +13,21 @@ class UIDataContextProvider extends Component {
     }
   }
 
-  getBusinessData = (query = null, results = 0) => {
+  getBusinessData = (query = null, resultsNumber = 0) => {
     if (!query) {
       axios
         .get("/business/find/all")
         .then(res => {
-          results
+          !resultsNumber
             ? this.setState({ businessQueryResults: res.data })
             : this.setState({
-                businessQueryResults: res.data.slice(0, results)
+                businessQueryResults: res.data.slice(0, resultsNumber)
               })
         })
         .catch(errors => this.setState({ errors }))
     } else {
       axios
-        .post("/business/search", { query, results })
+        .post("/business/search", { query, resultsNumber })
         .then(res => {
           this.setState({ businessQueryResults: res.data })
           return res.data
@@ -35,8 +35,6 @@ class UIDataContextProvider extends Component {
         .catch(errors => this.setState({ errors }))
     }
   }
-
-  componentDidMount() {}
 
   // but you can also provide functions to mutate this data
 
