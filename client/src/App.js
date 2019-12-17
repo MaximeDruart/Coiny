@@ -1,7 +1,6 @@
 import React, { Component } from "react"
 import { BrowserRouter as Router, Route } from "react-router-dom"
 // import "bootstrap/dist/css/bootstrap.min.css"
-import "./styles/main.scss"
 
 import PrivateRoute from "./components/PrivateRoute"
 import PrivateComponent from "./components/privateComponent"
@@ -17,7 +16,6 @@ import PrivilegeAccess from "./components/PrivilegeAccess"
 import Welcome from "./components/welcomeComp/Welcome"
 import FullPageSearch from "./components/FullPageSearch"
 import StorePage from "./components/StorePage.jsx"
-
 
 class App extends Component {
   constructor() {

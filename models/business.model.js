@@ -10,7 +10,8 @@ const businessSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+      tags: { type: [String], index: true }
     },
     password: {
       type: String,
@@ -52,18 +53,19 @@ const businessSchema = new mongoose.Schema(
       type: String,
       default: "https://icon-library.net/images/icon-shop/icon-shop-1.jpg"
     },
-    businessType: {
+    type: {
       type: String,
-      default: "store"
+      default: "store",
+      tags: { type: [String], index: true }
       // required : true
     }
   },
   {
+    autoIndex: false,
     timestamps: true
   }
 )
 
-businessSchema.index({ name: "text" })
 const Business = mongoose.model("Business", businessSchema)
 
 module.exports = Business

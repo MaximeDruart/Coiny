@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useContext } from "react"
 import Bottombar from "./homepageComp/Bottombar"
 import "./homepage.scss"
 import Topbar from "./homepageComp/Topbar"
@@ -7,15 +7,11 @@ import PartnerShowcase from "./homepageComp/PartnerShowcaser"
 import { UIDataContext } from "../contexts/UIDataContext"
 import { Link } from "react-router-dom"
 
-
 const Homepage = props => {
-  const { getBusinessData, businessQueryResults } = React.useContext(
-    UIDataContext
-  )
-
+  const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
 
   useEffect(() => {
-    getBusinessData(null, 4)
+    getBusinessData(null)
   }, [])
 
   const getRenderedBusinesses = () => {
@@ -26,11 +22,10 @@ const Homepage = props => {
   return (
     <div>
       <Topbar />
-
       <div className='contentHome'>
         <div className='discoverPartners'>
           <h2>Retrouvez nos commerces partenaires.</h2>
-          
+
           <div className='lineContainer'>
             <div className='line'></div>
           </div>
@@ -43,11 +38,7 @@ const Homepage = props => {
             <p>Des commerçants vous attendent</p>
           </div>
           <div className='partnerSlide'>
-           
-           
-            {businessQueryResults === true ? getRenderedBusinesses() : ""}
-
-            
+            {businessQueryResults ? getRenderedBusinesses() : ""}
           </div>
           <div className='blankSpace'></div>
         </div>
@@ -66,31 +57,27 @@ const Homepage = props => {
 
         <div className='squareStoreOfTheWeek'>
           <Link to='/storePage'>
-          <div>
-            <h2>Monoprix</h2>
-          </div>
+            <div>
+              <h2>Monoprix</h2>
+            </div>
           </Link>
           <Link to='/storePage'>
-
-          <div>
-            <h2>Monoprix</h2>
-          </div>
-          </Link>
-
-          <Link to='/storePage'>
-
-          <div>
-            <h2>Monoprix</h2>
-          </div>
+            <div>
+              <h2>Monoprix</h2>
+            </div>
           </Link>
 
           <Link to='/storePage'>
-
-          <div>
-            <h2>Monoprix</h2>
-          </div>
+            <div>
+              <h2>Monoprix</h2>
+            </div>
           </Link>
 
+          <Link to='/storePage'>
+            <div>
+              <h2>Monoprix</h2>
+            </div>
+          </Link>
         </div>
         <div className='blankSpace'></div>
         <div className='blankSpace'></div>

@@ -1,6 +1,8 @@
 import React, { Component, useContext, useState, useEffect } from "react"
 import { UIDataContext } from "../contexts/UIDataContext"
 import SearchBar from "./homepageComp/SearchBar"
+import "./fullPageSearch.scss"
+import logo from "./img/logo.svg"
 
 const FullPageSearch = props => {
   const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
@@ -14,9 +16,24 @@ const FullPageSearch = props => {
   const getRenderedBusinesses = () => {
     if (businessQueryResults) {
       return businessQueryResults.map(business => (
-        <div key={business.id} className='businessQueryResults'>
-          <p className='name'>{business.name}</p>
-          <p>{business.password}</p>
+        <div key={business.id} className='business-item'>
+          <div className='left'>
+            <div className='top'>
+              <div className='name'>{business.name}</div>
+              <div className='type'>{business.type}</div>
+            </div>
+
+            <div className='donate-btn'>Donate</div>
+
+            <div className='logo-container'>
+              <img src={logo} className='logo'></img>
+              <div className='a'>{console.log(business)} </div>
+            </div>
+          </div>
+          <div
+            style={{ backgroundImage: `url(${business.picture})` }}
+            className='right'
+          ></div>
         </div>
       ))
     } else {
@@ -34,7 +51,10 @@ const FullPageSearch = props => {
 
   return (
     <div className='fullPageSearch'>
-      <SearchBar queryHandler={queryHandler}></SearchBar>
+      <SearchBar
+        className='fullPage-searchbar'
+        queryHandler={queryHandler}
+      ></SearchBar>
       <div className='results-container'>{getRenderedBusinesses()}</div>
     </div>
   )

@@ -1,0 +1,95 @@
+@import "main";
+
+.fullPageSearch {
+  * {
+    box-sizing: border-box;
+    font-family: europa;
+  }
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  /* position: absolute; */
+
+  .searchContainer {
+    position: static;
+    width: 90%;
+    margin-top: 3vh;
+  }
+
+  .results-container {
+    margin-top: 15px;
+    width: 85%;
+    height: 80%;
+
+    .business-item {
+      @include smooth-shadow();
+      display: flex;
+      width: 100%;
+      height: 110px;
+      flex-flow: row nowrap;
+      justify-content: center;
+      margin-bottom: 15px;
+      border-radius: 10px;
+      border-top-right-radius: 44px;
+      border-bottom-right-radius: 44px;
+      overflow: hidden;
+
+      .left {
+        padding: 6px 0 5px 5px;
+        height: 100%;
+        width: 40%;
+        position: relative;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: space-between;
+
+        .top {
+          .name {
+            font-weight: 600;
+          }
+          .type {
+            opacity: 0.8;
+          }
+        }
+        .donate-btn {
+          color: white;
+          @include smooth-shadow();
+          border-radius: 13px;
+          height: 25px;
+          width: 80%;
+          padding: 2px;
+          background-color: $button-color;
+          text-align: center;
+          font-family: "Rift Demi";
+        }
+
+        .logo-container {
+          @include smooth-shadow-darker();
+          @include flex-center();
+          right: -22px;
+          top: calc(50% - 22px);
+          height: 44px;
+          width: 44px;
+          background-color: white;
+          border-radius: 50%;
+          position: absolute;
+
+          .logo {
+            height: 80%;
+            width: 80%;
+          }
+        }
+      }
+
+      .right {
+        height: 100%;
+        width: 60%;
+        background: red;
+        background-size: cover;
+        background-position: center center;
+      }
+    }
+  }
+}
