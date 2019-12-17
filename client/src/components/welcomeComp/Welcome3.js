@@ -1,6 +1,6 @@
 import React from "react"
 import "./Welcome.scss"
-import welcomeImg from "../../img/welcome3.svg"
+import welcomeImg from "../img/welcome3.svg"
 
 function Welcome3() {
   return (

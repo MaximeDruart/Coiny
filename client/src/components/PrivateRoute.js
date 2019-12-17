@@ -13,7 +13,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
         isAuthenticated ? (
           <Component {...props} />
         ) : localStorageHasBeenRead ? (
-          <Redirect to='/login' />
+          <Redirect to='/getstarted' />
         ) : (
           ""
         )

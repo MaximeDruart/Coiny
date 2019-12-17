@@ -10,11 +10,11 @@ import UIDataContextProvider from "./contexts/UIDataContext"
 
 import UserRegister from "./components/auth/UserRegister"
 import BusinessRegister from "./components/auth/BusinessRegister"
-import Login from "./components/auth/Login"
-import Home from "./components/Home"
+import AuthDirection from "./components/auth/AuthDirection"
 import Homepage from "./components/homepage"
 import UserProfile from "./components/UserProfile"
 import PrivilegeAccess from "./components/PrivilegeAccess"
+import Welcome from "./components/welcomeComp/Welcome"
 
 class App extends Component {
   constructor() {
@@ -27,28 +27,30 @@ class App extends Component {
       <Router>
         <UIDataContextProvider>
           <LoginContextProvider>
-            <div className="App">
-              <Route path="/" exact component={Home}></Route>
-              <Route path="/userregister" component={UserRegister}></Route>
-              <Route path="/homepage" component={Homepage}></Route>
+            <div className='App'>
+              <Route path='/' exact component={Welcome}></Route>
+              <Route path='/getstarted' component={AuthDirection}></Route>
+              <Route path='/userregister' component={UserRegister}></Route>
               <Route
-                path="/businessregister"
+                path='/businessregister'
                 component={BusinessRegister}
               ></Route>
-              <Route path="/login" component={Login}></Route>
-
               {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
               <PrivateRoute
-                path="/private"
+                path='/homepage'
+                component={Homepage}
+              ></PrivateRoute>
+              <PrivateRoute
+                path='/private'
                 component={PrivateComponent}
               ></PrivateRoute>
 
               <PrivateRoute
-                path="/userprofile"
+                path='/userprofile'
                 component={UserProfile}
               ></PrivateRoute>
               <PrivateRoute
-                path="/privilegeaccess"
+                path='/privilegeaccess'
                 component={PrivilegeAccess}
               ></PrivateRoute>
             </div>
