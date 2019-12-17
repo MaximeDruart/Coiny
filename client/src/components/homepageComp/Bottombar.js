@@ -8,7 +8,9 @@ const Bottombar = () => {
   return (
     <div className='Bottombar'>
       <div className='Bottombar_iconBottombar'>
+        <Link to='/homepage'>
         <img src={homelogo} alt='' />
+        </Link>
       </div>
       <div className='Bottombar_iconBottombar middleQr'>
         <img src='' alt='' />
