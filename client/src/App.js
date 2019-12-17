@@ -30,24 +30,17 @@ class App extends Component {
         <UIDataContextProvider>
           <LoginContextProvider>
             <div className='App' style={{ height: "100vh" }}>
+              {/* Switching so it's either the pre-auth components or the bottombar that's available */}
               <Switch>
                 <Route path='/' exact component={Welcome}></Route>
                 <Route path='/getstarted' component={AuthDirection}></Route>
-                <LoginContext.Consumer>
-                  {context =>
-                    context.localStorageHasBeenRead &&
-                    context.isAuthenticated && (
-                      <Route path='/' component={Bottombar}></Route>
-                    )
-                  }
-                </LoginContext.Consumer>
+                <Route path='/userregister' component={UserRegister}></Route>
+                <Route
+                  path='/businessregister'
+                  component={BusinessRegister}
+                ></Route>
+                <PrivateRoute path='/' component={Bottombar}></PrivateRoute>
               </Switch>
-              <Route path='/userregister' component={UserRegister}></Route>
-              <Route path='/storePage' component={StorePage}></Route>
-              <Route
-                path='/businessregister'
-                component={BusinessRegister}
-              ></Route>
               {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
 
               <PrivateRoute
@@ -72,6 +65,11 @@ class App extends Component {
               <PrivateRoute
                 path='/privilegeaccess'
                 component={PrivilegeAccess}
+              ></PrivateRoute>
+
+              <PrivateRoute
+                path='/storePage'
+                component={StorePage}
               ></PrivateRoute>
             </div>
           </LoginContextProvider>
