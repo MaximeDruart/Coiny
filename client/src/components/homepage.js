@@ -19,6 +19,13 @@ const Homepage = props => {
       <PartnerShowcase key={business.id} business={business}></PartnerShowcase>
     ))
   }
+
+  const goToSearch = () => {
+    if (props.location.pathname === "/homepage") {
+      props.history.push("/search")
+    }
+  }
+
   return (
     <div>
       <Topbar />
@@ -30,7 +37,7 @@ const Homepage = props => {
             <div className='line'></div>
           </div>
           <p>Des commerces qui s'engagent</p>
-          <SearchBar />
+          <SearchBar goToSearch={goToSearch} />
         </div>
         <div className='blankSpace'></div>
         <div className='showcasePartner'>
@@ -82,8 +89,6 @@ const Homepage = props => {
         <div className='blankSpace'></div>
         <div className='blankSpace'></div>
       </div>
-
-      <Bottombar />
     </div>
   )
 }

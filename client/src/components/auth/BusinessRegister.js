@@ -39,7 +39,7 @@ class BusinessRegister extends Component {
     axios
       .post("/business/register", business)
       .then(res => {
-        this.props.history.push("/login")
+        this.props.history.push("/getstarted")
       })
       .catch(error => this.setState({ errors: error.response.data }))
   }
@@ -55,87 +55,87 @@ class BusinessRegister extends Component {
   render() {
     let { errors } = this.state
     return (
-      <Container className="home">
-        <Link className="home_back" to='/getstarted'>
-          <img src={backImg} alt="back"></img>
+      <Container className='home'>
+        <Link className='home_back' to='/getstarted'>
+          <img src={backImg} alt='back'></img>
           <h5>Retour</h5>
         </Link>
         <Jumbotron>
           <h2>Profil commerçant</h2>
         </Jumbotron>
-        <div className="home_line"></div>
-        <Form className = "home_form" noValidate onSubmit={this.handleSubmit}>
+        <div className='home_line'></div>
+        <Form className='home_form' noValidate onSubmit={this.handleSubmit}>
           <Form.Group>
             <Form.Control
-              placeholder="nom du commerce"
+              placeholder='nom du commerce'
               isInvalid={!!errors.name}
-              name="name"
-              type="text"
+              name='name'
+              type='text'
               value={this.state.name}
               onChange={this.handleChange}
             />
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback type='invalid'>
               {errors.name}
             </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
             <Form.Control
-              placeholder="numero de téléphone"
+              placeholder='numero de téléphone'
               isInvalid={!!errors.phoneNumber}
-              name="phoneNumber"
-              type="text"
+              name='phoneNumber'
+              type='text'
               value={this.state.phoneNumber}
               onChange={this.handleChange}
             />
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback type='invalid'>
               {errors.phoneNumber}
             </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
             <Form.Control
-              placeholder="Email"
+              placeholder='Email'
               isInvalid={!!errors.email}
-              name="email"
-              type="email"
+              name='email'
+              type='email'
               value={this.state.email}
               onChange={this.handleChange}
             />
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback type='invalid'>
               {errors.email}
             </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
             <Form.Control
-              placeholder="Mot de passe"
+              placeholder='Mot de passe'
               isInvalid={!!errors.password}
-              name="password"
-              type="password"
+              name='password'
+              type='password'
               value={this.state.password}
               onChange={this.handleChange}
             />
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback type='invalid'>
               {errors.password}
             </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
             <Form.Control
-              placeholder="Confirmer le mot de passe"
+              placeholder='Confirmer le mot de passe'
               isInvalid={!!errors.password2}
-              name="password2"
-              type="password"
+              name='password2'
+              type='password'
               value={this.state.password2}
               onChange={this.handleChange}
             />
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback type='invalid'>
               {errors.password2}
             </Form.Control.Feedback>
           </Form.Group>
-          <Button className="home_form_submit" type="submit">
-          s'inscrire
+          <Button className='home_form_submit' type='submit'>
+            s'inscrire
           </Button>
         </Form>
       </Container>

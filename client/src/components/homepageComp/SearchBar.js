@@ -14,6 +14,7 @@ const SearchBar = props => {
     <div className='searchContainer'>
       <div className='searchContainer_searchInput'>
         <input
+          onFocus={props.goToSearch}
           type='text'
           name='query'
           placeholder='recherchez un store'

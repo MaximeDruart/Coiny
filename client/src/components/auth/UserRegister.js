@@ -37,7 +37,7 @@ class UserRegister extends Component {
     }
     axios
       .post("/users/register", user)
-      .then(res => this.props.history.push("/login"))
+      .then(res => this.props.history.push("/getstarted"))
       .catch(error => this.setState({ errors: error.response.data }))
   }
 
