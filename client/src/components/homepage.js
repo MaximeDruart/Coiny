@@ -11,6 +11,8 @@ const Homepage = props => {
     UIDataContext
   )
 
+  console.log(getBusinessData(null, 4))
+
   useEffect(() => {
     getBusinessData(null, 4)
   }, [])
@@ -27,6 +29,7 @@ const Homepage = props => {
       <div className='contentHome'>
         <div className='discoverPartners'>
           <h2>Retrouvez nos commerces partenaires.</h2>
+          
           <div className='lineContainer'>
             <div className='line'></div>
           </div>
@@ -39,7 +42,11 @@ const Homepage = props => {
             <p>Des commerçants vous attendent</p>
           </div>
           <div className='partnerSlide'>
+           
+           
             {businessQueryResults === true ? getRenderedBusinesses() : ""}
+
+            
           </div>
           <div className='blankSpace'></div>
         </div>
