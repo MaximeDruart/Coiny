@@ -1,9 +1,9 @@
 import React from 'react';
-import Bottombar from './homepageComp/Bottombar.jsx';
+import Bottombar from './homepageComp/Bottombar.js';
 import './homepage.scss'
-import Topbar from './homepageComp/Topbar.jsx'
-import SearchBar from './homepageComp/SearchBar.jsx'
-import PartnerShowcase from './homepageComp/PartnerShowcaser.jsx'
+import Topbar from './homepageComp/Topbar.js'
+import SearchBar from './homepageComp/SearchBar.js'
+import PartnerShowcase from './homepageComp/PartnerShowcaser.js'
 
 function Homepage(){
     return(

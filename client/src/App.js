@@ -27,28 +27,28 @@ class App extends Component {
       <Router>
         <UIDataContextProvider>
           <LoginContextProvider>
-            <div className='App'>
-              <Route path='/' exact component={Home}></Route>
-              <Route path='/userregister' component={UserRegister}></Route>
-              <Route path='/homepage' component={Homepage}></Route>
+            <div className="App">
+              <Route path="/" exact component={Home}></Route>
+              <Route path="/userregister" component={UserRegister}></Route>
+              <Route path="/homepage" component={Homepage}></Route>
               <Route
-                path='/businessregister'
+                path="/businessregister"
                 component={BusinessRegister}
               ></Route>
-              <Route path='/login' component={Login}></Route>
+              <Route path="/login" component={Login}></Route>
 
               {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
               <PrivateRoute
-                path='/private'
+                path="/private"
                 component={PrivateComponent}
               ></PrivateRoute>
 
               <PrivateRoute
-                path='/userprofile'
+                path="/userprofile"
                 component={UserProfile}
               ></PrivateRoute>
               <PrivateRoute
-                path='/privilegeaccess'
+                path="/privilegeaccess"
                 component={PrivilegeAccess}
               ></PrivateRoute>
             </div>
