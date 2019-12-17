@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
-import { Container, Button } from "react-bootstrap"
 import { LoginContext } from "../contexts/LoginContext"
 import { Link } from "react-router-dom"
+
 const Profile = () => {
   const { user, getExtendedData, userData } = useContext(LoginContext)
 
@@ -11,9 +11,9 @@ const Profile = () => {
   }, [user])
 
   return (
-    <Container>
+    <div>
       {userData && (
-        <Container>
+        <div>
           <h1>Hello {userData.firstName}</h1>
           <h2>
             {`You pledged ${
@@ -22,11 +22,11 @@ const Profile = () => {
             ${new Date(userData.createdAt).toDateString()}.`}
           </h2>
           <Link to='/privilegeaccess'>
-            <Button>Register for privileges</Button>
+            <button>Register for privileges</button>
           </Link>
-        </Container>
+        </div>
       )}
-    </Container>
+    </div>
   )
 }
 

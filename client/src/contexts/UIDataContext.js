@@ -20,12 +20,17 @@ class UIDataContextProvider extends Component {
     if (!query) {
       axios
         .get("/business/find/all")
-        .then(res => this.setState({ allBusinessData: res }))
+        .then(res =>
+          this.setState({
+            allBusinessData: res.data.slice(0, results),
+            businessQueryResults: res.data.slice(0, results)
+          })
+        )
         .catch(errors => this.setState({ errors }))
     } else {
       axios
         .post("/business/search", { query, results })
-        .then(res => this.setState({ businessQueryResults: res }))
+        .then(res => this.setState({ businessQueryResults: res.data }))
         .catch(errors => this.setState({ errors }))
     }
   }

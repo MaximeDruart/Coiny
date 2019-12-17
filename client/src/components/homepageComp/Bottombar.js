@@ -1,18 +1,22 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import "./Bottombar.scss"
 import homelogo from "../img/icn_home_inactive.svg"
 import profilelogo from "../img/icn_profile_inactive.svg"
-function Bottombar() {
+
+const Bottombar = () => {
   return (
-    <div className="Bottombar">
-      <div className="Bottombar_iconBottombar">
-        <img src={homelogo} alt="" />
+    <div className='Bottombar'>
+      <div className='Bottombar_iconBottombar'>
+        <img src={homelogo} alt='' />
       </div>
-      <div className="Bottombar_iconBottombar middleQr">
-        <img src="" alt="" />
+      <div className='Bottombar_iconBottombar middleQr'>
+        <img src='' alt='' />
       </div>
-      <div className="Bottombar_iconBottombar">
-        <img src={profilelogo} alt="" />
+      <div className='Bottombar_iconBottombar'>
+        <Link to='/userprofile'>
+          <img src={profilelogo} alt='' />
+        </Link>
       </div>
     </div>
   )
