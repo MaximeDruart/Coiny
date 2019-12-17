@@ -6,6 +6,7 @@ import "./styles/main.scss"
 import PrivateRoute from "./components/PrivateRoute"
 import PrivateComponent from "./components/privateComponent"
 import LoginContextProvider from "./contexts/LoginContext"
+import UIDataContextProvider from "./contexts/UIDataContext"
 
 import UserRegister from "./components/auth/UserRegister"
 import BusinessRegister from "./components/auth/BusinessRegister"
@@ -24,33 +25,35 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <LoginContextProvider>
-          <div className='App'>
-            <Route path='/' exact component={Home}></Route>
-            <Route path='/userregister' component={UserRegister}></Route>
-            <Route path='/homepage' component={Homepage}></Route>
-            <Route
-              path='/businessregister'
-              component={BusinessRegister}
-            ></Route>
-            <Route path='/login' component={Login}></Route>
+        <UIDataContextProvider>
+          <LoginContextProvider>
+            <div className='App'>
+              <Route path='/' exact component={Home}></Route>
+              <Route path='/userregister' component={UserRegister}></Route>
+              <Route path='/homepage' component={Homepage}></Route>
+              <Route
+                path='/businessregister'
+                component={BusinessRegister}
+              ></Route>
+              <Route path='/login' component={Login}></Route>
 
-            {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
-            <PrivateRoute
-              path='/private'
-              component={PrivateComponent}
-            ></PrivateRoute>
+              {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
+              <PrivateRoute
+                path='/private'
+                component={PrivateComponent}
+              ></PrivateRoute>
 
-            <PrivateRoute
-              path='/userprofile'
-              component={UserProfile}
-            ></PrivateRoute>
-            <PrivateRoute
-              path='/privilegeaccess'
-              component={PrivilegeAccess}
-            ></PrivateRoute>
-          </div>
-        </LoginContextProvider>
+              <PrivateRoute
+                path='/userprofile'
+                component={UserProfile}
+              ></PrivateRoute>
+              <PrivateRoute
+                path='/privilegeaccess'
+                component={PrivilegeAccess}
+              ></PrivateRoute>
+            </div>
+          </LoginContextProvider>
+        </UIDataContextProvider>
       </Router>
     )
   }
