@@ -15,6 +15,7 @@ import Homepage from "./components/homepage"
 import UserProfile from "./components/UserProfile"
 import PrivilegeAccess from "./components/PrivilegeAccess"
 import Welcome from "./components/welcomeComp/Welcome"
+import FullPageSearch from "./components/FullPageSearch"
 
 class App extends Component {
   constructor() {
@@ -43,6 +44,11 @@ class App extends Component {
               <PrivateRoute
                 path='/private'
                 component={PrivateComponent}
+              ></PrivateRoute>
+
+              <PrivateRoute
+                path='/search'
+                component={FullPageSearch}
               ></PrivateRoute>
 
               <PrivateRoute
