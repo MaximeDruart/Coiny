@@ -43,7 +43,7 @@ a {
   }
   & h3 {
     font-size: 20px;
-    margin: 0;
+    margin: -20px 0px 0px 0px;
   }
   // line separator
   &_line {
@@ -120,7 +120,6 @@ a {
     height: 50px;
     background: white;
     border-radius: 90px;
-    border: solid 1px #87bcbf;
     margin: 10px 0px 10px 0px;
     outline: none;
   }
@@ -140,11 +139,11 @@ a {
   display: flex;
   & button {
     width: 140px;
-    height: 50px;
-    background: #3f05ca;
-    border-radius: 90px;
+    height: 39px;
+    background: #6401ec;
+    border-radius: 100px;
     border: none;
-    margin: 10px 0px 10px 0px;
+    margin: 15px 0px 10px 0px;
   }
   &_text {
     color: white;

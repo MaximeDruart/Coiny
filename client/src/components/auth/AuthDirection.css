@@ -1,0 +1,165 @@
+@font-face {
+  font-family: "Rift Demi";
+  src: url("../fonts/Rift-Demi.woff2") format("woff2"),
+    url("../fonts/Rift-Demi.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+a {
+  text-decoration: none;
+}
+.home {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#6300ec, #3f0d83);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.home h1,
+.home h2,
+.home h3 {
+  text-align: center;
+  font-family: europa, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: 50px;
+  line-height: 60px;
+  margin: 40px 0px 40px 0px;
+}
+.home h2 {
+  font-size: 30px;
+  margin: 0;
+}
+.home h3 {
+  font-size: 20px;
+  margin: -20px 0px 0px 0px;
+}
+.home_line {
+  margin: 15px 0px 25px 0px;
+  width: 30px;
+  border-bottom: solid white 1px;
+}
+.home img {
+  width: 70%;
+  margin-bottom: 20px;
+}
+.home_back {
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 80px;
+}
+.home_back img {
+  width: 15px;
+  margin: 0px;
+}
+.home_back h5 {
+  margin: 0px 5px 1px 5px;
+  color: white;
+  font-weight: 300;
+}
+.home_form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.home_form_submit {
+  margin: 40px 0px 40px 0px;
+  font-family: "Rift Demi";
+  font-size: 18px;
+  width: 300px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 90px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.home_form input {
+  text-align: center;
+  width: 300px;
+  height: 50px;
+  background: transparent;
+  border-radius: 90px;
+  border: solid 1px #87bcbf;
+  margin: 10px 0px 10px 0px;
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
+.home_form input::placeholder {
+  font-size: 13px;
+  font-family: "Rift Demi";
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.924);
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.links button {
+  width: 300px;
+  height: 50px;
+  background: white;
+  border-radius: 90px;
+  margin: 10px 0px 10px 0px;
+  outline: none;
+}
+.links_spaced-link {
+  font-size: 13px;
+  font-family: "Rift Demi";
+  letter-spacing: 2px;
+  color: black;
+  outline: none;
+}
+.register {
+  width: 300px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+.register button {
+  width: 140px;
+  height: 39px;
+  background: #6401ec;
+  border-radius: 100px;
+  border: none;
+  margin: 15px 0px 10px 0px;
+}
+.register_text {
+  color: white;
+  font-family: europa, sans-serif;
+  font-size: 11px;
+  line-height: 18px;
+  cursor: pointer;
+}
+.register_text:hover {
+  color: #ff7590;
+}
+.invalid-feedback {
+  text-align: center;
+  color: #fd684e;
+  font-size: 10px;
+  height: 10px;
+  margin-top: -5px;
+}
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  height: 10%;
+}
+.title h1 {
+  margin: 0;
+}
+.title img {
+  width: 60px;
+  margin: 0px 0px 0px 10px;
+}
