@@ -16,6 +16,7 @@ const FullPageSearch = props => {
       return businessQueryResults.map(business => (
         <div key={business.id} className='businessQueryResults'>
           <p className='name'>{business.name}</p>
+          {/* <p>{business.}</p> */}
         </div>
       ))
     } else {
