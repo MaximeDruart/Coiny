@@ -30,6 +30,7 @@ const FullPageSearch = props => {
 
   useEffect(() => {
     getBusinessData()
+    console.log(getBusinessData())
   }, [query])
 
   return (
