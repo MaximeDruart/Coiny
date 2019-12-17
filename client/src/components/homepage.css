@@ -1,16 +1,13 @@
 * {
   font-family: Europa;
 }
-
 body {
   margin: 0;
 }
-
-
 .discoverPartners {
   width: 100%;
   height: 220px;
-  background: #A87FFE;
+  background: #a87ffe;
   color: white;
   position: relative;
   font-size: 1em;
@@ -18,16 +15,15 @@ body {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  & h2 {
-    margin: -20px 0px 0px 0px;
-    width: 80%;
-  }
-  & p {
-    margin: 0;
-    width: 80%;
-  }
 }
-
+.discoverPartners h2 {
+  margin: -20px 0px 0px 0px;
+  width: 80%;
+}
+.discoverPartners p {
+  margin: 0;
+  width: 80%;
+}
 .line {
   width: 20%;
   height: 2px;
@@ -86,7 +82,7 @@ body {
 .buttonFilter {
   width: 75%;
   height: 41px;
-  border: 1px #87BCBF solid;
+  border: 1px #87bcbf solid;
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -95,9 +91,6 @@ body {
 }
 .partnerBand p {
   font-size: 16px;
-  margin:0px;
+  margin: 0px;
   text-align: center;
 }
-
-// to delete probably
-
