@@ -51,7 +51,7 @@ const businessSchema = new mongoose.Schema(
     },
     picture: {
       type: String,
-      default: "https://icon-library.net/images/icon-shop/icon-shop-1.jpg"
+      default: "https://image.flaticon.com/icons/png/512/679/679845.png"
     },
     type: {
       type: String,

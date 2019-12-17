@@ -60,18 +60,15 @@ const Homepage = props => {
           <div className='partnerSlide'>
             {businessQueryResults ? getRenderedBusinesses() : ""}
           </div>
-
-          <div className='blankSpace'></div>
         </div>
         <div className='featureFilterContainer'>
           <div className='featureFilter'>
             <h3>
-              Recherchez un commerce qui correspond <br />à vos envies
+              Recherchez un commerce qui correspond à vos envies
             </h3>
             <div className='buttonFilter'>Rechercher un commerce</div>
           </div>
         </div>
-        <div className='blankSpace'></div>
         <div className='partnerBand'>
           <p>Des commerçants vous attendent</p>
         </div>
