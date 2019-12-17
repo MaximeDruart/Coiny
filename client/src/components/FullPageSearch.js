@@ -1,11 +1,11 @@
-import React, { Component, useContext, useState, useEffect } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { UIDataContext } from "../contexts/UIDataContext"
 import SearchBar from "./homepageComp/SearchBar"
 import "./fullPageSearch.scss"
 import logo from "./img/logo.svg"
 import { CSSTransition } from "react-transition-group"
 
-const FullPageSearch = props => {
+const FullPageSearch = () => {
   const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
 
   let [query, setQuery] = useState("")
@@ -29,8 +29,7 @@ const FullPageSearch = props => {
               </div>
               <div className='donate-btn'>Donate</div>
               <div className='logo-container'>
-                <img src={logo} className='logo'></img>
-                <div className='a'>{console.log(business)} </div>
+                <img alt='logo' src={logo} className='logo'></img>
               </div>
             </div>
             <div

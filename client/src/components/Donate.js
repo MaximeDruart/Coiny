@@ -31,14 +31,41 @@ class Donate extends Component {
       .catch(error => this.setState({ error }))
   }
 
+  handleChange = event => {
+    let { name, value } = event.target
+
+    this.setState({
+      [name]: value
+    })
+  }
+
   render() {
     return (
       <div>
-        <form onSubmit={donationSubmitHandler}>
-          <h1>{`Paying ${this.state.donationAmount}€ to ${this.props.businessName}`}</h1>
-          <h2>{this.state.error}</h2>
-          <button>Pay</button>
-        </form>
+        <h1>Donating X € to Y</h1>
+        <Form
+          className='donation_form'
+          noValidate
+          onSubmit={this.donationSubmitHandler}
+        >
+          <Form.Group>
+            <Form.Control
+              placeholder='nom du commerce'
+              isInvalid={!!errors.name}
+              name='name'
+              type='text'
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+            <Form.Control.Feedback type='invalid'>
+              {errors.name}
+            </Form.Control.Feedback>
+          </Form.Group>
+
+          <Button className='donation_form_submit' type='submit'>
+            Payer
+          </Button>
+        </Form>
       </div>
     )
   }

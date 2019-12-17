@@ -1,5 +1,5 @@
-import React, { Component, useContext } from "react"
-import { Container, Form, FormControl, Button } from "react-bootstrap"
+import React, { Component } from "react"
+import { Container, Form, Button } from "react-bootstrap"
 import isEmpty from "is-empty"
 import { LoginContext } from "../contexts/LoginContext"
 import axios from "axios"
@@ -51,63 +51,63 @@ class PrivilegeAccess extends Component {
 
   render() {
     return (
-      <Container className="AccessContainer">
+      <Container className='AccessContainer'>
         <h1>Accès privilégié</h1>
-        <div className="AccessContainer_line"></div>
+        <div className='AccessContainer_line'></div>
         <h2>
           Nous avons besoin des documents suivants pour confirmer votre statut
         </h2>
-        <Form className="formAccess" onSubmit={this.handleSubmit}>
-          <Form.Group className="formAccess file">
-            <Form.Label className="formAccess title"> First file</Form.Label>
-            <div className="formAccess input">
-            <Form.Control
-              ref={this.$firstFile}
-              name="firstFile"
-              type="file"
-              isInvalid={!!this.state.errors.firstFile}
-            />
+        <Form className='formAccess' onSubmit={this.handleSubmit}>
+          <Form.Group className='formAccess file'>
+            <Form.Label className='formAccess title'> First file</Form.Label>
+            <div className='formAccess input'>
+              <Form.Control
+                ref={this.$firstFile}
+                name='firstFile'
+                type='file'
+                isInvalid={!!this.state.errors.firstFile}
+              />
             </div>
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback type='invalid'>
               {this.state.errors.firstFile}
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="formAccess file">
-            <Form.Label className="formAccess title"> Second file</Form.Label>
-            <div className="formAccess input">
-            <Form.Control
-              ref={this.$secondFile}
-              name="secondFile"
-              type="file"
-              isInvalid={!!this.state.errors.secondFile}
-            />
+          <Form.Group className='formAccess file'>
+            <Form.Label className='formAccess title'> Second file</Form.Label>
+            <div className='formAccess input'>
+              <Form.Control
+                ref={this.$secondFile}
+                name='secondFile'
+                type='file'
+                isInvalid={!!this.state.errors.secondFile}
+              />
             </div>
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback type='invalid'>
               {this.state.errors.secondFile}
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className="formAccess file">
-            <Form.Label className="formAccess title"> Third file</Form.Label>
-            <div className="formAccess input">
+          <Form.Group className='formAccess file'>
+            <Form.Label className='formAccess title'> Third file</Form.Label>
+            <div className='formAccess input'>
               <Form.Control
                 ref={this.$thirdFile}
-                name="thirdFile"
-                type="file"
+                name='thirdFile'
+                type='file'
                 isInvalid={!!this.state.errors.thirdFile}
               />
             </div>
-            <Form.Control.Feedback type="invalid">
+            <Form.Control.Feedback type='invalid'>
               {this.state.errors.thirdFile}
             </Form.Control.Feedback>
           </Form.Group>
           <Button
-            className="formAccess submit"
+            className='formAccess submit'
             block
-            variant="outline-primary"
+            variant='outline-primary'
             disabled={this.state.loading}
-            type="submit"
+            type='submit'
           >
             {this.state.isLoading ? "Loading..." : "Submit"}
           </Button>

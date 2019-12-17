@@ -1,10 +1,8 @@
 import React, { Component } from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
-// import "bootstrap/dist/css/bootstrap.min.css"
 
 import PrivateRoute from "./components/PrivateRoute"
-import PrivateComponent from "./components/privateComponent"
-import LoginContextProvider, { LoginContext } from "./contexts/LoginContext"
+import LoginContextProvider from "./contexts/LoginContext"
 import UIDataContextProvider from "./contexts/UIDataContext"
 
 import UserRegister from "./components/auth/UserRegister"
@@ -46,11 +44,6 @@ class App extends Component {
               <PrivateRoute
                 path='/homepage'
                 component={Homepage}
-              ></PrivateRoute>
-
-              <PrivateRoute
-                path='/private'
-                component={PrivateComponent}
               ></PrivateRoute>
 
               <PrivateRoute
