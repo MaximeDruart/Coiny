@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import "./Bottombar.scss"
 import homelogo from "../img/icn_home_inactive.svg"
 import profilelogo from "../img/icn_profile_inactive.svg"
+import logoImg from "../img/logo.svg"
 
 const Bottombar = props => {
   return (
@@ -16,7 +17,7 @@ const Bottombar = props => {
         </Link>
       </div>
       <div className='Bottombar_iconBottombar middleQr'>
-        <img src='' alt='' />
+        <img src={logoImg} alt='logo' />
       </div>
       <div
         style={{ opacity: props.location.pathname === "/userprofile" && "0.5" }}

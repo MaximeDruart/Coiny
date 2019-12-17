@@ -22,7 +22,9 @@
   .results-container {
     margin-top: 13vh;
     width: 85%;
-    height: 80%;
+    // height: 100vh;
+    // margin-bottom: 80px;
+    // overflow: scroll;
 
     .placeholder {
       width: 100%;
@@ -30,17 +32,17 @@
       margin-bottom: 25px;
       border-radius: 10px;
       background-color: #f5f5f5;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+      // box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     }
 
     .business-item {
       @include smooth-shadow();
       display: flex;
       width: 100%;
-      height: 110px;
+      height: 130px;
       flex-flow: row nowrap;
       justify-content: center;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
       border-radius: 10px;
       border-top-right-radius: 44px;
       border-bottom-right-radius: 44px;
@@ -62,7 +64,7 @@
         display: flex;
         flex-flow: column nowrap;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
 
         .top {
           width: 100%;
@@ -77,6 +79,7 @@
             text-align: center;
           }
           .money {
+            margin: 5px 0px 5px 0px;
             opacity: 0.8;
             width: 100%;
             text-align: center;
@@ -115,7 +118,7 @@
       .right {
         height: 100%;
         width: 60%;
-        background: red;
+        background: #781FF2;
         background-size: cover;
         background-position: center center;
       }

@@ -10,22 +10,21 @@
   background-color: white;
   position: fixed;
   box-shadow: 0px -10px 30px rgba(0, 0, 0, 0.217);
-  &_.iconBottombar {
-    transition: opacity 0.3s ease-in-out;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 101;
-    & img {
-      width: 25px;
-      height: auto;
-    }
-  }
 }
-
+.Bottombar_.iconBottombar {
+  transition: opacity 0.3s ease-in-out;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 101;
+}
+.Bottombar_.iconBottombar img {
+  width: 25px;
+  height: auto;
+}
 .middleQr {
   display: flex;
   justify-content: center;
@@ -36,7 +35,7 @@
   border-radius: 100px;
   margin-bottom: 40px;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.51);
-  & img{
-    width: 55%;
-  }
+}
+.middleQr img {
+  width: 55%;
 }
