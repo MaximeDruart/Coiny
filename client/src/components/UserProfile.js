@@ -14,7 +14,7 @@ const Profile = () => {
   return (
     <div>
       <div className="profileContainer">
-        <div class="profileContainer_avatar"></div>
+        <div className="profileContainer_avatar"></div>
         {userData && (
           <div>
             <h1>{userData.firstName}</h1>
@@ -24,17 +24,17 @@ const Profile = () => {
               } € à Coiny depuis le
             ${new Date(userData.createdAt).toDateString()}.`}
             </h2>
-            <div class="profileContainer_contain">
-              <div class="profileContainer_contain_badges"></div>
-              <div class="profileContainer_contain_badges"></div>
-              <div class="profileContainer_contain_badges"></div>
+            <div className="profileContainer_contain">
+              <div className="profileContainer_contain_badges"></div>
+              <div className="profileContainer_contain_badges"></div>
+              <div className="profileContainer_contain_badges"></div>
             </div>
             <Link to="/privilegeaccess">
               <button>Demander des privilèges</button>
             </Link>
           </div>
         )}
-        <div class="deconnexion">
+        <div className="deconnexion">
           <button>Déconexion</button>
         </div>
       </div>
