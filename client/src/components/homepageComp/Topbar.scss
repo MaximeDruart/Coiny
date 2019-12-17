@@ -1,18 +1,18 @@
-.topBar{
-    width: 100%;
-    height: 60px;
-    overflow: hidden;
-    background-color: white;
-    position: sticky;
-    top: 0;
-    color: #6401EC;
-    z-index: 1002;
-    font-size: 1.1em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.topBar {
+  width: 100%;
+  height: 60px;
+  overflow: hidden;
+  background-color: white;
+  position: sticky;
+  top: 0;
+  color: #6401ec;
+  z-index: 1002;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.topBar *{
-    margin: 0;
-    padding: 0;
+.topBar * {
+  margin: 0;
+  padding: 0;
 }

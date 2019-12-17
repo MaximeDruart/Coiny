@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="17" height="20.1" viewBox="0 0 17 20.1">
+  <defs>
+    <clipPath id="clip-path">
+      <rect width="17" height="20.1" fill="none"/>
+    </clipPath>
+  </defs>
+  <g id="icn_profile_inactive" clip-path="url(#clip-path)">
+    <circle id="Ellipse_25" data-name="Ellipse 25" cx="3.5" cy="3.5" r="3.5" transform="translate(5 1)" stroke-width="2" stroke="#6401ec" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" fill="none"/>
+    <path id="Tracé_60" data-name="Tracé 60" d="M1,19.1V16.5a6.018,6.018,0,0,1,6-6h3a6.018,6.018,0,0,1,6,6v2.6" fill="none" stroke="#6401ec" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+  </g>
+</svg>
