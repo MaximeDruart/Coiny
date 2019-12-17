@@ -3,7 +3,7 @@ import "./SearchBar.scss"
 import searchMeImg from "../img/icn_search_light.svg"
 
 const SearchBar = props => {
-  let [query, setQuery] = useState()
+  let [query, setQuery] = useState("")
 
   const handleChange = event => {
     let { value } = event.target

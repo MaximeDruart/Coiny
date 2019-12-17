@@ -17,20 +17,24 @@ class UIDataContextProvider extends Component {
   }
 
   getBusinessData = (query = null, results = 0) => {
+    console.log("business query results")
     if (!query) {
       axios
         .get("/business/find/all")
         .then(res =>
           this.setState({
-            allBusinessData: res.data.slice(0, results),
-            businessQueryResults: res.data.slice(0, results)
+            allBusinessData: res.data.slice(results),
+            businessQueryResults: res.data.slice(results)
           })
         )
         .catch(errors => this.setState({ errors }))
     } else {
       axios
         .post("/business/search", { query, results })
-        .then(res => this.setState({ businessQueryResults: res.data }))
+        .then(res => {
+          this.setState({ businessQueryResults: res.data })
+          return res.data
+        })
         .catch(errors => this.setState({ errors }))
     }
   }
