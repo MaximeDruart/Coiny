@@ -13,31 +13,31 @@ module.exports = data => {
   data.googleMapsLink = !isEmpty(data.googleMapsLink) ? data.googleMapsLink : ""
 
   if (Validator.isEmpty(data.phoneNumber)) {
-    errors.phoneNumber = "Le numéro de téléphone est requis"
+    errors.phoneNumber = "Numéro de téléphone requis"
   } else if (!Validator.isMobilePhone(data.phoneNumber)) {
-    errors.phoneNumber = "Phone number is invalid"
+    errors.phoneNumber = "Numéro de téléphone invalide"
   }
-  if (Validator.isEmpty(data.name)) errors.name = "Name field is required"
+
+  if (Validator.isEmpty(data.name)) errors.name = "Nom requis"
 
   if (Validator.isEmpty(data.phoneNumber)) {
-    errors.phoneNumber = "Phone number field is required"
+    errors.phoneNumber = "Numéro de téléphone requis"
   } else if (!Validator.isMobilePhone(data.phoneNumber)) {
-    errors.phoneNumber = "Phone number is invalid"
+    errors.phoneNumber = "Numéro de téléphone invalide"
   }
   if (Validator.isEmpty(data.email)) {
-    errors.email = "Email field is required"
+    errors.email = "Mail requis"
   } else if (!Validator.isEmail(data.email)) {
-    errors.email = "Email is invalid"
+    errors.email = "Mail invalide"
   }
 
-  if (Validator.isEmpty(data.password))
-    errors.password = "Password field is required"
+  if (Validator.isEmpty(data.password)) errors.password = "Mot de passe requis"
   if (Validator.isEmpty(data.password2))
-    errors.password2 = "Confirm password field is required"
+    errors.password2 = "Confirmation du mot de passe requis"
   if (!Validator.isLength(data.password, { min: 6, max: 30 }))
-    errors.password = "Password must be at least 6 characters"
+    errors.password = "Le mot de passe doit contenir au moins 6 caractères"
   if (!Validator.equals(data.password, data.password2))
-    errors.password2 = "Passwords must match"
+    errors.password2 = "Les mots de passe doivent être identiques"
 
   return {
     errors,
