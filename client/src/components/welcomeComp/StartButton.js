@@ -4,7 +4,7 @@ import "./Welcome.scss"
 function StartButton(){
     return(
         <div className="button">
-          <h6>get started</h6>
+          <h6>commencer</h6>
         </div>
     )
 }

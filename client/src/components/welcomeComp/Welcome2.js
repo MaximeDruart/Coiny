@@ -13,7 +13,7 @@ function Welcome2() {
         <img src={welcomeImg} alt='welcome'></img>
       </div>
       <p>
-        Trouvez facilement des cagnottes de commerce à utiliser autour de vous.
+        Trouvez facilement des cagnottes de commerces à utiliser autour de vous.
       </p>
     </section>
   )

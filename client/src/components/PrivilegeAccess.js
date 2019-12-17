@@ -59,7 +59,7 @@ class PrivilegeAccess extends Component {
         </h2>
         <Form className='formAccess' onSubmit={this.handleSubmit}>
           <Form.Group className='formAccess file'>
-            <Form.Label className='formAccess title'> First file</Form.Label>
+            <Form.Label className='formAccess title'>Carte d’identité</Form.Label>
             <div className='formAccess input'>
               <Form.Control
                 ref={this.$firstFile}
@@ -74,7 +74,7 @@ class PrivilegeAccess extends Component {
           </Form.Group>
 
           <Form.Group className='formAccess file'>
-            <Form.Label className='formAccess title'> Second file</Form.Label>
+            <Form.Label className='formAccess title'>Avis fiscal</Form.Label>
             <div className='formAccess input'>
               <Form.Control
                 ref={this.$secondFile}
@@ -109,7 +109,7 @@ class PrivilegeAccess extends Component {
             disabled={this.state.loading}
             type='submit'
           >
-            {this.state.isLoading ? "Loading..." : "Submit"}
+            {this.state.isLoading ? "Loading..." : "Envoyer"}
           </Button>
         </Form>
       </Container>

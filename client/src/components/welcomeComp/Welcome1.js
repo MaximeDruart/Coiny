@@ -10,7 +10,7 @@ function Welcome1() {
       <div className='welcome_picture'>
         <img src={welcomeImg} alt='welcome'></img>
       </div>
-      <p>Profitez de cagnottes de magasin pour payer moins cher vos courses</p>
+      <p>Profitez des cagnottes de commerces pour payer moins cher vos courses</p>
     </section>
   )
 }
