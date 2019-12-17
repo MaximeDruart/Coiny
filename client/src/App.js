@@ -16,6 +16,8 @@ import UserProfile from "./components/UserProfile"
 import PrivilegeAccess from "./components/PrivilegeAccess"
 import Welcome from "./components/welcomeComp/Welcome"
 import FullPageSearch from "./components/FullPageSearch"
+import StorePage from "./components/StorePage.jsx"
+
 
 class App extends Component {
   constructor() {
@@ -32,6 +34,7 @@ class App extends Component {
               <Route path='/' exact component={Welcome}></Route>
               <Route path='/getstarted' component={AuthDirection}></Route>
               <Route path='/userregister' component={UserRegister}></Route>
+              <Route path='/storePage' component={StorePage}></Route>
               <Route
                 path='/businessregister'
                 component={BusinessRegister}

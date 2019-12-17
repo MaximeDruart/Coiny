@@ -1,0 +1,49 @@
+.storeContainer{
+    overflow-y: scroll;
+    width: 100vw;
+    min-height: 100vh;
+    color: white;
+    font-size: 1.2em;
+    background: linear-gradient(
+        146deg,
+        rgba(100, 1, 236, 1) 0%,
+        rgba(75, 75, 125, 1) 90%
+      );
+    ;
+    .storeTop{
+        height: 200px;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .storeTop img{
+        height: 120px;
+        width: auto;
+    }
+    .roundLogo{
+        width: 120px;
+        border-radius: 200px;
+        height: 120px;
+        overflow: hidden;
+    }
+}
+.storeStatisitcs{
+    width: 100vw;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .statContainer{
+        display: flex;
+        width: 180px;
+        height: 30px;
+        font-size: 0.9em;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        background:rgba(75, 75, 125, 1);
+    }
+
+}
