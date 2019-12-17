@@ -1,6 +1,7 @@
 import React from 'react';
 import './PartnerShowcaser.scss'
-import storeImg from '../img/magasin1.jpg'
+
+
 function PartnerShowcase(props){
     return(
         <div className="storeWindow">

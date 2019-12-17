@@ -4,8 +4,12 @@ import "./homepage.scss"
 import Topbar from "./homepageComp/Topbar.js"
 import SearchBar from "./homepageComp/SearchBar.js"
 import PartnerShowcase from "./homepageComp/PartnerShowcaser.js"
+import {UIDataContext} from "../contexts/UIDataContext"
 
 function Homepage() {
+
+  const UIDataContext = React.useContext(UIDataContext)
+  const store = (storeelement)
   return (
     <div>
       <Topbar />
@@ -27,8 +31,7 @@ function Homepage() {
           <div className="partnerSlide">
 
 
-{/* i need to map the <PartnerShowcase/ > here */}
-
+<PartnerShowcase storeName={} storeType={} storeImg={}  />
 
           </div>
           <div className="blankSpace"></div>
