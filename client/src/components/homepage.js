@@ -1,9 +1,9 @@
 import React, { useEffect } from "react"
-import Bottombar from "./homepageComp/Bottombar.js"
+import Bottombar from "./homepageComp/Bottombar"
 import "./homepage.scss"
-import Topbar from "./homepageComp/Topbar.js"
-import SearchBar from "./homepageComp/SearchBar.js"
-import PartnerShowcase from "./homepageComp/PartnerShowcaser.js"
+import Topbar from "./homepageComp/Topbar"
+import SearchBar from "./homepageComp/SearchBar"
+import PartnerShowcase from "./homepageComp/PartnerShowcaser"
 import { UIDataContext } from "../contexts/UIDataContext"
 
 const Homepage = props => {
