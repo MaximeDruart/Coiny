@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { LoginContext } from "../contexts/LoginContext"
 import { Link } from "react-router-dom"
+import "./userProfile.scss"
 
 const Profile = () => {
   const { user, getExtendedData, userData } = useContext(LoginContext)
@@ -12,20 +13,31 @@ const Profile = () => {
 
   return (
     <div>
-      {userData && (
-        <div>
-          <h1>Hello {userData.firstName}</h1>
-          <h2>
-            {`You pledged ${
-              userData.totalAmountPledged
-            } € since you signed up on
+      <div className="profileContainer">
+        <div class="profileContainer_avatar"></div>
+        {userData && (
+          <div>
+            <h1>{userData.firstName}</h1>
+            <h2>
+              {`Vous avez offert ${
+                userData.totalAmountPledged
+              } € à Coiny depuis le
             ${new Date(userData.createdAt).toDateString()}.`}
-          </h2>
-          <Link to='/privilegeaccess'>
-            <button>Register for privileges</button>
-          </Link>
+            </h2>
+            <div class="profileContainer_contain">
+              <div class="profileContainer_contain_badges"></div>
+              <div class="profileContainer_contain_badges"></div>
+              <div class="profileContainer_contain_badges"></div>
+            </div>
+            <Link to="/privilegeaccess">
+              <button>Demander des privilèges</button>
+            </Link>
+          </div>
+        )}
+        <div class="deconnexion">
+          <button>Déconexion</button>
         </div>
-      )}
+      </div>
     </div>
   )
 }
