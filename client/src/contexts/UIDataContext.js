@@ -22,8 +22,8 @@ class UIDataContextProvider extends Component {
         .get("/business/find/all")
         .then(res =>
           this.setState({
-            allBusinessData: res.data,
-            businessQueryResults: res.data
+            allBusinessData: res.data.slice(0, results),
+            businessQueryResults: res.data.slice(0, results)
           })
         )
         .catch(errors => this.setState({ errors }))

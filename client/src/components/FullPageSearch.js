@@ -15,8 +15,7 @@ const FullPageSearch = props => {
     if (businessQueryResults) {
       return businessQueryResults.map(business => (
         <div key={business.id} className='businessQueryResults'>
-          <p className='name'></p>
-          {business.name}
+          <p className='name'>{business.name}</p>
         </div>
       ))
     } else {
