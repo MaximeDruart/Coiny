@@ -24,8 +24,10 @@ a {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  // typo
   & h1,
-  & h2 {
+  & h2,
+  & H3 {
     text-align: center;
     font-family: europa, sans-serif;
     font-weight: 700;
@@ -39,6 +41,11 @@ a {
     font-size: 30px;
     margin: 0;
   }
+  & h3{
+    font-size: 20px;
+    margin: 0;
+  }
+  // line separator
   &_line {
     margin: 15px 0px 25px 0px;
     width: 30px;
@@ -46,8 +53,9 @@ a {
   }
   & img {
     width: 70%;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
+  // return
   &_back {
     display: flex;
     align-items: center;
@@ -87,7 +95,7 @@ a {
       background: transparent;
       border-radius: 90px;
       border: solid 1px #87bcbf;
-      margin: 15px 0px 15px 0px;
+      margin: 10px 0px 10px 0px;
       color: white;
       font-size: 15px;
       outline: none;
@@ -125,24 +133,23 @@ a {
 }
 
 .register {
+  width: 300px;
+  justify-content: space-between;
   align-items: center;
   display: flex;
-  flex-direction: column;
   & button {
-    width: 300px;
+    width: 140px;
     height: 50px;
-    background: transparent;
+    background: #3f05ca;
     border-radius: 90px;
-    border: solid 1px #87bcbf;
+    border: none;
     margin: 10px 0px 10px 0px;
   }
   &_text {
     color: white;
-    // font-family: europa, sans-serif;
-    // font-weight: 300;
-    font-size: 12px;
-    font-family: "Rift Demi";
-    letter-spacing: 2px;
+    font-family: europa, sans-serif;
+    font-size: 10px;
+    line-height: 18px;
     cursor: pointer;
     // text-decoration: underline;
   }
@@ -155,4 +162,21 @@ a {
   text-align: center;
   color: rgb(253, 104, 78);
   font-size: 13px;
+}
+
+// header
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  height: 10%;
+  & h1{
+    margin: 0;
+  }
+  & img{
+    width: 60px;
+    margin: 0px 0px 0px 10px;
+  }
 }

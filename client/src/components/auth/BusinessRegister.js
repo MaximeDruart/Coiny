@@ -56,7 +56,7 @@ class BusinessRegister extends Component {
     let { errors } = this.state
     return (
       <Container className="home">
-        <Link className="home_back" to="/">
+        <Link className="home_back" to='/getstarted'>
           <img src={backImg} alt="back"></img>
           <h5>Retour</h5>
         </Link>

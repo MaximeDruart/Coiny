@@ -1,8 +1,6 @@
 import React, { Component } from "react"
-import { Link } from "react-router-dom"
 import { LoginContext } from "../../contexts/LoginContext"
 import "./AuthDirection.scss"
-import backImg from "../img/back.svg"
 
 import {
   Form,
@@ -36,17 +34,9 @@ class Login extends Component {
     return (
       <LoginContext.Consumer>
         {loginContext => (
-          <Container className='home'>
-            <Link className='home_back' to='/'>
-              <img src={backImg} alt='back'></img>
-              <h5>Retour</h5>
-            </Link>
-            <Jumbotron>
-              <h3>User register</h3>
-            </Jumbotron>
-            <div className='home_line'></div>
+          <Container class="connexion">
             <Form
-              className='home_form'
+              className="home_form"
               noValidate
               onSubmit={e => {
                 e.preventDefault()
@@ -57,38 +47,39 @@ class Login extends Component {
               }}
             >
               <Form.Group>
-                <Form.Label> Email:</Form.Label>
                 <Form.Control
-                  name='email'
-                  type='email'
+                  placeholder="Mail"
+                  name="email"
+                  type="email"
                   value={this.state.email}
                   onChange={this.handleChange}
                   isInvalid={!!loginContext.errors.email}
                 />
-                <Form.Control.Feedback type='invalid'>
+                <Form.Control.Feedback type="invalid">
                   {loginContext.errors.email}
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
-                <Form.Label> Password :</Form.Label>
                 <Form.Control
-                  name='password'
-                  type='password'
+                  placeholder="Mot de passe"
+                  name="password"
+                  type="password"
                   value={this.state.password}
                   onChange={this.handleChange}
                   isInvalid={!!loginContext.errors.password}
                 />
-                <Form.Control.Feedback type='invalid'>
+                <Form.Control.Feedback type="invalid">
                   {loginContext.errors.password}
                 </Form.Control.Feedback>
               </Form.Group>
               <Button
+                className="home_form_submit"
                 block
-                variant='outline-primary'
+                variant="outline-primary"
                 disabled={loginContext.loading}
-                type='submit'
+                type="submit"
               >
-                {loginContext.isLoading ? "Loading..." : "Submit"}
+                {loginContext.isLoading ? "Loading..." : "Se connecter"}
               </Button>
             </Form>
           </Container>
