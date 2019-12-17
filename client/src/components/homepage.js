@@ -11,7 +11,6 @@ const Homepage = props => {
     UIDataContext
   )
 
-  console.log(getBusinessData(null,4))
 
   useEffect(() => {
     getBusinessData(null, 4)
