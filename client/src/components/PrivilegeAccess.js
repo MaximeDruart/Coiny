@@ -89,7 +89,7 @@ class PrivilegeAccess extends Component {
           </Form.Group>
 
           <Form.Group className='formAccess file'>
-            <Form.Label className='formAccess title'> Third file</Form.Label>
+            <Form.Label className='formAccess title'>Justificatif de domicile</Form.Label>
             <div className='formAccess input'>
               <Form.Control
                 ref={this.$thirdFile}
