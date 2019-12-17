@@ -8,8 +8,8 @@ TYPOGRAPHY
 
 @font-face {
   font-family: "Rift Demi";
-  src: url("../../fonts/Rift-Demi.woff2") format("woff2"),
-    url("../../fonts/Rift-Demi.woff") format("woff");
+  src: url("../../components/fonts/Rift-Demi.woff2") format("woff2"),
+    url("../../components/fonts/Rift-Demi.woff") format("woff");
   font-weight: 600;
   font-style: normal;
 }
@@ -100,12 +100,12 @@ h1 {
   &_picture {
     margin: 50px 0px 40px 0px;
     height: 40%;
-    & img{
+    & img {
       height: 100%;
     }
   }
 
-  &_next{
+  &_next {
     width: 20px;
     cursor: pointer;
   }

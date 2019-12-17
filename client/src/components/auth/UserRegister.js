@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import "../Home.scss"
+import backImg from "../img/back.svg"
+
 import {
   Form,
   Jumbotron,
@@ -48,90 +51,92 @@ class UserRegister extends Component {
   render() {
     let { errors } = this.state
     return (
-      <Container>
-        <Jumbotron>
-          <h2>User registration</h2>
-        </Jumbotron>
-        <Link to='/'>
-          <Button>Go back</Button>
+      <Container className="home">
+        <Link className="home_back" to="/">
+          <img src={backImg} alt="back"></img>
+          <h5>Retour</h5>
         </Link>
-        <Form noValidate onSubmit={this.handleSubmit}>
+        <Jumbotron>
+          <h2>Profil utilisateur</h2>
+        </Jumbotron>
+        <div className="home_line"></div>
+        <Form className="home_form" noValidate onSubmit={this.handleSubmit}>
           <Form.Group>
-            <Form.Label> First name:</Form.Label>
             <Form.Control
-              size='lg'
-              name='firstName'
-              type='text'
+              placeholder="Prénom"
+              size="lg"
+              name="firstName"
+              type="text"
               value={this.state.firstName}
               onChange={this.handleChange}
               isInvalid={!!errors.firstName}
             />
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {errors.firstName}
             </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
-            <Form.Label> Last name:</Form.Label>
             <Form.Control
-              size='lg'
-              name='lastName'
-              type='text'
+              placeholder="Nom de famille"
+              size="lg"
+              name="lastName"
+              type="text"
               value={this.state.lastName}
               onChange={this.handleChange}
               isInvalid={!!errors.lastName}
             />
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {errors.lastName}
             </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
-            <Form.Label> Email:</Form.Label>
             <Form.Control
-              size='lg'
-              name='email'
-              type='email'
+              placeholder="E-mail"
+              size="lg"
+              name="email"
+              type="email"
               value={this.state.email}
               onChange={this.handleChange}
               isInvalid={!!errors.email}
             />
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {errors.email}
             </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
-            <Form.Label> Password :</Form.Label>
             <Form.Control
-              size='lg'
-              name='password'
-              type='password'
+              placeholder="Mot de passe"
+              size="lg"
+              name="password"
+              type="password"
               value={this.state.password}
               onChange={this.handleChange}
               isInvalid={!!errors.password}
             />
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {errors.password}
             </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
-            <Form.Label> Confirm your password :</Form.Label>
             <Form.Control
-              size='lg'
-              name='password2'
-              type='password'
+              placeholder="Confirmer le mot de passe"
+              size="lg"
+              name="password2"
+              type="password"
               value={this.state.password2}
               onChange={this.handleChange}
               isInvalid={!!errors.password2}
             />
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {errors.password2}
             </Form.Control.Feedback>
           </Form.Group>
-          <Button size='lg' type='submit' variant='outline-primary'>
-            Submit
+          <Button type="submit" className="home_form_submit">
+            s'inscrire
           </Button>
         </Form>
       </Container>

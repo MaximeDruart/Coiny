@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { LoginContext } from "../../contexts/LoginContext"
+import "../Home.scss"
 
 import {
   Form,
@@ -34,7 +35,7 @@ class Login extends Component {
     return (
       <LoginContext.Consumer>
         {loginContext => (
-          <Container>
+          <Container className="home">
             <Jumbotron>
               <h3>User register</h3>
             </Jumbotron>

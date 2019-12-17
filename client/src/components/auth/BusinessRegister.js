@@ -1,6 +1,9 @@
 import React, { Component } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import "../Home.scss"
+import backImg from "../img/back.svg"
+
 import {
   Form,
   Jumbotron,
@@ -52,85 +55,87 @@ class BusinessRegister extends Component {
   render() {
     let { errors } = this.state
     return (
-      <Container>
-        <Jumbotron>
-          <h2>Business register</h2>
-        </Jumbotron>
-        <Link to='/'>
-          <Button>Go back</Button>
+      <Container className="home">
+        <Link className="home_back" to="/">
+          <img src={backImg} alt="back"></img>
+          <h5>Retour</h5>
         </Link>
-        <Form noValidate onSubmit={this.handleSubmit}>
+        <Jumbotron>
+          <h2>Profil commerçant</h2>
+        </Jumbotron>
+        <div className="home_line"></div>
+        <Form className = "home_form" noValidate onSubmit={this.handleSubmit}>
           <Form.Group>
-            <Form.Label> Business name:</Form.Label>
             <Form.Control
+              placeholder="nom du commerce"
               isInvalid={!!errors.name}
-              name='name'
-              type='text'
+              name="name"
+              type="text"
               value={this.state.name}
               onChange={this.handleChange}
             />
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {errors.name}
             </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
-            <Form.Label> Phone number:</Form.Label>
             <Form.Control
+              placeholder="numero de téléphone"
               isInvalid={!!errors.phoneNumber}
-              name='phoneNumber'
-              type='text'
+              name="phoneNumber"
+              type="text"
               value={this.state.phoneNumber}
               onChange={this.handleChange}
             />
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {errors.phoneNumber}
             </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
-            <Form.Label> Email:</Form.Label>
             <Form.Control
+              placeholder="Email"
               isInvalid={!!errors.email}
-              name='email'
-              type='email'
+              name="email"
+              type="email"
               value={this.state.email}
               onChange={this.handleChange}
             />
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {errors.email}
             </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
-            <Form.Label> Password :</Form.Label>
             <Form.Control
+              placeholder="Mot de passe"
               isInvalid={!!errors.password}
-              name='password'
-              type='password'
+              name="password"
+              type="password"
               value={this.state.password}
               onChange={this.handleChange}
             />
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {errors.password}
             </Form.Control.Feedback>
           </Form.Group>
 
           <Form.Group>
-            <Form.Label> Confirm your password :</Form.Label>
             <Form.Control
+              placeholder="Confirmer le mot de passe"
               isInvalid={!!errors.password2}
-              name='password2'
-              type='password'
+              name="password2"
+              type="password"
               value={this.state.password2}
               onChange={this.handleChange}
             />
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {errors.password2}
             </Form.Control.Feedback>
           </Form.Group>
-          <Button variant='outline-primary' type='submit'>
-            Submit
+          <Button className="home_form_submit" type="submit">
+          s'inscrire
           </Button>
         </Form>
       </Container>
