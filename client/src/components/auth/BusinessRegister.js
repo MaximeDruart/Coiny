@@ -4,14 +4,7 @@ import { Link } from "react-router-dom"
 import "./AuthDirection.scss"
 import backImg from "../img/back.svg"
 
-import {
-  Form,
-  Jumbotron,
-  Alert,
-  Container,
-  Button,
-  FormControl
-} from "react-bootstrap"
+import { Form, Jumbotron, Container, Button } from "react-bootstrap"
 
 class BusinessRegister extends Component {
   constructor(props) {

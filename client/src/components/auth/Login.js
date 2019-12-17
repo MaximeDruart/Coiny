@@ -2,14 +2,7 @@ import React, { Component } from "react"
 import { LoginContext } from "../../contexts/LoginContext"
 import "./AuthDirection.scss"
 
-import {
-  Form,
-  Jumbotron,
-  Alert,
-  Container,
-  Button,
-  FormControl
-} from "react-bootstrap"
+import { Form } from "react-bootstrap"
 
 class Login extends Component {
   static contextType = LoginContext
@@ -34,9 +27,9 @@ class Login extends Component {
     return (
       <LoginContext.Consumer>
         {loginContext => (
-          <div className="connexion">
+          <div className='connexion'>
             <Form
-              className="home_form"
+              className='home_form'
               noValidate
               onSubmit={e => {
                 e.preventDefault()
@@ -48,39 +41,39 @@ class Login extends Component {
             >
               <Form.Group>
                 <Form.Control
-                  placeholder="Mail"
-                  name="email"
-                  type="email"
+                  placeholder='Mail'
+                  name='email'
+                  type='email'
                   value={this.state.email}
                   onChange={this.handleChange}
                   isInvalid={!!loginContext.errors.email}
                 />
-                <Form.Control.Feedback type="invalid">
+                <Form.Control.Feedback type='invalid'>
                   {loginContext.errors.email}
                 </Form.Control.Feedback>
               </Form.Group>
               <Form.Group>
                 <Form.Control
-                  placeholder="Mot de passe"
-                  name="password"
-                  type="password"
+                  placeholder='Mot de passe'
+                  name='password'
+                  type='password'
                   value={this.state.password}
                   onChange={this.handleChange}
                   isInvalid={!!loginContext.errors.password}
                 />
-                <Form.Control.Feedback type="invalid">
+                <Form.Control.Feedback type='invalid'>
                   {loginContext.errors.password}
                 </Form.Control.Feedback>
               </Form.Group>
-              <Button
-                className="home_form_submit"
+              <button
+                className='home_form_submit'
                 block
-                variant="outline-primary"
+                variant='outline-primary'
                 disabled={loginContext.loading}
-                type="submit"
+                type='submit'
               >
                 {loginContext.isLoading ? "Loading..." : "Se connecter"}
-              </Button>
+              </button>
             </Form>
           </div>
         )}

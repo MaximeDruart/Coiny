@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from "react"
-import Bottombar from "./homepageComp/Bottombar"
 import "./homepage.scss"
 import Topbar from "./homepageComp/Topbar"
 import SearchBar from "./homepageComp/SearchBar"
