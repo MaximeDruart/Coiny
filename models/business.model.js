@@ -51,6 +51,11 @@ const businessSchema = new mongoose.Schema(
     picture: {
       type: String,
       default: "https://icon-library.net/images/icon-shop/icon-shop-1.jpg"
+    },
+    businessType: {
+      type: String,
+      default: "store"
+      // required : true
     }
   },
   {
