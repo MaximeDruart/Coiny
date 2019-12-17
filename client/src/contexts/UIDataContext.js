@@ -17,7 +17,6 @@ class UIDataContextProvider extends Component {
   }
 
   getBusinessData = (query = null, results = 0) => {
-    console.log("business query results")
     if (!query) {
       axios
         .get("/business/find/all")
