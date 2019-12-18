@@ -21,6 +21,7 @@ import BarCodePage from "./components/BarCode"
 import BusinessProfile from "./components/BusinessProfile"
 import PaymentForm from "./components/payment/PaymentForm"
 import UserHistory from "./components/UserHistory"
+import Category from "./components/Category"
 
 class App extends Component {
   constructor() {
