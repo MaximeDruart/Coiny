@@ -24,6 +24,7 @@ const BusinessProfile = props => {
         <textarea
           name="description"
           placeholder="Description du commerce"
+          maxlength="200"
         ></textarea>
       </div>
       <div className="deconnexion">
