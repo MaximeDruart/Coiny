@@ -59,6 +59,7 @@ const StorePage = props => {
             <h2>{businessData.name}</h2>
             <p>Description</p>
           </div>
+          <button>se rendre au store</button>
         </div>
       ) : (
         <h1> {error} </h1>
