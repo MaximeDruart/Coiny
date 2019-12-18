@@ -14,10 +14,11 @@
   margin: -10px 0px 10px 0px;
   width: 200px;
   height: 200px;
-  background-image: url(../components/img/store.svg);
+  background-image: url(../components/img/photo.svg);
   background-size: cover;
   border-radius: 300px;
   background-color: #6c63ff;
+  cursor: pointer;
 }
 .businessProfile h1 {
   font-family: Europa;
