@@ -1,10 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18.2" height="20" viewBox="0 0 18.2 20">
-  <defs>
-    <clipPath id="clip-path">
-      <rect width="18.2" height="20" fill="none"/>
-    </clipPath>
-  </defs>
-  <g id="icn_home_inactive" clip-path="url(#clip-path)">
-    <path id="icn_home_inactive-2" data-name="icn_home_inactive" d="M9.1,12.5a3.009,3.009,0,0,0-3,3V19H1V7.8L9.1,1l8.1,6.8V19H12.1l-.1-.2V15.5a2.865,2.865,0,0,0-2.9-3" fill="none" stroke="#6401ec" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="18.2" height="20" viewBox="0 0 18.2 20"><defs><clipPath id="clip-path"><rect width="18.2" height="20" fill="none"/></clipPath></defs><g id="icn_home_inactive" clip-path="url(#clip-path)"><path id="icn_home_inactive-2" fill="none" stroke="#6401ec" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2" d="M9.1,12.5a3.009,3.009,0,0,0-3,3V19H1V7.8L9.1,1l8.1,6.8V19H12.1l-.1-.2V15.5a2.865,2.865,0,0,0-2.9-3" data-name="icn_home_inactive"/></g></svg>
