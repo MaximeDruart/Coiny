@@ -18,9 +18,13 @@ const Bottombar = props => {
           <img src={homelogo} alt='' />
         </Link>
       </div>
+      <Link to='/BarCode'>
+
       <div className='Bottombar_iconBottombar middleQr'>
         <img src={logoImg} alt='logo' />
+        
       </div>
+      </Link>
       <div
         style={{ opacity: props.location.pathname === "/userprofile" && "0.5" }}
         className='Bottombar_iconBottombar'

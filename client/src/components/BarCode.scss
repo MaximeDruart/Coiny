@@ -1,0 +1,41 @@
+.barCodeContainer {
+    background: linear-gradient(#6300ec, #3f0d83);
+    height: 100vh;
+    padding-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .barcodeCode,.barcodeDraw {
+        width: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        margin: 5vh;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .barcodeCode,  img {
+        width: 80%;
+    }
+    .barcodeDraw img{
+        width: 50%;
+    }
+    .barcodeTop{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: white;
+        text-align: center;
+        font-size: 1.5em;
+        align-items: center;
+    }
+    .barcodeTop h2{
+        font-size: 2.2em;
+    }
+    .line{
+        margin: 20px;
+    }
+}
