@@ -3,13 +3,14 @@ import "./AuthDirection.scss"
 import { Link } from "react-router-dom"
 import backImg from "../img/back.svg"
 
-const Back = () => {
+const Back = props => {
+  const { history } = props
   return (
-    <div className="home_back">
-      <Link className="home_back_arrow" to="/getstarted">
-        <img src={backImg} alt="back"></img>
+    <div onClick={history.goBack} className='home_back'>
+      <div className='home_back_arrow'>
+        <img src={backImg} alt='back'></img>
         <h5>Retour</h5>
-      </Link>
+      </div>
     </div>
   )
 }

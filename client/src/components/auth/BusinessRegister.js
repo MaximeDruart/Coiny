@@ -49,7 +49,6 @@ class BusinessRegister extends Component {
 
   handleChange = event => {
     let { name, value } = event.target
-    console.log(name, event.target)
     this.setState({
       [name]: value
     })
@@ -67,7 +66,7 @@ class BusinessRegister extends Component {
     let { errors } = this.state
     return (
       <Container className='home'>
-        <Back />
+        <Back history={this.props.history} />
         <Jumbotron>
           <h2>Profil commerçant</h2>
         </Jumbotron>

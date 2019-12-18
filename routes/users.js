@@ -139,7 +139,6 @@ router.post("/accessprivilege", (req, res) => {
   // no actual file checking
   let userIsValid = true
   const { id } = req.body
-  console.log(id)
   User.findById(id)
     .catch(err => {
       userIsValid = false

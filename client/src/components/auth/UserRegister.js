@@ -45,7 +45,7 @@ class UserRegister extends Component {
     let { errors } = this.state
     return (
       <Container className='home'>
-        <Back />
+        <Back history={this.props.history} />
         <Jumbotron>
           <h2>Profil utilisateur</h2>
         </Jumbotron>

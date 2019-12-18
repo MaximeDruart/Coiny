@@ -76,7 +76,7 @@ class App extends Component {
 
               <PrivateRoute
                 path='/business/:id'
-                // exact
+                exact
                 component={StorePage}
               ></PrivateRoute>
             </div>
