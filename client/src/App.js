@@ -52,6 +52,11 @@ class App extends Component {
                 component={Donation}
               ></PrivateRoute>
 
+              <PrivateRoute
+                path='/Category'
+                component={Category}
+              ></PrivateRoute>
+
               <PrivateRoute path='/success' component={Success}></PrivateRoute>
 
               <PrivateRoute

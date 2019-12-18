@@ -3,15 +3,18 @@ import React from "react"
 import { Link } from "react-router-dom"
 
 const StoreOfTheWeek = props => {
-  const { business } = props
+  console.log(props.type)
+  const { store } = props
   return (
-    <div className='squareStoreOfTheWeek'>
-      <Link to={`/business/${business._id}`}>
-        <div className='storeBg'>
-          <img src={business.picture} alt='' />
-        </div>
+    <div  className='squareStoreOfTheWeek'>
+      <Link  to={{
+        pathname:'./category',
+        state:{
+          type:props.type
+        }
+      }}>
         <div className='storeWeeklyName'>
-          <h2>{business.name}</h2>
+          <h2>{props.type}</h2>
         </div>
       </Link>
     </div>

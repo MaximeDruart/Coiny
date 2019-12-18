@@ -52,7 +52,7 @@ const Homepage = props => {
         <div className='blankSpace'></div>
         <div className='showcasePartner'>
           <div className='partnerBand'>
-            <p>Des commerçants vous attendent</p>
+            <p>près de chez vous</p>
           </div>
 
           <div className='partnerSlide'>
@@ -61,16 +61,22 @@ const Homepage = props => {
         </div>
         <div className='featureFilterContainer'>
           <div className='featureFilter'>
+            <h3>Témoignage de commerçant, regardez ce qu'ils en pensent.</h3>
+            <div className='buttonFilter'>Lire un témoignage</div>
             <h3>Recherchez un commerce qui correspond à vos envies</h3>
             <div className='buttonFilter'>Rechercher un commerce</div>
           </div>
         </div>
         <div className='partnerBand'>
-          <p>Des commerçants vous attendent</p>
+          <p>Des commerces par catégorie</p>
         </div>
 
         <div className='weeklyContainer'>
-          {businessQueryResults ? getWeeklyStore() : ""}
+          <StoreOfTheWeek type='Supermarché'></StoreOfTheWeek>
+          <StoreOfTheWeek type='boucherie'></StoreOfTheWeek>
+          <StoreOfTheWeek type='Pharmacie'></StoreOfTheWeek>
+          <StoreOfTheWeek type='Droguerie'></StoreOfTheWeek>
+          <StoreOfTheWeek type='Coiffeur'></StoreOfTheWeek>
         </div>
 
         <div className='blankSpace'></div>
