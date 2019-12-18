@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import axios from "axios"
 import { Link } from "react-router-dom"
+import Back from "./Back"
 import "./AuthDirection.scss"
-import backImg from "../img/back.svg"
 
 import { Form, Jumbotron, Container, Button } from "react-bootstrap"
 
@@ -45,10 +45,7 @@ class UserRegister extends Component {
     let { errors } = this.state
     return (
       <Container className='home'>
-        <Link className='home_back' to='/getstarted'>
-          <img src={backImg} alt='back'></img>
-          <h5>Retour</h5>
-        </Link>
+        <Back />
         <Jumbotron>
           <h2>Profil utilisateur</h2>
         </Jumbotron>
