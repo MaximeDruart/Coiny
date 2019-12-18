@@ -12,6 +12,7 @@ class LoginContextProvider extends Component {
     this.state = {
       isAuthenticated: false,
       user: null,
+      business: null,
       errors: "",
       loading: false,
       userData: null,
@@ -55,7 +56,7 @@ class LoginContextProvider extends Component {
         const decodedData = jwt_decode(token)
         this.setState({
           isAuthenticated: true,
-          user: decodedData,
+          business: decodedData,
           loading: false,
           userType: "business",
           errors: ""
@@ -86,7 +87,8 @@ class LoginContextProvider extends Component {
     this.setState(
       {
         isAuthenticated: false,
-        user: null
+        user: null,
+        business : null
       },
       // gotta use history.push
       (window.location = "/login")
@@ -99,8 +101,9 @@ class LoginContextProvider extends Component {
         this.setState({
           isAuthenticated: true,
           user: jwt_decode(localStorage.getItem("jwtToken")),
-          localStorageHasBeenRead: true,
+          business: jwt_decode(localStorage.getItem("jwtToken")),
           userType: localStorage.getItem("userType")
+          localStorageHasBeenRead: true,
         })
       } else {
         this.setState({ localStorageHasBeenRead: true })

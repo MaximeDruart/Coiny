@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useContext } from "react"
 import "./StorePage.scss"
 import storeImg from "./img/magasin1.jpg"
 import {
@@ -12,27 +12,21 @@ import {
 import axios from "axios"
 import Donation from "./payment/Donation"
 import Back from "./auth/Back"
+import { UIDataContext } from "../contexts/UIDataContext"
 
 const StorePage = props => {
-  let [error, setError] = useState("")
-  let [businessData, setBusinessData] = useState("")
-  let [loading, setLoading] = useState(true)
-  const { id } = useParams()
-  let { path, url } = useRouteMatch()
-  let { goBack } = useHistory()
+  const {
+    loading,
+    businessDataForId,
+    getBusinessDataForId,
+    errors
+  } = useContext(UIDataContext)
+  console.log(useContext(UIDataContext))
 
+  const { id } = useParams()
+  let { url } = useRouteMatch()
   useEffect(() => {
-    setLoading(true)
-    axios
-      .post("/business/find", { id })
-      .then(res => {
-        setBusinessData(res.data)
-        setLoading(false)
-      })
-      .catch(err => {
-        setError(err)
-        setLoading(false)
-      })
+    getBusinessDataForId(id)
   }, [])
 
   return (
@@ -45,24 +39,24 @@ const StorePage = props => {
       </div>
       {loading ? (
         "loadinganim" // need to do a plachholder
-      ) : businessData ? (
+      ) : businessDataForId ? (
         <div className='storeInfo'>
           <div className='storeStatisitcs'>
             <div className='statContainer'>
               <div className='moneyInTheBag'>
                 <img src='' alt='' />
-                <span>{`Cagnotte : ${businessData.moneyAllocated}€`}</span>
+                <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
               </div>
             </div>
           </div>
           <div className='storePresentation'>
-            <h2>{businessData.name}</h2>
+            <h2>{businessDataForId.name}</h2>
             <p>Description</p>
           </div>
           <button>se rendre au store</button>
         </div>
       ) : (
-        <h1> {error} </h1>
+        <h1> {errors} </h1>
       )}
       <Link to={`${url}/donate`}>
         <button>Donate</button>

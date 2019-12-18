@@ -1,13 +1,22 @@
-import React, { Component } from "react"
+import React, { useContext, useEffect } from "react"
+import { UIDataContext } from "../contexts/UIDataContext"
+import { LoginContext } from "../contexts/LoginContext"
 
-class BusinessProfile extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-  render() {
-    return <h1>Business profile</h1>
-  }
+const BusinessProfile = props => {
+  const { loading, businessDataForId, getBusinessDataForId } = useContext(
+    UIDataContext
+  )
+  const { business } = useContext(LoginContext)
+  useEffect(() => {
+    getBusinessDataForId(business.id)
+  }, [])
+
+  return (
+    <div className='businessProfile'>
+      {/* business data for id */}
+      {loading ? "loading animation" : "data"}
+    </div>
+  )
 }
 
 export default BusinessProfile
