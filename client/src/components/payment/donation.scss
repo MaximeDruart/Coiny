@@ -18,7 +18,7 @@
   padding: 40px 40px 120px 40px;
   box-sizing: border-box;
   & h1 {
-    margin: 0px 0px 0px 0px;
+    margin: 30px 0px 0px 0px;
     text-align: center;
     color: white;
   }
@@ -47,7 +47,7 @@
     font-size: 30px;
   }
   & button {
-    margin: 60px 0px 40px 0px;
+    margin: 60px 0px 60px 0px;
     font-family: "Rift Demi";
     font-size: 18px;
     width: 300px;
@@ -59,4 +59,8 @@
     cursor: pointer;
     outline: none;
   }
+}
+
+.donationImg{
+    width: 40%;
 }

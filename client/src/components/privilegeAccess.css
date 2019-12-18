@@ -1,0 +1,86 @@
+@font-face {
+  font-family: "Rift Demi";
+  src: url("../components/fonts/Rift-Demi.woff2") format("woff2"),
+    url("../components/fonts/Rift-Demi.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+}
+.AccessContainer {
+  width: 100vw;
+  height: 90vh;
+  padding: 40px;
+  box-sizing: border-box;
+  background: linear-gradient(#6300ec, #3f0d83);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.AccessContainer h1 {
+  margin: 0px 10px 0px 10px;
+  font-family: europa, sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
+  font-size: 35px;
+}
+.AccessContainer h2 {
+  text-align: center;
+  font-family: europa, sans-serif;
+  font-weight: 300;
+  color: white;
+  font-size: 18px;
+}
+.AccessContainer_line {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 30px;
+  border-bottom: solid white 1px;
+}
+.formAccess {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70%;
+}
+.formAccess.file {
+  display: flex;
+  height: 24%;
+}
+.formAccess.submit {
+  margin: 30px 0px 0px 0px;
+  font-family: "Rift Demi";
+  font-size: 18px;
+  width: 300px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 90px;
+  box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.5);
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.formAccess.title {
+  margin: 0;
+  font-family: europa, sans-serif;
+  font-weight: 700;
+  color: white;
+  font-size: 15px;
+  height: 20px;
+}
+.formAccess.input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 50px;
+  background: transparent;
+  border-radius: 90px;
+  border: solid 1px #87bcbf;
+  margin: 10px 0px 10px 0px;
+  color: white;
+  outline: none;
+  font-size: 13px;
+  font-family: europa;
+}

@@ -60,6 +60,9 @@ body {
   flex-wrap: nowrap;
   overflow: scroll;
 }
+.partnerSlide::-webkit-scrollbar {
+  display: none;
+}
 .featureFilterContainer {
   width: 100%;
   display: flex;
