@@ -1,34 +1,32 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import './Category.scss'
+import Storefiltercontainer from "./CategoryComp/Storefiltercontainer"
 import { UIDataContext } from "../contexts/UIDataContext"
+import { render } from 'node-sass';
 
 
 
 const Category=(props)=>{
-
+const typeOfBusiness=props.location.state.type 
     const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
 
-
     useEffect(() => {
-      donney = getBusinessData(null)
-        console.log(businessQueryResults)
+       getBusinessData(null)
       }, [])
-    
 
 
 
+
+const renderDivFilter = ()=>{
+    return(
+    businessQueryResults.map((business,i)=>{
+       if( business.type == typeOfBusiness)  {
+         <Storefiltercontainer key={i} business={business}></Storefiltercontainer>}
+    }))
+}
 
     return(
- <div className="storeCategoryContainer">
-     <div className="categoryTop"></div>
-     <div className="storeListContainer">
-         <div className="storeList">
-
-
-
-         </div>
-     </div>
- </div>
+<div className='containCategory'>{businessQueryResults ? renderDivFilter() : ""}</div>
     )
 }
 

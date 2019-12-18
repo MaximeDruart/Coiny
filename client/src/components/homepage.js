@@ -15,7 +15,6 @@ const Homepage = props => {
   }, [])
 
 
-      businessQueryResults ? console.log(businessQueryResults) : console.log("waittt...");
 
   const getRenderedBusinesses = () => {
     return businessQueryResults
@@ -72,7 +71,7 @@ const Homepage = props => {
 
         <div className='weeklyContainer'>
           <StoreOfTheWeek type='Supermarché'></StoreOfTheWeek>
-          <StoreOfTheWeek type='Boucherie'></StoreOfTheWeek>
+          <StoreOfTheWeek type='boucherie'></StoreOfTheWeek>
           <StoreOfTheWeek type='Pharmacie'></StoreOfTheWeek>
           <StoreOfTheWeek type='Droguerie'></StoreOfTheWeek>
           <StoreOfTheWeek type='Coiffeur'></StoreOfTheWeek>

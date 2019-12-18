@@ -20,6 +20,7 @@ import Donation from "./components/payment/Donation"
 import BarCodePage from "./components/BarCode"
 import BusinessProfile from "./components/BusinessProfile"
 import PaymentForm from "./components/payment/PaymentForm"
+import Category from "./components/Category"
 
 class App extends Component {
   constructor() {
@@ -49,6 +50,11 @@ class App extends Component {
               <PrivateRoute
                 path='/donation'
                 component={Donation}
+              ></PrivateRoute>
+
+              <PrivateRoute
+                path='/Category'
+                component={Category}
               ></PrivateRoute>
 
               <PrivateRoute path='/success' component={Success}></PrivateRoute>
