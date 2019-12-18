@@ -11,7 +11,11 @@ const Homepage = props => {
 
   useEffect(() => {
     getBusinessData(null)
+
   }, [])
+
+
+      businessQueryResults ? console.log(businessQueryResults) : console.log("waittt...");
 
   const getRenderedBusinesses = () => {
     return businessQueryResults
@@ -30,13 +34,6 @@ const Homepage = props => {
     }
   }
 
-  const getWeeklyStore = () => {
-    return businessQueryResults
-      .slice(0, 4)
-      .map(business => (
-        <StoreOfTheWeek key={business.id} business={business}></StoreOfTheWeek>
-      ))
-  }
 
   return (
     <div>
@@ -54,7 +51,7 @@ const Homepage = props => {
         <div className='blankSpace'></div>
         <div className='showcasePartner'>
           <div className='partnerBand'>
-            <p>Des commerçants vous attendent</p>
+            <p>près de chez vous</p>
           </div>
 
           <div className='partnerSlide'>
@@ -64,17 +61,21 @@ const Homepage = props => {
         <div className='featureFilterContainer'>
           <div className='featureFilter'>
             <h3>
-              Recherchez un commerce qui correspond à vos envies
+              Témoignage de commerçant, regardez ce qu'ils en pensent.
             </h3>
-            <div className='buttonFilter'>Rechercher un commerce</div>
+            <div className='buttonFilter'>Lire un témoignage</div>
           </div>
         </div>
         <div className='partnerBand'>
-          <p>Des commerçants vous attendent</p>
+          <p>Des commerces par catégorie</p>
         </div>
 
         <div className='weeklyContainer'>
-          {businessQueryResults ? getWeeklyStore() : ""}
+          <StoreOfTheWeek type='Supermarché'></StoreOfTheWeek>
+          <StoreOfTheWeek type='Boucherie'></StoreOfTheWeek>
+          <StoreOfTheWeek type='Pharmacie'></StoreOfTheWeek>
+          <StoreOfTheWeek type='Droguerie'></StoreOfTheWeek>
+          <StoreOfTheWeek type='Coiffeur'></StoreOfTheWeek>
         </div>
 
         <div className='blankSpace'></div>
