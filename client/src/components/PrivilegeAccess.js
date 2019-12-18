@@ -52,71 +52,72 @@ class PrivilegeAccess extends Component {
 
   render() {
     return (
-      <Container className='AccessContainer'>
+      <Container className="AccessContainer">
         <Back history={this.props.history} />
         <h1>Accès privilégié</h1>
-        <div className='AccessContainer_line'></div>
+        <div className="AccessContainer_line"></div>
         <h2>
           Nous avons besoin des documents suivants pour confirmer votre statut
         </h2>
-        <Form className='formAccess' onSubmit={this.handleSubmit}>
-          <Form.Group className='formAccess file'>
-            <Form.Label className='formAccess title'>
+        <Form className="formAccess" onSubmit={this.handleSubmit}>
+          <Form.Group className="formAccess file">
+            <Form.Label className="formAccess title">
               Carte d’identité
             </Form.Label>
-            <div className='formAccess input'>
+            <div className="formAccess input">
               <Form.Control
                 ref={this.$firstFile}
-                name='firstFile'
-                type='file'
+                name="firstFile"
+                type="file"
                 isInvalid={!!this.state.errors.firstFile}
               />
             </div>
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {this.state.errors.firstFile}
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className='formAccess file'>
-            <Form.Label className='formAccess title'>Avis fiscal</Form.Label>
-            <div className='formAccess input'>
+          <Form.Group className="formAccess file">
+            <Form.Label className="formAccess title">Avis fiscal</Form.Label>
+            <div className="formAccess input">
               <Form.Control
                 ref={this.$secondFile}
-                name='secondFile'
-                type='file'
+                name="secondFile"
+                type="file"
                 isInvalid={!!this.state.errors.secondFile}
               />
             </div>
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {this.state.errors.secondFile}
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Form.Group className='formAccess file'>
-            <Form.Label className='formAccess title'>
+          <Form.Group className="formAccess file">
+            <Form.Label className="formAccess title">
               Justificatif de domicile
             </Form.Label>
-            <div className='formAccess input'>
+            <div className="formAccess input">
               <Form.Control
                 ref={this.$thirdFile}
-                name='thirdFile'
-                type='file'
+                name="thirdFile"
+                type="file"
                 isInvalid={!!this.state.errors.thirdFile}
               />
             </div>
-            <Form.Control.Feedback type='invalid'>
+            <Form.Control.Feedback type="invalid">
               {this.state.errors.thirdFile}
             </Form.Control.Feedback>
           </Form.Group>
           <Button
-            className='formAccess submit'
-            variant='outline-primary'
+            className="formAccess submit"
+            variant="outline-primary"
             disabled={this.state.loading}
-            type='submit'
+            type="submit"
           >
             {this.state.isLoading ? "Loading..." : "Envoyer"}
           </Button>
         </Form>
+        <div className="bottomBarBlock"></div>
       </Container>
     )
   }
