@@ -17,6 +17,7 @@ import StorePage from "./components/StorePage.jsx"
 import Bottombar from "./components/homepageComp/Bottombar"
 import Success from "./components/payment/Success"
 import Donation from "./components/payment/Donation"
+import BarCodePage from "./components/BarCode"
 import BusinessProfile from "./components/BusinessProfile"
 
 class App extends Component {
@@ -54,6 +55,11 @@ class App extends Component {
               <PrivateRoute
                 path='/homepage'
                 component={Homepage}
+              ></PrivateRoute>
+
+              <PrivateRoute
+                path='/BarCode'
+                component={BarCodePage}
               ></PrivateRoute>
 
               <PrivateRoute
