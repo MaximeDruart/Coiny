@@ -199,6 +199,18 @@ a {
   color: white;
   font-size: 15px;
   outline: none;
+  transition: all 0.15s ease-in-out;
+  &.active {
+    border-radius: 10px;
+  }
+
+  input {
+    top: -9px;
+  }
+
+  .default.text {
+    top: 4px;
+  }
 
   .menu {
     background-color: #5206bb;
