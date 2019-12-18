@@ -88,7 +88,7 @@ class LoginContextProvider extends Component {
       {
         isAuthenticated: false,
         user: null,
-        business : null
+        business: null
       },
       // gotta use history.push
       (window.location = "/login")
@@ -102,8 +102,8 @@ class LoginContextProvider extends Component {
           isAuthenticated: true,
           user: jwt_decode(localStorage.getItem("jwtToken")),
           business: jwt_decode(localStorage.getItem("jwtToken")),
-          userType: localStorage.getItem("userType")
-          localStorageHasBeenRead: true,
+          userType: localStorage.getItem("userType"),
+          localStorageHasBeenRead: true
         })
       } else {
         this.setState({ localStorageHasBeenRead: true })
