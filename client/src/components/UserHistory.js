@@ -1,41 +1,42 @@
 import React, { useContext, useState, useEffect } from "react"
 import { LoginContext } from "../contexts/LoginContext"
 import { UIDataContext } from "../contexts/UIDataContext"
-import logo from "./img/logo.svg"
 import { CSSTransition } from "react-transition-group"
 import uuid from "uuid"
 import "./userHistory.scss"
+import Axios from "axios"
 
 const UserHistory = props => {
   const { getExtendedData, userData } = useContext(LoginContext)
-  const { getBusinessDataForId, getBusinessQueryResults } = useContext(
-    UIDataContext
-  )
+  const { getBusinessDataForId } = useContext(UIDataContext)
   let [ids, setIds] = useState([])
   let [businessesData, setBusinessesData] = useState([])
 
   let arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-  const getBusinessesLoop = async () => {
-    let tempArr = []
-    for (const id of ids) {
-      const data = await getBusinessDataForId(id)
-      tempArr.push(data)
-    }
-    setBusinessesData(tempArr)
-  }
-
   useEffect(() => {
     getExtendedData()
-  }, [])
+  }, [getExtendedData])
 
   useEffect(() => {
     if (userData) setIds(userData.donationHistory.map(item => item.target))
   }, [userData])
 
   useEffect(() => {
-    getBusinessesLoop()
-  }, [ids])
+    let cancelToken = Axios.CancelToken.source()
+    ;(async () => {
+      let tempArr = []
+      for (const id of ids) {
+        const data = await getBusinessDataForId(id, cancelToken)
+        tempArr.push(data)
+      }
+      setBusinessesData(tempArr)
+    })()
+
+    return () => {
+      setBusinessesData([])
+    }
+  }, [ids, getBusinessDataForId])
 
   return (
     <div className='user-history'>

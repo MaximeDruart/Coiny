@@ -9,7 +9,7 @@ const Profile = () => {
   // running useEffect on user is updated : aka componentDidMount from loginContext ran and user was retrieved from localStorage
   useEffect(() => {
     getExtendedData()
-  }, [user])
+  }, [user, getExtendedData])
 
   return (
     <div>

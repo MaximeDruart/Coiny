@@ -1,6 +1,5 @@
 import React from "react"
 import "./AuthDirection.scss"
-import { Link } from "react-router-dom"
 import backImg from "../img/back.svg"
 
 const Back = props => {

@@ -12,7 +12,7 @@ const Homepage = props => {
 
   useEffect(() => {
     getBusinessData(null)
-  }, [])
+  }, [getBusinessData])
 
   const getRenderedBusinesses = () => {
     return businessQueryResults

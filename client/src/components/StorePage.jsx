@@ -10,34 +10,34 @@ const StorePage = props => {
   const {
     loading,
     businessDataForId,
-    getBusinessDataForId,
-    errors
+    getBusinessDataForId
+    // errors
   } = useContext(UIDataContext)
   const { userType } = useContext(LoginContext)
 
   const { id } = useParams()
   useEffect(() => {
     getBusinessDataForId(id)
-  }, [])
+  }, [getBusinessDataForId, id])
 
   return (
-    <div className="storeContainer">
+    <div className='storeContainer'>
       <Back history={props.history}>Go back</Back>
-      <div className="storeTop">
-        <div className="roundLogo">
-          <img src={storeImg} alt="" />
+      <div className='storeTop'>
+        <div className='roundLogo'>
+          <img src={storeImg} alt='' />
         </div>
       </div>
       {loading ? (
         "loadinganim" // need to do a placeholder
       ) : businessDataForId ? (
-        <div className="storeInfo">
-          <div className="storePresentation">
+        <div className='storeInfo'>
+          <div className='storePresentation'>
             <h2>{businessDataForId.name}</h2>
-            <div className="statContainer">
+            <div className='statContainer'>
               <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
             </div>
-            <div class="storeDescription">
+            <div class='storeDescription'>
               <p>Description</p>
             </div>
           </div>
@@ -51,7 +51,7 @@ const StorePage = props => {
           <button>Donate</button>
         </Link>
       )}
-      <div className="bottomCompenser"></div>
+      <div className='bottomCompenser'></div>
     </div>
   )
 }

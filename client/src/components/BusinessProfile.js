@@ -11,34 +11,34 @@ const BusinessProfile = props => {
   const { business } = useContext(LoginContext)
   useEffect(() => {
     getBusinessDataForId(business.id)
-  }, [])
+  }, [getBusinessDataForId, business.id])
 
   return (
-    <div className="businessProfile">
-      <div className="businessProfile_avatar"></div>
+    <div className='businessProfile'>
+      <div className='businessProfile_avatar'></div>
       {businessDataForId && (
         <div>
           <h1>{businessDataForId.name}</h1>
         </div>
       )}
-      <div className="businessProfile_wallet">
+      <div className='businessProfile_wallet'>
         <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
       </div>
-      <div className="businessProfile_description">
+      <div className='businessProfile_description'>
         <textarea
-          name="description"
-          placeholder="Description du commerce"
-          maxlength="200"
+          name='description'
+          placeholder='Description du commerce'
+          maxlength='200'
         ></textarea>
       </div>
-      <div className="businessProfile_valider">Valider</div>
-      <Link to="/privilegeaccess">
+      <div className='businessProfile_valider'>Valider</div>
+      <Link to='/privilegeaccess'>
         <button>Historique des dons</button>
       </Link>
-      <div className="deconnexion">
+      <div className='deconnexion'>
         <button onClick={logout}>Déconexion</button>
       </div>
-      <div className="bottomBarBlock"></div>
+      <div className='bottomBarBlock'></div>
     </div>
   )
 }

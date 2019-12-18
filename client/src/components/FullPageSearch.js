@@ -4,6 +4,7 @@ import SearchBar from "./homepageComp/SearchBar"
 import "./fullPageSearch.scss"
 import logo from "./img/logo.svg"
 import { CSSTransition } from "react-transition-group"
+import uuid from "uuid"
 
 const FullPageSearch = () => {
   const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
@@ -15,12 +16,12 @@ const FullPageSearch = () => {
       return businessQueryResults.map(business => (
         <CSSTransition
           appear={true}
-          key={business.id}
+          key={uuid()}
           in={!!businessQueryResults}
           timeout={500}
           classNames='business-item'
         >
-          <div key={business.id} className='business-item'>
+          <div key={uuid()} className='business-item'>
             <div className='left'>
               <div className='top'>
                 <div className='name'>{business.name}</div>
@@ -40,13 +41,13 @@ const FullPageSearch = () => {
       ))
     } else {
       let arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-      return arr.map(x => <div className='placeholder'></div>)
+      return arr.map(x => <div key={uuid()} className='placeholder'></div>)
     }
   }
 
   useEffect(() => {
     getBusinessData(query)
-  }, [query])
+  }, [query, getBusinessData])
 
   const queryHandler = value => {
     setQuery(value)
