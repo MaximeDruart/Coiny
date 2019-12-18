@@ -14,35 +14,7 @@ const UserHistory = props => {
   let [ids, setIds] = useState([])
   let [businessesData, setBusinessesData] = useState([])
 
-  const getRenderedHistory = () => {
-    let arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-    if (userData) {
-      if (
-        ids.length === businessesData.length &&
-        businessesData !== "undefined" &&
-        ids.length > 0
-      ) {
-        return userData.donationHistory.map((historyItem, index) => (
-          <CSSTransition
-            appear={true}
-            key={uuid()}
-            in={!!userData}
-            timeout={500}
-            classNames='history-item'
-          >
-            <div key={uuid()} className='history-item'>
-              <div className='amount'>{historyItem.amount}</div>
-              <div className='businessName'>{businessesData[index].name}</div>
-            </div>
-          </CSSTransition>
-        ))
-      } else {
-        return arr.map(x => <div key={uuid()} className='placeholder'></div>)
-      }
-    } else {
-      return arr.map(x => <div key={uuid()} className='placeholder'></div>)
-    }
-  }
+  let arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
   const getBusinessesLoop = async () => {
     let tempArr = []
@@ -70,7 +42,30 @@ const UserHistory = props => {
       <div className='history-header'>
         <div className='text'>Vos dons</div>
       </div>
-      <div className='history-container'>{getRenderedHistory()}</div>
+      <div className='history-container'>
+        {userData &&
+        ids.length === businessesData.length &&
+        businessesData !== "undefined" &&
+        ids.length > 0
+          ? userData.donationHistory.map((historyItem, index) => (
+              <CSSTransition
+                appear={true}
+                key={uuid()}
+                in={!!userData}
+                timeout={500}
+                classNames='history-item'
+              >
+                <div key={uuid()} className='history-item'>
+                  <div className='amount'>{historyItem.amount}</div>
+                  <div className='businessName'>
+                    {businessesData[index].name}
+                  </div>
+                </div>
+              </CSSTransition>
+            ))
+          : arr.map(x => <div key={uuid()} className='placeholder'></div>)}
+        }
+      </div>
     </div>
   )
 }
