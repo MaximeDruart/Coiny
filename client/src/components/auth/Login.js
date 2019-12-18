@@ -67,7 +67,6 @@ class Login extends Component {
               </Form.Group>
               <button
                 className='home_form_submit'
-                block
                 variant='outline-primary'
                 disabled={loginContext.loading}
                 type='submit'
