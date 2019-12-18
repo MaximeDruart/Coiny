@@ -28,6 +28,8 @@
     "passport-jwt": "^4.0.0",
     "react-bootstrap": "^1.0.0-beta.16",
     "react-transition-group": "^4.3.0",
+    "semantic-ui-react": "^0.88.2",
+    "uuid": "^3.3.3",
     "validator": "^10.9.0"
   },
   "devDependencies": {

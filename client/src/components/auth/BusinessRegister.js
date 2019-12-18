@@ -3,6 +3,7 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 import "./AuthDirection.scss"
 import backImg from "../img/back.svg"
+import { Dropdown } from "semantic-ui-react"
 
 import { Form, Jumbotron, Container, Button } from "react-bootstrap"
 
@@ -15,6 +16,15 @@ class BusinessRegister extends Component {
       email: "",
       password: "",
       password2: "",
+      type: "",
+      typeOptions: [
+        { key: "boucherie", text: "boucherie", value: "boucherie" },
+        { key: "droguerie", text: "droguerie", value: "droguerie" },
+        { key: "épicerie", text: "épicerie", value: "épicerie" },
+        { key: "friperie", text: "friperie", value: "friperie" },
+        { key: "mercerie", text: "mercerie", value: "mercerie" },
+        { key: "poissonnerie", text: "poissonnerie", value: "poissonnerie" }
+      ],
       errors: {}
     }
   }
@@ -27,7 +37,8 @@ class BusinessRegister extends Component {
       phoneNumber: this.state.phoneNumber,
       email: this.state.email,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
+      type: this.state.type
     }
     axios
       .post("/business/register", business)
@@ -39,10 +50,18 @@ class BusinessRegister extends Component {
 
   handleChange = event => {
     let { name, value } = event.target
-
+    console.log(name, event.target)
     this.setState({
       [name]: value
     })
+  }
+
+  handleDropDownChange = (e, { value }) => this.setState({ type: value })
+
+  handleAddition = (e, { value }) => {
+    this.setState(prevState => ({
+      typeOptions: [{ text: value, value }, ...prevState.typeOptions]
+    }))
   }
 
   render() {
@@ -127,6 +146,26 @@ class BusinessRegister extends Component {
               {errors.password2}
             </Form.Control.Feedback>
           </Form.Group>
+
+          <Form.Group>
+            <Dropdown
+              id='business-dropdown'
+              options={this.state.typeOptions}
+              placeholder='type de commerce'
+              search
+              selection
+              fluid
+              allowAdditions
+              value={this.state.type}
+              name='type'
+              onAddItem={this.handleAddition}
+              onChange={this.handleDropDownChange}
+            />
+            <Form.Control.Feedback type='invalid'>
+              {errors.type}
+            </Form.Control.Feedback>
+          </Form.Group>
+
           <Button className='home_form_submit' type='submit'>
             s'inscrire
           </Button>

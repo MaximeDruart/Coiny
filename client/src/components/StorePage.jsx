@@ -1,42 +1,61 @@
-import React from "react"
-import Bottombar from "./homepageComp/Bottombar"
+import React, { useEffect, useState } from "react"
 import "./StorePage.scss"
 import Topbar from "./homepageComp/Topbar"
 import storeImg from "./img/magasin1.jpg"
+import { useParams, Link } from "react-router-dom"
+import axios from "axios"
 
 const StorePage = props => {
+  let [error, setError] = useState("")
+  let [businessData, setBusinessData] = useState("")
+  let [loading, setLoading] = useState(true)
+  const { id } = useParams()
+
+  useEffect(() => {
+    setLoading(true)
+    axios
+      .post("/business/find", { id })
+      .then(res => {
+        setBusinessData(res.data)
+        setLoading(false)
+      })
+      .catch(err => {
+        setError(err)
+        setLoading(false)
+      })
+  }, [])
+
   return (
     <div className='storeContainer'>
       <Topbar />
+      <Link to='/homepage'>
+        <button>Go back</button>
+      </Link>
       <div className='storeTop'>
         <div className='roundLogo'>
           <img src={storeImg} alt='' />
         </div>
       </div>
-      <div className='storeStatisitcs'>
-        <div className='statContainer'>
-          <div className='moneyInTheBag'>
-            <img src='' alt='' />
-            <span>45€</span>
+      {loading ? (
+        "loadinganim"
+      ) : businessData ? (
+        <div className='storeInfo'>
+          <div className='storeStatisitcs'>
+            <div className='statContainer'>
+              <div className='moneyInTheBag'>
+                <img src='' alt='' />
+                <span>{`Cagnotte : ${businessData.moneyAllocated}€`}</span>
+              </div>
+            </div>
+          </div>
+          <div className='storePresentation'>
+            <h2>{businessData.name}</h2>
+            <p>Description</p>
           </div>
         </div>
-      </div>
-      <div className='storePresentation'>
-        <h2>ah mais là c'est le nom du store</h2>
-        <p>
-          QUI EST CE STORE ??? adipisicing elit. Eaque eos porro consequuntur
-          iure vero molestias perferendis eius ab vel dicta quia quas atque
-          expedita nam saepe totam illo, fugiat animi Lorem ipsum dolor sit amet
-          consectetur, <br /> <br /> adipisicing elit. Numquam temporibus esse
-          minus exercitationem quod laboriosam qui iste aliquid ea. A dolorem
-          similique quis iusto odio dicta <br />
-          <br /> quasi et error nam Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Vitae rerum non praesentium, fugit quod eligendi eum
-          omnis unde, aut blanditiis doloremque, iure minus accusamus
-          accusantium distinctio corporis officiis labore reprehenderit.
-        </p>
-      </div>
-      <Bottombar location={props.location} />
+      ) : (
+        <h1> {console.log(error)} </h1>
+      )}
       <div className='bottomCompenser'></div>
     </div>
   )

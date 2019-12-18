@@ -42,11 +42,6 @@ class App extends Component {
               {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
 
               <PrivateRoute
-                path='/business:id'
-                component={StorePage}
-              ></PrivateRoute>
-
-              <PrivateRoute
                 path='/homepage'
                 component={Homepage}
               ></PrivateRoute>
@@ -67,6 +62,11 @@ class App extends Component {
 
               <PrivateRoute
                 path='/storePage'
+                component={StorePage}
+              ></PrivateRoute>
+
+              <PrivateRoute
+                path='/business/:id'
                 component={StorePage}
               ></PrivateRoute>
             </div>

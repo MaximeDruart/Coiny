@@ -9,6 +9,7 @@ const validateLoginInput = require("../validation/login")
 let Business = require("../models/business.model")
 
 router.post("/find", (req, res) => {
+  console.log(req.body)
   Business.findById(req.body.id)
     .then(business =>
       !business

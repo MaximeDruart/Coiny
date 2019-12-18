@@ -8,11 +8,11 @@ function PartnerShowcase(props) {
     <Link to={`/business/${business._id}`}>
       <div className='storeWindow'>
         <div className='storeWindow_viewStore'>
-          <img src={props.business.picture} alt='' />
+          <img src={business.picture} alt='' />
         </div>
         <div className='storeWindow_text'>
-          <h3>{props.business.name}</h3>
-          <h4>{props.business.type}</h4>
+          <h3>{business.name}</h3>
+          <h4>{business.type}</h4>
         </div>
       </div>
     </Link>
