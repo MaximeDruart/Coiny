@@ -5,6 +5,7 @@ import SearchBar from "./homepageComp/SearchBar"
 import PartnerShowcase from "./homepageComp/PartnerShowcaser"
 import { UIDataContext } from "../contexts/UIDataContext"
 import StoreOfTheWeek from "./homepageComp/StoreOfTheWeek.jsx"
+import uuid from "uuid"
 
 const Homepage = props => {
   const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
@@ -17,10 +18,7 @@ const Homepage = props => {
     return businessQueryResults
       .slice(3, 8)
       .map(business => (
-        <PartnerShowcase
-          key={business.id}
-          business={business}
-        ></PartnerShowcase>
+        <PartnerShowcase key={uuid()} business={business}></PartnerShowcase>
       ))
   }
 
@@ -34,7 +32,7 @@ const Homepage = props => {
     return businessQueryResults
       .slice(0, 4)
       .map(business => (
-        <StoreOfTheWeek key={business.id} business={business}></StoreOfTheWeek>
+        <StoreOfTheWeek key={uuid()} business={business}></StoreOfTheWeek>
       ))
   }
 
@@ -63,9 +61,7 @@ const Homepage = props => {
         </div>
         <div className='featureFilterContainer'>
           <div className='featureFilter'>
-            <h3>
-              Recherchez un commerce qui correspond à vos envies
-            </h3>
+            <h3>Recherchez un commerce qui correspond à vos envies</h3>
             <div className='buttonFilter'>Rechercher un commerce</div>
           </div>
         </div>

@@ -38,16 +38,15 @@ class UIDataContextProvider extends Component {
     }
   }
 
-  getBusinessDataForId = id => {
+  getBusinessDataForId = async id => {
     this.setState({ loading: true })
-    axios
-      .post("/business/find", { id })
-      .then(res => {
-        this.setState({ businessDataForId: res.data, loading: false })
-      })
-      .catch(errors => {
-        this.setState({ errors, loading: false })
-      })
+    try {
+      const res = await axios.post("/business/find", { id })
+      this.setState({ businessDataForId: res.data, loading: false })
+      return res.data
+    } catch (errors) {
+      this.setState({ errors, loading: false })
+    }
   }
 
   // but you can also provide functions to mutate this data

@@ -1,14 +1,4 @@
 const mongoose = require("mongoose")
-
-const businessTransaction = new mongoose.Schema({
-  contributor: {
-    type: String
-  },
-  amount: {
-    type: Number
-  }
-})
-
 const businessSchema = new mongoose.Schema(
   {
     email: {
@@ -54,10 +44,6 @@ const businessSchema = new mongoose.Schema(
       type: Number,
       default: 0
     },
-    contributors: {
-      type: Array,
-      default: []
-    },
     picture: {
       type: String,
       default: "https://image.flaticon.com/icons/png/512/679/679845.png"
@@ -68,7 +54,10 @@ const businessSchema = new mongoose.Schema(
       tags: { type: [String], index: true }
       // required : true
     },
-    child: [businessTransaction]
+    transactions: {
+      type: Array,
+      default: []
+    }
   },
   {
     autoIndex: false,
