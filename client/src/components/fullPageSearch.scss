@@ -20,11 +20,14 @@
   }
 
   .results-container {
-    margin-top: 13vh;
-    width: 85%;
-    // height: 100vh;
-    // margin-bottom: 80px;
-    // overflow: scroll;
+    padding-top: 13vh;
+    width: 100%;
+    height: calc(100vh - 80px);
+    overflow-y: scroll;
+    display: flex;
+    flex-flow: column nowrap;
+    flex-shrink: 1;
+    align-items: center;
 
     .placeholder {
       width: 100%;
@@ -38,8 +41,8 @@
     .business-item {
       @include smooth-shadow();
       display: flex;
-      width: 100%;
-      height: 130px;
+      width: 80%;
+      min-height: 130px;
       flex-flow: row nowrap;
       justify-content: center;
       margin-bottom: 30px;
@@ -48,6 +51,7 @@
       border-bottom-right-radius: 44px;
       overflow: hidden;
       transition: all 0.6s ease-in-out;
+      flex: auto;
 
       &-appear {
         opacity: 0;
@@ -118,7 +122,7 @@
       .right {
         height: 100%;
         width: 60%;
-        background: #781FF2;
+        background: #781ff2;
         background-size: cover;
         background-position: center center;
       }

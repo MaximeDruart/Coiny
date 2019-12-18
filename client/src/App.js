@@ -42,6 +42,11 @@ class App extends Component {
               {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
 
               <PrivateRoute
+                path='/business:id'
+                component={StorePage}
+              ></PrivateRoute>
+
+              <PrivateRoute
                 path='/homepage'
                 component={Homepage}
               ></PrivateRoute>
@@ -73,3 +78,16 @@ class App extends Component {
 }
 
 export default App
+
+// const tweets = [{ date: "", retweets: 10 }, {}, {}]
+// // tri par date
+
+// tweets.sort(function(a, b) {
+//   return a.date - b.date
+//   // pas sur que ca marche pour des dates
+// })
+
+// // tri par retweets
+// tweets.sort(function(a, b) {
+//   return a.retweets - b.retweets
+// })
