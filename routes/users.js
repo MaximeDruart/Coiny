@@ -5,6 +5,7 @@ const keys = require("../config/keys")
 
 const validateUserRegistrationInput = require("../validation/userRegister")
 const validateLoginInput = require("../validation/login")
+const validatePaymentInput = require("../validation/payment")
 
 let User = require("../models/user.model")
 let Business = require("../models/business.model")
@@ -88,7 +89,11 @@ router.post("/login", (req, res) => {
 })
 
 router.post("/donate", (req, res) => {
-  let { user, donationData } = req.body
+  console.log(req.body, req.body.donationData)
+  const { user, donationData } = req.body
+  const { errors, isValid } = validatePaymentInput(req.body.cardData)
+  if (!isValid) return res.status(400).json(errors)
+
   let userIsValid = true,
     businessIsValid = true
 

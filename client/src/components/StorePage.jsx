@@ -1,76 +1,60 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useContext } from "react"
 import "./StorePage.scss"
 import storeImg from "./img/magasin1.jpg"
-import {
-  useParams,
-  Link,
-  useRouteMatch,
-  Route,
-  Switch,
-  useHistory
-} from "react-router-dom"
-import axios from "axios"
-import Donation from "./payment/Donation"
+import { useParams, Link } from "react-router-dom"
 import Back from "./auth/Back"
+import { UIDataContext } from "../contexts/UIDataContext"
+import { LoginContext } from "../contexts/LoginContext"
 
 const StorePage = props => {
-  let [error, setError] = useState("")
-  let [businessData, setBusinessData] = useState("")
-  let [loading, setLoading] = useState(true)
-  const { id } = useParams()
-  let { path, url } = useRouteMatch()
-  let { goBack } = useHistory()
+  const {
+    loading,
+    businessDataForId,
+    getBusinessDataForId,
+    errors
+  } = useContext(UIDataContext)
+  const { userType } = useContext(LoginContext)
 
+  const { id } = useParams()
   useEffect(() => {
-    setLoading(true)
-    axios
-      .post("/business/find", { id })
-      .then(res => {
-        setBusinessData(res.data)
-        setLoading(false)
-      })
-      .catch(err => {
-        setError(err)
-        setLoading(false)
-      })
+    getBusinessDataForId(id)
   }, [])
 
   return (
-    <div className="storeContainer">
+    <div className='storeContainer'>
       <Back history={props.history}>Go back</Back>
-      <div className="storeTop">
-        <div className="roundLogo">
-          <img src={storeImg} alt="" />
+      <div className='storeTop'>
+        <div className='roundLogo'>
+          <img src={storeImg} alt='' />
         </div>
       </div>
       {loading ? (
-        "loadinganim"
-      ) : businessData ? (
-        <div className="storeInfo">
-          <div className="storeStatisitcs">
-            <div className="statContainer">
-              <div className="moneyInTheBag">
-                <img src="" alt="" />
-                <span>{`Cagnotte : ${businessData.moneyAllocated}€`}</span>
+        "loadinganim" // need to do a placeholder
+      ) : businessDataForId ? (
+        <div className='storeInfo'>
+          <div className='storeStatisitcs'>
+            <div className='statContainer'>
+              <div className='moneyInTheBag'>
+                <img src='' alt='' />
+                <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
               </div>
             </div>
           </div>
-          <div className="storePresentation">
-            <h2>{businessData.name}</h2>
+          <div className='storePresentation'>
+            <h2>{businessDataForId.name}</h2>
             <p>Description</p>
           </div>
+          <button>se rendre au store</button>
         </div>
       ) : (
-        <h1> {error} </h1>
+        <h1> {/*errors*/} </h1>
       )}
-      <Link to={`${url}/donate`}>
-        <button>Donation</button>
-      </Link>
-      <Link class="storeButton">Se rendre au store</Link>
-      <Switch>
-        <Route path={`${url}/donate`} exact component={Donation}></Route>
-      </Switch>
-      <div className="bottomCompenser"></div>
+      {userType === "user" && (
+        <Link to={`/donate/${id}`}>
+          <button>Donate</button>
+        </Link>
+      )}
+      <div className='bottomCompenser'></div>
     </div>
   )
 }

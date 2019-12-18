@@ -18,6 +18,7 @@ import Bottombar from "./components/homepageComp/Bottombar"
 import Success from "./components/payment/Success"
 import Donation from "./components/payment/Donation"
 import BusinessProfile from "./components/BusinessProfile"
+import PaymentForm from "./components/payment/PaymentForm"
 
 class App extends Component {
   constructor() {
@@ -85,8 +86,17 @@ class App extends Component {
 
               <PrivateRoute
                 path='/business/:id'
-                exact
+                // exact
                 component={StorePage}
+              ></PrivateRoute>
+              <PrivateRoute
+                path='/donate/:id'
+                component={Donation}
+              ></PrivateRoute>
+
+              <PrivateRoute
+                path='/paymentform'
+                component={PaymentForm}
               ></PrivateRoute>
             </div>
           </LoginContextProvider>
@@ -97,16 +107,3 @@ class App extends Component {
 }
 
 export default App
-
-// const tweets = [{ date: "", retweets: 10 }, {}, {}]
-// // tri par date
-
-// tweets.sort(function(a, b) {
-//   return a.date - b.date
-//   // pas sur que ca marche pour des dates
-// })
-
-// // tri par retweets
-// tweets.sort(function(a, b) {
-//   return a.retweets - b.retweets
-// })

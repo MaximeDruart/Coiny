@@ -20,7 +20,7 @@ const FullPageSearch = () => {
           timeout={500}
           classNames='business-item'
         >
-          <div className='business-item'>
+          <div key={business.id} className='business-item'>
             <div className='left'>
               <div className='top'>
                 <div className='name'>{business.name}</div>
