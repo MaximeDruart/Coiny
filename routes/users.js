@@ -130,7 +130,12 @@ router.post("/donate", (req, res) => {
                     { _id: donationData.target },
                     {
                       $inc: { moneyAllocated: donationData.amount },
-                      $push: { contributors: user.id }
+                      $push: {
+                        transactions: {
+                          user: user.id,
+                          amount: donationData.amount
+                        }
+                      }
                     },
                     { new: true }
                   )

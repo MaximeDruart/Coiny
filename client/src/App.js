@@ -20,7 +20,7 @@ import Donation from "./components/payment/Donation"
 import BarCodePage from "./components/BarCode"
 import BusinessProfile from "./components/BusinessProfile"
 import PaymentForm from "./components/payment/PaymentForm"
-import Category from "./components/Category"
+import UserHistory from "./components/UserHistory"
 
 class App extends Component {
   constructor() {
@@ -81,6 +81,10 @@ class App extends Component {
                       <PrivateRoute
                         path='/userprofile'
                         component={UserProfile}
+                      />
+                      <PrivateRoute
+                        path='/userhistory'
+                        component={UserHistory}
                       />
                       <PrivateRoute
                         path='/privilegeaccess'

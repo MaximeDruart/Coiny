@@ -13,8 +13,8 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="profileContainer">
-        <div className="profileContainer_avatar"></div>
+      <div className='profileContainer'>
+        <div className='profileContainer_avatar'></div>
         {userData && (
           <div>
             <h1>{userData.firstName}</h1>
@@ -24,15 +24,18 @@ const Profile = () => {
               } € à Coiny depuis le
             ${new Date(userData.createdAt).toDateString()}.`}
             </h2>
-            <Link to="/privilegeaccess">
+            <Link to='/privilegeaccess'>
               <button>Demander des privilèges</button>
+            </Link>
+            <Link to='/userhistory'>
+              <button>Vos dons</button>
             </Link>
           </div>
         )}
-        <div className="deconnexion">
+        <div className='deconnexion'>
           <button onClick={logout}>Déconexion</button>
         </div>
-        <div className="bottomBarBlock"></div>
+        <div className='bottomBarBlock'></div>
       </div>
     </div>
   )

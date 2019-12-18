@@ -21,28 +21,25 @@ const StorePage = props => {
   }, [])
 
   return (
-    <div className='storeContainer'>
+    <div className="storeContainer">
       <Back history={props.history}>Go back</Back>
-      <div className='storeTop'>
-        <div className='roundLogo'>
-          <img src={storeImg} alt='' />
+      <div className="storeTop">
+        <div className="roundLogo">
+          <img src={storeImg} alt="" />
         </div>
       </div>
       {loading ? (
         "loadinganim" // need to do a placeholder
       ) : businessDataForId ? (
-        <div className='storeInfo'>
-          <div className='storeStatisitcs'>
-            <div className='statContainer'>
-              <div className='moneyInTheBag'>
-                <img src='' alt='' />
-                <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
-              </div>
-            </div>
-          </div>
-          <div className='storePresentation'>
+        <div className="storeInfo">
+          <div className="storePresentation">
             <h2>{businessDataForId.name}</h2>
-            <p>Description</p>
+            <div className="statContainer">
+              <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
+            </div>
+            <div class="storeDescription">
+              <p>Description</p>
+            </div>
           </div>
           <button>se rendre au store</button>
         </div>
@@ -54,7 +51,7 @@ const StorePage = props => {
           <button>Donate</button>
         </Link>
       )}
-      <div className='bottomCompenser'></div>
+      <div className="bottomCompenser"></div>
     </div>
   )
 }
