@@ -9,45 +9,43 @@
   color: white;
   font-size: 1.2em;
   background: linear-gradient(#6300ec, #3f0d83);
-  .storePresentation {
-    width: 90%;
-  }
-  .storeTop {
-    margin: 10px 0px 0px 0px;
-    width: 180px;
-    height: 180px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .storeTop img {
-    height: 100%;
-    width: auto;
-  }
-  .roundLogo {
-    width: 100%;
-    border-radius: 200px;
-    height: 100%;
-    overflow: hidden;
-  }
-  button {
-    margin: 10px 0px 10px 0px;
-    font-family: "Rift Demi";
-    font-size: 18px;
-    width: 300px;
-    height: 50px;
-    background: white;
-    border-radius: 90px;
-    border: none;
-    // box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.5);
-    cursor: pointer;
-    outline: none;
-  }
-
-  h2 {
-    margin: 20px 0px 0px 0px;
-  }
+}
+.storeContainer .storePresentation {
+  width: 90%;
+}
+.storeContainer .storeTop {
+  margin: 10px 0px 0px 0px;
+  width: 180px;
+  height: 180px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.storeContainer .storeTop img {
+  height: 100%;
+  width: auto;
+}
+.storeContainer .roundLogo {
+  width: 100%;
+  border-radius: 200px;
+  height: 100%;
+  overflow: hidden;
+}
+.storeContainer button {
+  margin: 10px 0px 10px 0px;
+  font-family: "Rift Demi";
+  font-size: 18px;
+  width: 300px;
+  height: 50px;
+  background: white;
+  border-radius: 90px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+.storeContainer h2 {
+  margin: 20px 0px 0px 0px;
 }
 .statContainer {
   display: flex;
@@ -70,13 +68,11 @@
   align-items: center;
   text-align: center;
 }
-
 .storeButton {
   color: white;
   cursor: pointer;
   margin: 10px 0px 10px 0px;
 }
-
 .storeDescription {
   margin: 0px 0px 15px 0px;
 }

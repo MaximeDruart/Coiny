@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { UIDataContext } from "../contexts/UIDataContext"
 import { LoginContext } from "../contexts/LoginContext"
+import { Link } from "react-router-dom"
 import "./businessProfile.scss"
 
 const BusinessProfile = props => {
@@ -20,6 +21,9 @@ const BusinessProfile = props => {
           <h1>{businessDataForId.name}</h1>
         </div>
       )}
+      <div className="businessProfile_wallet">
+        <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
+      </div>
       <div className="businessProfile_description">
         <textarea
           name="description"
@@ -27,6 +31,10 @@ const BusinessProfile = props => {
           maxlength="200"
         ></textarea>
       </div>
+      <div className="businessProfile_valider">Valider</div>
+      <Link to="/privilegeaccess">
+        <button>Historique des dons</button>
+      </Link>
       <div className="deconnexion">
         <button onClick={logout}>Déconexion</button>
       </div>

@@ -25,21 +25,24 @@
   color: white;
   margin: 10px 0px 10px 0px;
 }
-.businessProfile h2 {
-  font-weight: 300;
+.businessProfile_wallet {
+  display: flex;
+  width: 160px;
+  height: 35px;
   font-size: 18px;
-  font-family: Europa;
+  margin: -10px 0px 10px 0px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
   color: white;
-  margin-bottom: 20px;
-  line-height: 30px;
 }
 .businessProfile_description {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px 0px 20px 0px;
-  width: 80%;
-  height: 140px;
+  width: 300px;
+  height: 100px;
 }
 .businessProfile_description textarea {
   padding: 10px;
@@ -50,11 +53,37 @@
   height: 100%;
   border: none;
 }
+.businessProfile_valider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Europa;
+  height: 29px;
+  font-weight: 700;
+  border-radius: 8px;
+  width: 90px;
+  background: #ff7590;
+  margin: -10px 0px 20px 0px;
+  cursor: pointer;
+}
+.businessProfile button {
+  text-align: center;
+  width: 300px;
+  height: 50px;
+  background: transparent;
+  border-radius: 90px;
+  border: solid 1px #87bcbf;
+  margin: 10px 0px 10px 0px;
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
 .deconnexion button {
+  height: 0px;
   background: transparent;
   border: none;
-  margin: 0;
-  margin: 10px 0px 10px 0px;
+  margin: 20px 0px 0px 0px;
   color: white;
   font-size: 15px;
 }

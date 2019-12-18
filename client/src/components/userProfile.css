@@ -47,8 +47,9 @@
   outline: none;
 }
 .deconnexion button {
+  height: 0px;
   border: none;
-  margin: 0;
+  margin: 20px 0px 0px 0px;
 }
 .bottomBarBlock {
   width: 100%;
