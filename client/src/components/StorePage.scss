@@ -1,5 +1,4 @@
 .storeContainer{
-    overflow-y: scroll;
     width: 100vw;
     min-height: 100vh;
     display: flex;
@@ -56,4 +55,10 @@
 }
 .bottomCompenser{
     height: 120px;
+}
+.storeInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }

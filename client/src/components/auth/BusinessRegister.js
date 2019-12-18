@@ -1,8 +1,7 @@
 import React, { Component } from "react"
 import axios from "axios"
-import { Link } from "react-router-dom"
 import "./AuthDirection.scss"
-import backImg from "../img/back.svg"
+import Back from "./Back"
 import { Dropdown } from "semantic-ui-react"
 
 import { Form, Jumbotron, Container, Button } from "react-bootstrap"
@@ -68,10 +67,7 @@ class BusinessRegister extends Component {
     let { errors } = this.state
     return (
       <Container className='home'>
-        <Link className='home_back' to='/getstarted'>
-          <img src={backImg} alt='back'></img>
-          <h5>Retour</h5>
-        </Link>
+        <Back />
         <Jumbotron>
           <h2>Profil commerçant</h2>
         </Jumbotron>

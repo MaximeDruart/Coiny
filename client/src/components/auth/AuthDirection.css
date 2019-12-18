@@ -9,6 +9,7 @@ a {
   text-decoration: none;
 }
 .home {
+  padding: 40px;
   width: 100%;
   height: 100%;
   background: linear-gradient(#6300ec, #3f0d83);
@@ -31,7 +32,7 @@ a {
 }
 .home h2 {
   font-size: 30px;
-  margin: 0;
+  margin: 50px 0px 0px 0px;
 }
 .home h3 {
   font-size: 20px;
@@ -47,16 +48,21 @@ a {
   margin-bottom: 20px;
 }
 .home_back {
+  position: relative;
+  width: 100%;
+  height: 40px;
+}
+.home_back_arrow {
+  position: absolute;
   display: flex;
   align-items: center;
   width: 300px;
-  height: 80px;
 }
-.home_back img {
+.home_back_arrow img {
   width: 15px;
   margin: 0px;
 }
-.home_back h5 {
+.home_back_arrow h5 {
   margin: 0px 5px 1px 5px;
   color: white;
   font-weight: 300;
@@ -68,7 +74,7 @@ a {
   flex-direction: column;
 }
 .home_form_submit {
-  margin: 40px 0px 40px 0px;
+  margin: 30px 0px 30px 0px;
   font-family: "Rift Demi";
   font-size: 18px;
   width: 300px;
@@ -79,7 +85,8 @@ a {
   cursor: pointer;
   outline: none;
 }
-.home_form input {
+.home_form input,
+.home_form select {
   text-align: center;
   width: 300px;
   height: 50px;
@@ -91,11 +98,16 @@ a {
   font-size: 15px;
   outline: none;
 }
-.home_form input::placeholder {
+.home_form input::placeholder,
+.home_form select::placeholder {
   font-size: 13px;
   font-family: "Rift Demi";
   letter-spacing: 2px;
   color: rgba(255, 255, 255, 0.924);
+}
+.home_form input option,
+.home_form select option {
+  color: black;
 }
 .links {
   display: flex;
@@ -146,8 +158,8 @@ a {
   text-align: center;
   color: #ff5435;
   font-size: 12px;
-  height: 10px;
-  margin-top: -5px;
+  height: 15px;
+  margin-top: -8px;
 }
 .title {
   display: flex;
@@ -162,4 +174,32 @@ a {
 .title img {
   width: 60px;
   margin: 0px 0px 0px 10px;
+}
+#business-dropdown {
+  text-align: center;
+  width: 300px;
+  height: 50px;
+  background: transparent;
+  border-radius: 90px;
+  border: solid 1px #87bcbf;
+  margin: 10px 0px 10px 0px;
+  color: white;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.15s ease-in-out;
+}
+#business-dropdown.active {
+  border-radius: 10px;
+}
+#business-dropdown input {
+  top: -9px;
+}
+#business-dropdown .default.text {
+  top: 4px;
+}
+#business-dropdown .menu {
+  background-color: #5206bb;
+}
+#business-dropdown .menu .item {
+  color: white;
 }
