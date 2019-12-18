@@ -2,7 +2,7 @@ import React, { Component } from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
 import PrivateRoute from "./components/PrivateRoute"
-import LoginContextProvider from "./contexts/LoginContext"
+import LoginContextProvider, { LoginContext } from "./contexts/LoginContext"
 import UIDataContextProvider from "./contexts/UIDataContext"
 
 import UserRegister from "./components/auth/UserRegister"
@@ -17,6 +17,7 @@ import StorePage from "./components/StorePage.jsx"
 import Bottombar from "./components/homepageComp/Bottombar"
 import Success from "./components/payment/Success"
 import Donation from "./components/payment/Donation"
+import BusinessProfile from "./components/BusinessProfile"
 
 class App extends Component {
   constructor() {
@@ -60,19 +61,27 @@ class App extends Component {
                 component={FullPageSearch}
               ></PrivateRoute>
 
-              <PrivateRoute
-                path='/userprofile'
-                component={UserProfile}
-              ></PrivateRoute>
-              <PrivateRoute
-                path='/privilegeaccess'
-                component={PrivilegeAccess}
-              ></PrivateRoute>
-
-              <PrivateRoute
-                path='/storePage'
-                component={StorePage}
-              ></PrivateRoute>
+              <LoginContext.Consumer>
+                {context =>
+                  context.userType === "user" ? (
+                    <div>
+                      <PrivateRoute
+                        path='/userprofile'
+                        component={UserProfile}
+                      />
+                      <PrivateRoute
+                        path='/privilegeaccess'
+                        component={PrivilegeAccess}
+                      />
+                    </div>
+                  ) : (
+                    <PrivateRoute
+                      path='/businessprofile'
+                      component={BusinessProfile}
+                    />
+                  )
+                }
+              </LoginContext.Consumer>
 
               <PrivateRoute
                 path='/business/:id'

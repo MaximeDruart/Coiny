@@ -44,7 +44,7 @@ const StorePage = props => {
         </div>
       </div>
       {loading ? (
-        "loadinganim"
+        "loadinganim" // need to do a plachholder
       ) : businessData ? (
         <div className='storeInfo'>
           <div className='storeStatisitcs'>

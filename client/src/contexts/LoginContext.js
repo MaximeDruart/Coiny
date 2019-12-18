@@ -15,7 +15,8 @@ class LoginContextProvider extends Component {
       errors: "",
       loading: false,
       userData: null,
-      localStorageHasBeenRead: false
+      localStorageHasBeenRead: false,
+      userType: "user"
     }
   }
   // but you can also provide functions to mutate this data
@@ -28,12 +29,36 @@ class LoginContextProvider extends Component {
         // saving token to localStorage so user is remembered
         const { token } = res.data
         localStorage.setItem("jwtToken", token)
+        localStorage.setItem("userType", "user")
         setAuthToken(token)
         const decodedData = jwt_decode(token)
         this.setState({
           isAuthenticated: true,
           user: decodedData,
-          loading: false
+          loading: false,
+          userType: "user",
+          errors: ""
+        })
+      })
+      .catch(error =>
+        this.setState({ errors: error.response.data, loading: false })
+      )
+
+    axios
+      .post("/business/login", userData)
+      .then(res => {
+        // saving token to localStorage so user is remembered
+        const { token } = res.data
+        localStorage.setItem("jwtToken", token)
+        localStorage.setItem("userType", "business")
+        setAuthToken(token)
+        const decodedData = jwt_decode(token)
+        this.setState({
+          isAuthenticated: true,
+          user: decodedData,
+          loading: false,
+          userType: "business",
+          errors: ""
         })
       })
       .catch(error =>
@@ -74,7 +99,8 @@ class LoginContextProvider extends Component {
         this.setState({
           isAuthenticated: true,
           user: jwt_decode(localStorage.getItem("jwtToken")),
-          localStorageHasBeenRead: true
+          localStorageHasBeenRead: true,
+          userType: localStorage.getItem("userType")
         })
       } else {
         this.setState({ localStorageHasBeenRead: true })
