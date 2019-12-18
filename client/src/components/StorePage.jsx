@@ -29,7 +29,7 @@ const StorePage = props => {
     <div className='storeContainer'>
       <Topbar />
       <Link to='/homepage'>
-        <button>Go back</button>
+        <h1>X</h1>
       </Link>
       <div className='storeTop'>
         <div className='roundLogo'>
