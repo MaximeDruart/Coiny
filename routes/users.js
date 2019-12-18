@@ -89,7 +89,6 @@ router.post("/login", (req, res) => {
 })
 
 router.post("/donate", (req, res) => {
-  console.log(req.body, req.body.donationData)
   const { user, donationData } = req.body
   const { errors, isValid } = validatePaymentInput(req.body.cardData)
   if (!isValid) return res.status(400).json(errors)

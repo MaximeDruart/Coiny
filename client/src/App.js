@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 
-import PrivateRoute from "./components/PrivateRoute"
+import PrivateRoute from "./utils/PrivateRoute"
 import LoginContextProvider, { LoginContext } from "./contexts/LoginContext"
 import UIDataContextProvider from "./contexts/UIDataContext"
 

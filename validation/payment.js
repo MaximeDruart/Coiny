@@ -11,10 +11,10 @@ module.exports = function validatePaymentInput(data) {
   // Email checks
   if (Validator.isEmpty(data.cardNumber)) {
     errors.cardNumber = "Numéro de carte requis"
+  } else if (data.cardNumber.length !== 16) {
+    errors.cardNumber = "Numéro de carte invalide"
   }
-  //  else if (Validator.isCreditCard(data.cardNumber)) {
-  //   errors.cardNumber = "Numéro de carte invalide"
-  // }
+
   if (Validator.isEmpty(data.cardName)) {
     errors.cardName = "Nom de porteur requis"
   }

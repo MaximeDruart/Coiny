@@ -1,11 +1,10 @@
 import React, { Component } from "react"
-import UIDataContextProvider, {
-  UIDataContext
-} from "../../contexts/UIDataContext"
+import { UIDataContext } from "../../contexts/UIDataContext"
 import { LoginContext } from "../../contexts/LoginContext"
 import { Form } from "react-bootstrap"
 import "./paymentForm.scss"
 import axios from "axios"
+import { Redirect } from "react-router-dom"
 
 class PaymentForm extends Component {
   static contextType = UIDataContext
@@ -18,7 +17,8 @@ class PaymentForm extends Component {
       cardName: "",
       expiryDate: "",
       cvc: "",
-      errors: ""
+      errors: "",
+      transactionEnd: ""
     }
   }
 
@@ -57,7 +57,21 @@ class PaymentForm extends Component {
           cvc: this.state.cvc
         }
       })
-      .then(() => this.props.history.push("/success"))
+      .then(() =>
+        this.setState({
+          transitionEnd: (
+            <Redirect
+              to={{
+                pathname: "/success",
+                state: {
+                  amount: this.state.amount,
+                  businessName: this.context.businessDataForId.name
+                }
+              }}
+            />
+          )
+        })
+      )
       .catch(err => this.setState({ errors: err.response.data }))
   }
 
@@ -144,6 +158,7 @@ class PaymentForm extends Component {
                 ) : (
                   "cannot find payment informations, please try again."
                 )}
+                {this.state.transactionEnd}
               </div>
             )}
           </UIDataContext.Consumer>

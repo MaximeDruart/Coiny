@@ -10,7 +10,6 @@ let Business = require("../models/business.model")
 let User = require("../models/user.model")
 
 router.post("/find", (req, res) => {
-  console.log(req.body)
   Business.findById(req.body.id)
     .then(business =>
       !business
