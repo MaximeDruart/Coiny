@@ -5,7 +5,7 @@ import backImg from "../img/back.svg"
 
 const Back = () => {
   return (
-    <div class="home_back">
+    <div className="home_back">
       <Link className="home_back_arrow" to="/getstarted">
         <img src={backImg} alt="back"></img>
         <h5>Retour</h5>
