@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react"
 import "./StorePage.scss"
-import Topbar from "./homepageComp/Topbar"
 import storeImg from "./img/magasin1.jpg"
 import {
   useParams,
@@ -12,6 +11,7 @@ import {
 } from "react-router-dom"
 import axios from "axios"
 import Donation from "./payment/Donation"
+import Back from "./auth/Back"
 
 const StorePage = props => {
   let [error, setError] = useState("")
@@ -36,45 +36,41 @@ const StorePage = props => {
   }, [])
 
   return (
-    <div className='storeContainer'>
-      <Link to='/homepage'>
-        <button onClick={goBack}>Go back</button>
-      </Link>
-      <div className='storeTop'>
-        <div className='roundLogo'>
-          <img src={storeImg} alt='' />
+    <div className="storeContainer">
+      <Back history={props.history}>Go back</Back>
+      <div className="storeTop">
+        <div className="roundLogo">
+          <img src={storeImg} alt="" />
         </div>
       </div>
       {loading ? (
         "loadinganim"
       ) : businessData ? (
-        <div className='storeInfo'>
-          <div className='storeStatisitcs'>
-            <div className='statContainer'>
-              <div className='moneyInTheBag'>
-                <img src='' alt='' />
+        <div className="storeInfo">
+          <div className="storeStatisitcs">
+            <div className="statContainer">
+              <div className="moneyInTheBag">
+                <img src="" alt="" />
                 <span>{`Cagnotte : ${businessData.moneyAllocated}€`}</span>
               </div>
             </div>
           </div>
-          <div className='storePresentation'>
+          <div className="storePresentation">
             <h2>{businessData.name}</h2>
             <p>Description</p>
           </div>
-          <button>se rendre au store</button>
         </div>
       ) : (
-        <h1> {console.log(error)} </h1>
+        <h1> {error} </h1>
       )}
       <Link to={`${url}/donate`}>
-        <button>Donate</button>
+        <button>Donation</button>
       </Link>
+      <Link class="storeButton">Se rendre au store</Link>
       <Switch>
-        <Route path={`${url}/donate`} component={Donation}>
-          {console.log(`${url}/donate`)}
-        </Route>
+        <Route path={`${url}/donate`} exact component={Donation}></Route>
       </Switch>
-      <div className='bottomCompenser'></div>
+      <div className="bottomCompenser"></div>
     </div>
   )
 }

@@ -7,6 +7,7 @@ const validateBusinessRegistrationInput = require("../validation/businessRegiste
 const validateLoginInput = require("../validation/login")
 
 let Business = require("../models/business.model")
+let User = require("../models/user.model")
 
 router.post("/find", (req, res) => {
   console.log(req.body)
@@ -33,23 +34,25 @@ router.post("/register", (req, res) => {
 
   Business.findOne({ email: req.body.email }).then(business => {
     if (business) return res.status(400).json({ email: "email already taken" })
-    const newBusiness = new Business({
-      email: req.body.email,
-      name: req.body.name,
-      password: req.body.password,
-      phoneNumber: req.body.phoneNumber
-    })
-
-    bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(newBusiness.password, salt, (err, hash) => {
-        if (err) throw err
-        newBusiness.password = hash
-        newBusiness
-          .save()
-          .then(business => {
-            res.json(business)
-          })
-          .catch(err => console.log(err))
+    User.findOne({ email: req.body.email }).then(user => {
+      if (user) return res.status(400).json({ email: "email already taken" })
+      const newBusiness = new Business({
+        email: req.body.email,
+        name: req.body.name,
+        password: req.body.password,
+        phoneNumber: req.body.phoneNumber
+      })
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newBusiness.password, salt, (err, hash) => {
+          if (err) throw err
+          newBusiness.password = hash
+          newBusiness
+            .save()
+            .then(business => {
+              res.json(business)
+            })
+            .catch(err => console.log(err))
+        })
       })
     })
   })

@@ -12,10 +12,12 @@ class LoginContextProvider extends Component {
     this.state = {
       isAuthenticated: false,
       user: null,
+      business: null,
       errors: "",
       loading: false,
       userData: null,
-      localStorageHasBeenRead: false
+      localStorageHasBeenRead: false,
+      userType: "user"
     }
   }
   // but you can also provide functions to mutate this data
@@ -28,12 +30,36 @@ class LoginContextProvider extends Component {
         // saving token to localStorage so user is remembered
         const { token } = res.data
         localStorage.setItem("jwtToken", token)
+        localStorage.setItem("userType", "user")
         setAuthToken(token)
         const decodedData = jwt_decode(token)
         this.setState({
           isAuthenticated: true,
           user: decodedData,
-          loading: false
+          loading: false,
+          userType: "user",
+          errors: ""
+        })
+      })
+      .catch(error =>
+        this.setState({ errors: error.response.data, loading: false })
+      )
+
+    axios
+      .post("/business/login", userData)
+      .then(res => {
+        // saving token to localStorage so user is remembered
+        const { token } = res.data
+        localStorage.setItem("jwtToken", token)
+        localStorage.setItem("userType", "business")
+        setAuthToken(token)
+        const decodedData = jwt_decode(token)
+        this.setState({
+          isAuthenticated: true,
+          business: decodedData,
+          loading: false,
+          userType: "business",
+          errors: ""
         })
       })
       .catch(error =>
@@ -61,7 +87,8 @@ class LoginContextProvider extends Component {
     this.setState(
       {
         isAuthenticated: false,
-        user: null
+        user: null,
+        business: null
       },
       // gotta use history.push
       (window.location = "/login")
@@ -74,6 +101,8 @@ class LoginContextProvider extends Component {
         this.setState({
           isAuthenticated: true,
           user: jwt_decode(localStorage.getItem("jwtToken")),
+          business: jwt_decode(localStorage.getItem("jwtToken")),
+          userType: localStorage.getItem("userType"),
           localStorageHasBeenRead: true
         })
       } else {

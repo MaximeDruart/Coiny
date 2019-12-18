@@ -1,64 +1,82 @@
-.storeContainer{
-    width: 100vw;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    font-size: 1.2em;
-    background: linear-gradient(
-        146deg,
-        rgba(100, 1, 236, 1) 0%,
-        rgba(75, 75, 125, 1) 90%
-      );
-    ;
-    .storePresentation{
+.storeContainer {
+  width: 100vw;
+  padding: 40px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1.2em;
+  background: linear-gradient(#6300ec, #3f0d83);
+  .storePresentation {
     width: 90%;
-    }
-    .storeTop{
-        height: 200px;
-        overflow: hidden;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .storeTop img{
-        height: 120px;
-        width: auto;
-    }
-    .roundLogo{
-        width: 120px;
-        border-radius: 200px;
-        height: 120px;
-        overflow: hidden;
-    }
-}
-.storeStatisitcs{
-    width: 100vw;
-    height: 150px;
+  }
+  .storeTop {
+    margin: 10px 0px 0px 0px;
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    .statContainer{
-        display: flex;
-        width: 180px;
-        height: 30px;
-        box-shadow: #0000008f 3px 8px 28px;
-        font-size: 0.9em;
-        margin: 0;
-        justify-content: center;
-        align-items: center;
-        border-radius: 20px;
-        background:rgba(75, 75, 125, 1);
-    }
-
+  }
+  .storeTop img {
+    height: 100%;
+    width: auto;
+  }
+  .roundLogo {
+    width: 100%;
+    border-radius: 200px;
+    height: 100%;
+    overflow: hidden;
+  }
+  button {
+    margin: 10px 0px 10px 0px;
+    font-family: "Rift Demi";
+    font-size: 18px;
+    width: 300px;
+    height: 50px;
+    background: white;
+    border-radius: 90px;
+    border: none;
+    // box-shadow: 0px 10px 50px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    outline: none;
+  }
 }
-.bottomCompenser{
-    height: 120px;
-}
-.storeInfo{
+.storeStatisitcs {
+  width: 100vw;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .statContainer {
     display: flex;
-    flex-direction: column;
+    width: 180px;
+    height: 36px;
+    font-size: 0.9em;
+    margin: 0;
+    justify-content: center;
     align-items: center;
-    text-align: center;
+    border-radius: 20px;
+    background: white;
+    color: black;
+  }
+}
+.bottomCompenser {
+  height: 80px;
+}
+.storeInfo {
+  margin: 0px 0px 20px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.storeButton{
+    color: white;
+    cursor: pointer;
+    margin: 10px 0px 10px 0px;
 }

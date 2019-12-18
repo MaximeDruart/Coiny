@@ -25,27 +25,29 @@ router.get("/find/all", (req, res) => {
 
 router.post("/register", (req, res) => {
   const { errors, isValid } = validateUserRegistrationInput(req.body)
-  if (!isValid) {
-    return res.status(400).json(errors)
-  }
+  if (!isValid) return res.status(400).json(errors)
 
   User.findOne({ email: req.body.email }).then(user => {
     if (user) return res.status(400).json({ error: "email already taken" })
-    const newUser = new User({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      password: req.body.password,
-      email: req.body.email
-    })
+    Business.findOne({ email: req.body.email }).then(business => {
+      if (business)
+        return res.status(400).json({ error: "email already taken" })
+      const newUser = new User({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        password: req.body.password,
+        email: req.body.email
+      })
 
-    bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(newUser.password, salt, (err, hash) => {
-        if (err) throw err
-        newUser.password = hash
-        newUser
-          .save()
-          .then(user => res.json(user))
-          .catch(err => res.json(err))
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err
+          newUser.password = hash
+          newUser
+            .save()
+            .then(user => res.json(user))
+            .catch(err => res.json(err))
+        })
       })
     })
   })
@@ -139,7 +141,6 @@ router.post("/accessprivilege", (req, res) => {
   // no actual file checking
   let userIsValid = true
   const { id } = req.body
-  console.log(id)
   User.findById(id)
     .catch(err => {
       userIsValid = false

@@ -53,7 +53,7 @@ class PrivilegeAccess extends Component {
   render() {
     return (
       <Container className='AccessContainer'>
-        <Back />
+        <Back history={this.props.history} />
         <h1>Accès privilégié</h1>
         <div className='AccessContainer_line'></div>
         <h2>

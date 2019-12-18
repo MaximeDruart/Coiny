@@ -9,7 +9,9 @@ class UIDataContextProvider extends Component {
     super(props)
     this.state = {
       businessQueryResults: "",
-      errors: ""
+      errors: "",
+      businessDataForId: "",
+      loading: false
     }
   }
 
@@ -36,12 +38,28 @@ class UIDataContextProvider extends Component {
     }
   }
 
+  getBusinessDataForId = id => {
+    this.setState({ loading: true })
+    axios
+      .post("/business/find", { id })
+      .then(res => {
+        this.setState({ businessDataForId: res.data, loading: false })
+      })
+      .catch(errors => {
+        this.setState({ errors, loading: false })
+      })
+  }
+
   // but you can also provide functions to mutate this data
 
   render() {
     return (
       <UIDataContext.Provider
-        value={{ ...this.state, getBusinessData: this.getBusinessData }}
+        value={{
+          ...this.state,
+          getBusinessData: this.getBusinessData,
+          getBusinessDataForId: this.getBusinessDataForId
+        }}
       >
         {this.props.children}
       </UIDataContext.Provider>
