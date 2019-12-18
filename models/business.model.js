@@ -1,5 +1,14 @@
 const mongoose = require("mongoose")
 
+const businessTransaction = new mongoose.Schema({
+  contributor: {
+    type: String
+  },
+  amount: {
+    type: Number
+  }
+})
+
 const businessSchema = new mongoose.Schema(
   {
     email: {
@@ -58,7 +67,8 @@ const businessSchema = new mongoose.Schema(
       default: "store",
       tags: { type: [String], index: true }
       // required : true
-    }
+    },
+    child: [businessTransaction]
   },
   {
     autoIndex: false,
