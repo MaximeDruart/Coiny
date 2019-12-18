@@ -5,6 +5,7 @@ import { Form } from "react-bootstrap"
 import "./paymentForm.scss"
 import axios from "axios"
 import { Redirect } from "react-router-dom"
+import Back from "../auth/Back"
 
 class PaymentForm extends Component {
   static contextType = UIDataContext
@@ -59,7 +60,7 @@ class PaymentForm extends Component {
       })
       .then(() =>
         this.setState({
-          transitionEnd: (
+          transactionEnd: (
             <Redirect
               to={{
                 pathname: "/success",
@@ -82,6 +83,7 @@ class PaymentForm extends Component {
           <UIDataContext.Consumer>
             {uiContext => (
               <div className='paymentFormContainer'>
+                <Back history={this.props.history} />
                 {this.props.location.state && uiContext.businessDataForId ? (
                   <Form
                     className='home_form'
