@@ -27,7 +27,6 @@ const FullPageSearch = () => {
                 <div className='type'>{business.type}</div>
                 <div className='money'>{business.moneyAllocated}€</div>
               </div>
-              <div className='donate-btn'>Donate</div>
               <div className='logo-container'>
                 <img alt='logo' src={logo} className='logo'></img>
               </div>
