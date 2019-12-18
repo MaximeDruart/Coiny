@@ -1,0 +1,31 @@
+.containSuccess {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(#6300ec, #3f0d83);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 40px 120px 40px;
+  box-sizing: border-box;
+  & h1 {
+    font-size: 40px;
+    text-align: center;
+    margin: 0;
+    font-family: Europa;
+    color: white;
+  }
+  & h2 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 20px;
+    margin: 0;
+    font-family: Europa;
+    color: white;
+    line-height: 35px;
+  }
+  & img {
+    margin: 30px 0px 30px 0px;
+    width: 250px;
+  }
+}
