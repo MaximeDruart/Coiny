@@ -29,56 +29,54 @@ class App extends Component {
       <Router>
         <UIDataContextProvider>
           <LoginContextProvider>
-            <div className="App" style={{ height: "100vh" }}>
+            <div className='App' style={{ height: "100vh" }}>
               {/* Switching so it's either the pre-auth components or the bottombar that's available */}
               <Switch>
-                <Route path="/" exact component={Welcome}></Route>
-                <Route path="/getstarted" component={AuthDirection}></Route>
-                <Route path="/userregister" component={UserRegister}></Route>
+                <Route path='/' exact component={Welcome}></Route>
+                <Route path='/getstarted' component={AuthDirection}></Route>
+                <Route path='/userregister' component={UserRegister}></Route>
                 <Route
-                  path="/businessregister"
+                  path='/businessregister'
                   component={BusinessRegister}
                 ></Route>
-                <PrivateRoute path="/" component={Bottombar}></PrivateRoute>
+                <PrivateRoute path='/' component={Bottombar}></PrivateRoute>
               </Switch>
               {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
 
               <PrivateRoute
-                path="/donation"
+                path='/donation'
                 component={Donation}
               ></PrivateRoute>
 
-              <PrivateRoute 
-              path="/success" 
-              component={Success}>
-              </PrivateRoute>
+              <PrivateRoute path='/success' component={Success}></PrivateRoute>
 
               <PrivateRoute
-                path="/homepage"
+                path='/homepage'
                 component={Homepage}
               ></PrivateRoute>
 
               <PrivateRoute
-                path="/search"
+                path='/search'
                 component={FullPageSearch}
               ></PrivateRoute>
 
               <PrivateRoute
-                path="/userprofile"
+                path='/userprofile'
                 component={UserProfile}
               ></PrivateRoute>
               <PrivateRoute
-                path="/privilegeaccess"
+                path='/privilegeaccess'
                 component={PrivilegeAccess}
               ></PrivateRoute>
 
               <PrivateRoute
-                path="/storePage"
+                path='/storePage'
                 component={StorePage}
               ></PrivateRoute>
 
               <PrivateRoute
-                path="/business/:id"
+                path='/business/:id'
+                // exact
                 component={StorePage}
               ></PrivateRoute>
             </div>

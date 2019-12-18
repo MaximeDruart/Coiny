@@ -2,14 +2,24 @@ import React, { useEffect, useState } from "react"
 import "./StorePage.scss"
 import Topbar from "./homepageComp/Topbar"
 import storeImg from "./img/magasin1.jpg"
-import { useParams, Link } from "react-router-dom"
+import {
+  useParams,
+  Link,
+  useRouteMatch,
+  Route,
+  Switch,
+  useHistory
+} from "react-router-dom"
 import axios from "axios"
+import Donation from "./payment/Donation"
 
 const StorePage = props => {
   let [error, setError] = useState("")
   let [businessData, setBusinessData] = useState("")
   let [loading, setLoading] = useState(true)
   const { id } = useParams()
+  let { path, url } = useRouteMatch()
+  let { goBack } = useHistory()
 
   useEffect(() => {
     setLoading(true)
@@ -27,9 +37,8 @@ const StorePage = props => {
 
   return (
     <div className='storeContainer'>
-      <Topbar />
       <Link to='/homepage'>
-        <button>Go back</button>
+        <button onClick={goBack}>Go back</button>
       </Link>
       <div className='storeTop'>
         <div className='roundLogo'>
@@ -56,6 +65,14 @@ const StorePage = props => {
       ) : (
         <h1> {console.log(error)} </h1>
       )}
+      <Link to={`${url}/donate`}>
+        <button>Donate</button>
+      </Link>
+      <Switch>
+        <Route path={`${url}/donate`} component={Donation}>
+          {console.log(`${url}/donate`)}
+        </Route>
+      </Switch>
       <div className='bottomCompenser'></div>
     </div>
   )
