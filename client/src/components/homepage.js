@@ -13,7 +13,7 @@ const Homepage = props => {
   const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
 
   useEffect(() => {
-    if (!businessQueryResults) getBusinessData(null)
+    getBusinessData(null)
   }, [getBusinessData])
 
   const getRenderedBusinesses = () => {

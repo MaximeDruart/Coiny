@@ -42,7 +42,7 @@
     .business-item {
       @include smooth-shadow();
       display: flex;
-      width: 80%;
+      width: 78%;
       max-height: 130px;
       min-height: 130px;
       flex-flow: row nowrap;
@@ -114,7 +114,7 @@
         height: 100%;
         width: 60%;
         background: #781ff2;
-        background-size: cover;
+        background-size: 129%;
         background-position: center center;
       }
     }

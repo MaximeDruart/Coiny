@@ -6,6 +6,27 @@ import Back from "./auth/Back"
 import { UIDataContext } from "../contexts/UIDataContext"
 import { LoginContext } from "../contexts/LoginContext"
 
+import epicerie from "./img/epicerie.svg"
+import boucherie from "./img/boucherie.svg"
+import coiffeur from "./img/coiffeur.svg"
+import boulangerie from "./img/boulangerie.svg"
+import pharmacie from "./img/pharmacie.svg"
+import supermarche from "./img/supermarche.svg"
+import friperie from "./img/friperie.svg"
+import restaurant from "./img/restaurant.svg"
+import store from "./img/store.svg"
+
+let storeImgs = {
+  epicerie,
+  boucherie,
+  coiffeur,
+  boulangerie,
+  pharmacie,
+  friperie,
+  restaurant,
+  store
+}
+
 const StorePage = props => {
   const {
     loading,
@@ -25,7 +46,18 @@ const StorePage = props => {
       <Back history={props.history}>Go back</Back>
       <div className='storeTop'>
         <div className='roundLogo'>
-          <img src={storeImg} alt='' />
+          {businessDataForId && (
+            <img
+              src={
+                businessDataForId
+                  ? businessDataForId.type !== "store"
+                    ? storeImgs[businessDataForId.type]
+                    : supermarche
+                  : supermarche
+              }
+              alt=''
+            />
+          )}
         </div>
       </div>
       {loading ? (
@@ -38,17 +70,21 @@ const StorePage = props => {
               <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
             </div>
             <div className='storeDescription'>
-              <p>Description</p>
+              <p>
+                {businessDataForId && businessDataForId.desc > 0
+                  ? businessDataForId.desc
+                  : "Aucune description disponible"}
+              </p>
             </div>
           </div>
           <a href={businessDataForId.gmapLink}>
-            {console.log(businessDataForId)}
             <button>se rendre au store</button>
           </a>
         </div>
       ) : (
         <h1> {/*errors*/} </h1>
       )}
+
       {userType === "user" && (
         <Link to={`/donate/${id}`}>
           <button>Donate</button>

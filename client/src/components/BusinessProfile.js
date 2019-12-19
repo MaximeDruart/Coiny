@@ -4,6 +4,27 @@ import { LoginContext } from "../contexts/LoginContext"
 import { Link } from "react-router-dom"
 import "./businessProfile.scss"
 
+import epicerie from "./img/epicerie.svg"
+import boucherie from "./img/boucherie.svg"
+import coiffeur from "./img/coiffeur.svg"
+import boulangerie from "./img/boulangerie.svg"
+import pharmacie from "./img/pharmacie.svg"
+import supermarche from "./img/supermarche.svg"
+import friperie from "./img/friperie.svg"
+import restaurant from "./img/restaurant.svg"
+import store from "./img/store.svg"
+
+const storeImgs = {
+  epicerie,
+  boucherie,
+  coiffeur,
+  boulangerie,
+  pharmacie,
+  friperie,
+  restaurant,
+  store
+}
+
 const BusinessProfile = props => {
   const {
     businessDataForId,
@@ -19,12 +40,12 @@ const BusinessProfile = props => {
     updateBusiness(business.id, null, desc)
   }
 
-  const handleFile = event => {
-    setImg(event.target.files[0])
-    const data = new FormData()
-    data.append("file", img)
-    updateBusiness(business.id, img, null)
-  }
+  // const handleFile = event => {
+  //   setImg(event.target.files[0])
+  //   const data = new FormData()
+  //   data.append("file", img)
+  //   updateBusiness(business.id, img, null)
+  // }
 
   const { business } = useContext(LoginContext)
   useEffect(() => {
@@ -34,6 +55,15 @@ const BusinessProfile = props => {
   return (
     <div className='businessProfile'>
       <div className='businessProfile_avatar'>
+        <img
+          src={
+            businessDataForId
+              ? businessDataForId.type !== "store"
+                ? storeImgs[businessDataForId.type]
+                : supermarche
+              : supermarche
+          }
+        ></img>
         {/* <input type='file' name='business-img' onChange={handleFile} /> */}
       </div>
       {businessDataForId && (

@@ -42,7 +42,6 @@ class BusinessRegister extends Component {
       type: this.state.type,
       gmapLink: this.state.gmapLink
     }
-    console.log(business)
     axios
       .post("/business/register", business)
       .then(res => {

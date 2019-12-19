@@ -8,7 +8,7 @@ const StoreOfTheWeek = props => {
     <div className='squareStoreOfTheWeek'>
       <Link
         to={{
-          pathname: `/category/${type}`,
+          pathname: `/search/${type}`,
           state: {
             type
           }
