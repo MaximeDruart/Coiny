@@ -67,6 +67,27 @@ class UIDataContextProvider extends Component {
     }
   }
 
+  updateBusiness = async (id, picture = null, desc = null) => {
+    this.setState({ loading: true })
+    try {
+      const imgUpdate =
+        picture &&
+        (await axios.post("/business/update/img", {
+          id,
+          picture
+        }))
+      const descUpdate =
+        desc &&
+        (await axios.post("/business/update/desc", {
+          id,
+          desc
+        }))
+      this.setState({ loading: false })
+    } catch (error) {
+      return error
+    }
+  }
+
   // but you can also provide functions to mutate this data
 
   render() {
@@ -76,7 +97,8 @@ class UIDataContextProvider extends Component {
           ...this.state,
           getBusinessData: this.getBusinessData,
           getBusinessDataForId: this.getBusinessDataForId,
-          getBusinessDataForType: this.getBusinessDataForType
+          getBusinessDataForType: this.getBusinessDataForType,
+          updateBusiness: this.updateBusiness
         }}
       >
         {this.props.children}

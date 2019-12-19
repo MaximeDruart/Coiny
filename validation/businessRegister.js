@@ -3,19 +3,20 @@ const isEmpty = require("is-empty")
 
 module.exports = data => {
   let errors = {}
-
   // validator fn requires strings
   data.name = !isEmpty(data.name) ? data.name : ""
   data.phoneNumber = !isEmpty(data.phoneNumber) ? data.phoneNumber : ""
   data.email = !isEmpty(data.email) ? data.email : ""
   data.password = !isEmpty(data.password) ? data.password : ""
   data.password2 = !isEmpty(data.password2) ? data.password2 : ""
-  data.googleMapsLink = !isEmpty(data.googleMapsLink) ? data.googleMapsLink : ""
+  data.gmapLink = !isEmpty(data.gmapLink) ? data.gmapLink : ""
 
-  if (Validator.isEmpty(data.phoneNumber)) {
-    errors.phoneNumber = "Numéro de téléphone requis"
-  } else if (!Validator.isMobilePhone(data.phoneNumber)) {
-    errors.phoneNumber = "Numéro de téléphone invalide"
+  if (Validator.isEmpty(data.gmapLink)) {
+    errors.gmapLink = "Lien google maps requis"
+  } else if (!Validator.isURL(data.gmapLink)) {
+    errors.gmapLink = "URL non valide"
+  } else if (data.gmapLink.slice(0, 26) !== "https://www.google.fr/maps") {
+    errors.gmapLink = "URL Google Maps non valide"
   }
 
   if (Validator.isEmpty(data.name)) errors.name = "Nom requis"

@@ -15,14 +15,16 @@ class BusinessRegister extends Component {
       email: "",
       password: "",
       password2: "",
+      gmapLink: "",
       type: "",
       typeOptions: [
-        { key: "boucherie", text: "boucherie", value: "boucherie" },
-        { key: "droguerie", text: "droguerie", value: "droguerie" },
+        { key: "boulangerie", text: "boulangerie", value: "boulangerie" },
+        { key: "coiffeur", text: "coiffeur", value: "coiffeur" },
         { key: "épicerie", text: "épicerie", value: "épicerie" },
+        { key: "supermarché", text: "supermarché", value: "supermarché" },
+        { key: "pharmacie", text: "pharmacie", value: "pharmacie" },
         { key: "friperie", text: "friperie", value: "friperie" },
-        { key: "mercerie", text: "mercerie", value: "mercerie" },
-        { key: "poissonnerie", text: "poissonnerie", value: "poissonnerie" }
+        { key: "resturant", text: "resturant", value: "resturant" }
       ],
       errors: {}
     }
@@ -37,8 +39,10 @@ class BusinessRegister extends Component {
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2,
-      type: this.state.type
+      type: this.state.type,
+      gmapLink: this.state.gmapLink
     }
+    console.log(business)
     axios
       .post("/business/register", business)
       .then(res => {
@@ -146,6 +150,20 @@ class BusinessRegister extends Component {
                 />
                 <Form.Control.Feedback type='invalid'>
                   {errors.password2}
+                </Form.Control.Feedback>
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Control
+                  placeholder='Lien GoogleMaps de votre commerce'
+                  isInvalid={!!errors.gmapLink}
+                  name='gmapLink'
+                  type='text'
+                  value={this.state.gmapLink}
+                  onChange={this.handleChange}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.gmapLink}
                 </Form.Control.Feedback>
               </Form.Group>
 

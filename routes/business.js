@@ -40,7 +40,8 @@ router.post("/register", (req, res) => {
         name: req.body.name,
         password: req.body.password,
         phoneNumber: req.body.phoneNumber,
-        type: req.body.type
+        type: req.body.type,
+        location: req.body.gmapLink
       })
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(newBusiness.password, salt, (err, hash) => {
@@ -108,6 +109,21 @@ router.post("/search", (req, res) => {
 router.post("/find/type", (req, res) => {
   const { type } = req.body
   Business.find({ type })
+    .then(business => res.json(business))
+    .catch(err => res.status(404).json(err))
+})
+
+router.post("/update/img", (req, res) => {
+  const { id, picture } = req.body
+  User.findOneAndUpdate({ _id: id }, { $set: { picture } }, { new: true })
+    .then(business => res.json(business))
+    .catch(err => res.status(404).json(err))
+})
+
+router.post("/update/desc", (req, res) => {
+  const { id, desc } = req.body
+  console.log(id, desc)
+  User.findOneAndUpdate({ _id: id }, { $set: { desc } }, { new: true })
     .then(business => res.json(business))
     .catch(err => res.status(404).json(err))
 })

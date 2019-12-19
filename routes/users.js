@@ -133,7 +133,8 @@ router.post("/donate", (req, res) => {
                       $push: {
                         transactions: {
                           user: user.id,
-                          amount: donationData.amount
+                          amount: donationData.amount,
+                          date: new Date()
                         }
                       }
                     },
