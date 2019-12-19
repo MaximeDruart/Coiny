@@ -25,6 +25,20 @@ a {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  transition: all 0.3s ease-in-out;
+
+  .loginElements {
+    transition: all 0.3s ease-out;
+    &-appear {
+      opacity: 0;
+      transform: scale(0.85);
+      &-active {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+
   // typo
   & h1,
   & h2,
@@ -82,6 +96,7 @@ a {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
     &_submit {
       margin: 30px 0px 30px 0px;
       font-family: "Rift Demi";

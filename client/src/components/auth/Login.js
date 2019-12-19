@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { LoginContext } from "../../contexts/LoginContext"
 import "./AuthDirection.scss"
+import { CSSTransition } from "react-transition-group"
 
 import { Form } from "react-bootstrap"
 

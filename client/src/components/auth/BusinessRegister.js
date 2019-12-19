@@ -3,7 +3,7 @@ import axios from "axios"
 import "./AuthDirection.scss"
 import Back from "./Back"
 import { Dropdown } from "semantic-ui-react"
-
+import { CSSTransition } from "react-transition-group"
 import { Form, Jumbotron, Container, Button } from "react-bootstrap"
 
 class BusinessRegister extends Component {
@@ -66,105 +66,114 @@ class BusinessRegister extends Component {
     let { errors } = this.state
     return (
       <Container className='home'>
-        <Back history={this.props.history} />
-        <Jumbotron>
-          <h2>Profil commerçant</h2>
-        </Jumbotron>
-        <div className='home_line'></div>
-        <Form className='home_form' noValidate onSubmit={this.handleSubmit}>
-          <Form.Group>
-            <Form.Control
-              placeholder='nom du commerce'
-              isInvalid={!!errors.name}
-              name='name'
-              type='text'
-              value={this.state.name}
-              onChange={this.handleChange}
-            />
-            <Form.Control.Feedback type='invalid'>
-              {errors.name}
-            </Form.Control.Feedback>
-          </Form.Group>
+        <CSSTransition
+          appear={true}
+          in={true}
+          timeout={0}
+          classNames='loginElements'
+        >
+          <div className='loginElements'>
+            <Back history={this.props.history} />
+            <Jumbotron>
+              <h2>Profil commerçant</h2>
+            </Jumbotron>
+            <div className='home_line'></div>
+            <Form className='home_form' noValidate onSubmit={this.handleSubmit}>
+              <Form.Group>
+                <Form.Control
+                  placeholder='nom du commerce'
+                  isInvalid={!!errors.name}
+                  name='name'
+                  type='text'
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.name}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-          <Form.Group>
-            <Form.Control
-              placeholder='numero de téléphone'
-              isInvalid={!!errors.phoneNumber}
-              name='phoneNumber'
-              type='text'
-              value={this.state.phoneNumber}
-              onChange={this.handleChange}
-            />
-            <Form.Control.Feedback type='invalid'>
-              {errors.phoneNumber}
-            </Form.Control.Feedback>
-          </Form.Group>
+              <Form.Group>
+                <Form.Control
+                  placeholder='numero de téléphone'
+                  isInvalid={!!errors.phoneNumber}
+                  name='phoneNumber'
+                  type='text'
+                  value={this.state.phoneNumber}
+                  onChange={this.handleChange}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.phoneNumber}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-          <Form.Group>
-            <Form.Control
-              placeholder='Email'
-              isInvalid={!!errors.email}
-              name='email'
-              type='email'
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-            <Form.Control.Feedback type='invalid'>
-              {errors.email}
-            </Form.Control.Feedback>
-          </Form.Group>
+              <Form.Group>
+                <Form.Control
+                  placeholder='Email'
+                  isInvalid={!!errors.email}
+                  name='email'
+                  type='email'
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.email}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-          <Form.Group>
-            <Form.Control
-              placeholder='Mot de passe'
-              isInvalid={!!errors.password}
-              name='password'
-              type='password'
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-            <Form.Control.Feedback type='invalid'>
-              {errors.password}
-            </Form.Control.Feedback>
-          </Form.Group>
+              <Form.Group>
+                <Form.Control
+                  placeholder='Mot de passe'
+                  isInvalid={!!errors.password}
+                  name='password'
+                  type='password'
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.password}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-          <Form.Group>
-            <Form.Control
-              placeholder='Confirmer le mot de passe'
-              isInvalid={!!errors.password2}
-              name='password2'
-              type='password'
-              value={this.state.password2}
-              onChange={this.handleChange}
-            />
-            <Form.Control.Feedback type='invalid'>
-              {errors.password2}
-            </Form.Control.Feedback>
-          </Form.Group>
+              <Form.Group>
+                <Form.Control
+                  placeholder='Confirmer le mot de passe'
+                  isInvalid={!!errors.password2}
+                  name='password2'
+                  type='password'
+                  value={this.state.password2}
+                  onChange={this.handleChange}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.password2}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-          <Form.Group>
-            <Dropdown
-              id='business-dropdown'
-              options={this.state.typeOptions}
-              placeholder='type de commerce'
-              search
-              selection
-              fluid
-              allowAdditions
-              value={this.state.type}
-              name='type'
-              onAddItem={this.handleAddition}
-              onChange={this.handleDropDownChange}
-            />
-            <Form.Control.Feedback type='invalid'>
-              {errors.type}
-            </Form.Control.Feedback>
-          </Form.Group>
+              <Form.Group>
+                <Dropdown
+                  id='business-dropdown'
+                  options={this.state.typeOptions}
+                  placeholder='type de commerce'
+                  search
+                  selection
+                  fluid
+                  allowAdditions
+                  value={this.state.type}
+                  name='type'
+                  onAddItem={this.handleAddition}
+                  onChange={this.handleDropDownChange}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.type}
+                </Form.Control.Feedback>
+              </Form.Group>
 
-          <Button className='home_form_submit' type='submit'>
-            s'inscrire
-          </Button>
-        </Form>
+              <Button className='home_form_submit' type='submit'>
+                s'inscrire
+              </Button>
+            </Form>
+          </div>
+        </CSSTransition>
       </Container>
     )
   }

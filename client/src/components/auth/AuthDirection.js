@@ -4,17 +4,27 @@ import { Jumbotron, Container, Button } from "react-bootstrap"
 import "./AuthDirection.scss"
 import Login from "./Login"
 import Header from "../welcomeComp/Header"
+import { CSSTransition } from "react-transition-group"
 
 const AuthDirection = props => {
   return (
     <Container className='home'>
-      <Header />
-      <Jumbotron>
-        <h3>Connexion</h3>
-      </Jumbotron>
-      <div className='links'>
-        <Login history={props.history}></Login>
-      </div>
+      <CSSTransition
+        appear={true}
+        in={true}
+        timeout={0}
+        classNames='loginElements'
+      >
+        <div className='loginElements'>
+          <Header />
+          <Jumbotron>
+            <h3>Connexion</h3>
+          </Jumbotron>
+          <div className='links'>
+            <Login history={props.history}></Login>
+          </div>
+        </div>
+      </CSSTransition>
       <div className='register'>
         <Link to='/userregister'>
           <Button className='register_text' block variant='outline-primary'>
