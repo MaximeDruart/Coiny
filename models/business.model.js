@@ -57,6 +57,10 @@ const businessSchema = new mongoose.Schema(
     transactions: {
       type: Array,
       default: []
+    },
+    description: {
+      type: String,
+      default: "Description de votre commerce"
     }
   },
   {

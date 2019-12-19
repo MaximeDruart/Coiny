@@ -15,17 +15,16 @@ import pharmacie from "./img/pharmacie.svg"
 import supermarche from "./img/supermarche.svg"
 import friperie from "./img/friperie.svg"
 import restaurant from "./img/restaurant.svg"
-import store from "./img/store.svg"
 
 let storeImgs = {
+  supermarche,
   epicerie,
   boucherie,
   coiffeur,
   boulangerie,
   pharmacie,
   friperie,
-  restaurant,
-  store
+  restaurant
 }
 
 const FullPageSearch = () => {
@@ -43,11 +42,21 @@ const FullPageSearch = () => {
   const getRenderedBusinesses = () => {
     if (businessDataForType && businessQueryResults && !loading) {
       const extendedData = [...businessDataForType, ...businessQueryResults]
+      if (extendedData.length === 0)
+        return (
+          <CSSTransition
+            in={extendedData.length === 0}
+            appear={true}
+            timeout={1000}
+            classNames='noItems'
+          >
+            <div className='noItems'>{`Aucun résultat trouvé pour "${query}"`}</div>
+          </CSSTransition>
+        )
+
       return extendedData.map(business => {
-        let bgImgString = business
-          ? business.type !== "store"
-            ? storeImgs[business.type]
-            : supermarche
+        let bgImgString = Object.keys(storeImgs).includes(business.type)
+          ? storeImgs[business.type]
           : supermarche
 
         return (
@@ -74,7 +83,6 @@ const FullPageSearch = () => {
                 </div>
               </div>
               <div
-                // style={{ backgroundImage: `url(${business.picture})` }}
                 style={{
                   backgroundImage: `url(${bgImgString})`
                 }}

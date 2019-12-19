@@ -64,6 +64,7 @@ const StorePage = props => {
         "loadinganim" // need to do a placeholder
       ) : businessDataForId ? (
         <div className='storeInfo'>
+          {console.log(businessDataForId, businessDataForId.description)}
           <div className='storePresentation'>
             <h2>{businessDataForId.name}</h2>
             <div className='statContainer'>
@@ -71,8 +72,8 @@ const StorePage = props => {
             </div>
             <div className='storeDescription'>
               <p>
-                {businessDataForId && businessDataForId.desc > 0
-                  ? businessDataForId.desc
+                {businessDataForId && businessDataForId.description.length > 0
+                  ? businessDataForId.description
                   : "Aucune description disponible"}
               </p>
             </div>

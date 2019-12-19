@@ -52,6 +52,9 @@
       width: 100%;
       height: 100%;
       border: none;
+      &.loading {
+        opacity: 0.8;
+      }
     }
   }
   &_valider {
@@ -67,6 +70,9 @@
     background: #ff7590;
     margin: -10px 0px 20px 0px;
     cursor: pointer;
+    &.disabled {
+      background: #d4abb3;
+    }
   }
   & button {
     text-align: center;
@@ -84,12 +90,13 @@
 
 .deconnexion {
   & button {
-    height: 0px;
     background: transparent;
-    border: none;
+    // border: none;
     margin: 20px 0px 0px 0px;
     color: white;
     font-size: 15px;
+    width: 150px;
+    font-weight: 600;
   }
 }
 

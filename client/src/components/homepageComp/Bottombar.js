@@ -23,7 +23,10 @@ const Bottombar = props => {
         </Link>
       </div>
 
-      <Link to={receiverStatus ? "/barcode" : "/privilegeaccess"}>
+      <Link
+        style={{ pointerEvents: userType !== "user" && "none" }}
+        to={receiverStatus ? "/barcode" : "/privilegeaccess"}
+      >
         <div className='Bottombar_iconBottombar middleQr'>
           <img src={logoImg} alt='logo' />
         </div>

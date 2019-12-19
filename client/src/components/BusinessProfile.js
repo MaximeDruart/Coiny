@@ -29,12 +29,13 @@ const BusinessProfile = props => {
   const {
     businessDataForId,
     getBusinessDataForId,
-    updateBusiness
+    updateBusiness,
+    loading
   } = useContext(UIDataContext)
   const { logout } = useContext(LoginContext)
 
   let [desc, setDesc] = useState("")
-  let [img, setImg] = useState("")
+  // let [img, setImg] = useState("")
 
   const submitDesc = () => {
     updateBusiness(business.id, null, desc)
@@ -51,6 +52,10 @@ const BusinessProfile = props => {
   useEffect(() => {
     getBusinessDataForId(business.id)
   }, [getBusinessDataForId, business.id])
+
+  useEffect(() => {
+    businessDataForId && setDesc(businessDataForId.description)
+  }, [businessDataForId.description])
 
   return (
     <div className='businessProfile'>
@@ -76,6 +81,7 @@ const BusinessProfile = props => {
       </div>
       <div className='businessProfile_description'>
         <textarea
+          className={loading ? "loading" : undefined}
           onChange={event => setDesc(event.target.value)}
           value={desc}
           name='desc'
@@ -86,12 +92,16 @@ const BusinessProfile = props => {
       <div
         style={{ cursor: "pointer" }}
         onClick={submitDesc}
-        className='businessProfile_valider'
+        className={
+          loading
+            ? "businessProfile_valider disabled"
+            : "businessProfile_valider"
+        }
       >
         Valider
       </div>
       <div className='deconnexion'>
-        <button onClick={logout}>Déconexion</button>
+        <button onClick={logout}>Déconnexion</button>
       </div>
       <div className='bottomBarBlock'></div>
     </div>
