@@ -31,6 +31,7 @@ TYPOGRAPHY
     font-size: 35px;
   }
   & h2 {
+    margin: 20px 0px 20px 0px;
     text-align: center;
     font-family: europa, sans-serif;
     font-weight: 300;
@@ -54,9 +55,10 @@ TYPOGRAPHY
   &.file {
     display: flex;
     height: 24%;
+    margin: 5px 0px 5px 0px;
   }
   &.submit {
-    margin: 30px 0px 0px 0px;
+    margin: 20px 0px 0px 0px;
     font-family: "Rift Demi";
     font-size: 18px;
     width: 300px;
