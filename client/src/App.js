@@ -22,6 +22,7 @@ import BusinessProfile from "./components/BusinessProfile"
 import PaymentForm from "./components/payment/PaymentForm"
 import UserHistory from "./components/UserHistory"
 import Category from "./components/Category"
+import Article from "./components/Article"
 
 class App extends Component {
   constructor() {
@@ -63,6 +64,11 @@ class App extends Component {
               <PrivateRoute
                 path='/homepage'
                 component={Homepage}
+              ></PrivateRoute>
+
+              <PrivateRoute
+                path='/Article'
+                component={Article}
               ></PrivateRoute>
 
               <PrivateRoute

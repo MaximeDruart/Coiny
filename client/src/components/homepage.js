@@ -6,6 +6,7 @@ import PartnerShowcase from "./homepageComp/PartnerShowcaser"
 import { UIDataContext } from "../contexts/UIDataContext"
 import StoreOfTheWeek from "./homepageComp/StoreOfTheWeek.jsx"
 import uuid from "uuid"
+import { Link } from "react-router-dom"
 
 const Homepage = props => {
   const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
@@ -62,9 +63,10 @@ const Homepage = props => {
         <div className='featureFilterContainer'>
           <div className='featureFilter'>
             <h3>Témoignage de commerçant, regardez ce qu'ils en pensent.</h3>
+           
+           <link to='./Article'>
             <div className='buttonFilter'>Lire un témoignage</div>
-            <h3>Recherchez un commerce qui correspond à vos envies</h3>
-            <div className='buttonFilter'>Rechercher un commerce</div>
+            </link>
           </div>
         </div>
         <div className='partnerBand'>
