@@ -11,6 +11,7 @@ class UIDataContextProvider extends Component {
       businessQueryResults: "",
       errors: "",
       businessDataForId: "",
+      businessDataForType: "",
       loading: false
     }
   }
@@ -53,6 +54,15 @@ class UIDataContextProvider extends Component {
     }
   }
 
+  getBusinessDataForType = async type => {
+    try {
+      const businesses = await axios.post("/business/find/type", { type })
+      this.setState({ businessDataForType: businesses.data })
+    } catch (error) {
+      return error
+    }
+  }
+
   // but you can also provide functions to mutate this data
 
   render() {
@@ -61,7 +71,8 @@ class UIDataContextProvider extends Component {
         value={{
           ...this.state,
           getBusinessData: this.getBusinessData,
-          getBusinessDataForId: this.getBusinessDataForId
+          getBusinessDataForId: this.getBusinessDataForId,
+          getBusinessDataForType: this.getBusinessDataForType
         }}
       >
         {this.props.children}

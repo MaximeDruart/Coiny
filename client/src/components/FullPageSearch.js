@@ -7,13 +7,20 @@ import { CSSTransition } from "react-transition-group"
 import uuid from "uuid"
 
 const FullPageSearch = () => {
-  const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
+  const {
+    getBusinessData,
+    businessQueryResults,
+    businessDataForType,
+    getBusinessDataForType
+  } = useContext(UIDataContext)
 
   let [query, setQuery] = useState("")
 
   const getRenderedBusinesses = () => {
-    if (businessQueryResults) {
-      return businessQueryResults.map(business => (
+    if (businessDataForType && businessQueryResults) {
+      console.log(businessDataForType, businessQueryResults)
+      const extendedData = [...businessDataForType, ...businessQueryResults]
+      return extendedData.map(business => (
         <CSSTransition
           appear={true}
           key={uuid()}
@@ -47,7 +54,8 @@ const FullPageSearch = () => {
 
   useEffect(() => {
     getBusinessData(query)
-  }, [query, getBusinessData])
+    getBusinessDataForType(query)
+  }, [query, getBusinessData, getBusinessDataForType])
 
   const queryHandler = value => {
     setQuery(value)

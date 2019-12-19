@@ -106,4 +106,11 @@ router.post("/search", (req, res) => {
     .catch(err => res.status(400).json(err))
 })
 
+router.post("/find/type", (req, res) => {
+  const { type } = req.body
+  Business.find({ type })
+    .then(business => res.json(business))
+    .catch(err => res.status(404).json(err))
+})
+
 module.exports = router
