@@ -26,16 +26,30 @@
     color: white;
     margin: 10px 0px 10px 0px;
   }
+
+  .name {
+    width: 60%;
+    height: 29px;
+    color: white;
+    font-size: 40px;
+    font-weight: 600;
+    margin: 18px;
+    margin-bottom: 25px;
+  }
   &_wallet {
     display: flex;
-    width: 160px;
+    width: 170px;
     height: 35px;
     font-size: 18px;
-    margin: -10px 0px 10px 0px;
+    margin: -5px 0px 10px 0px;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
     color: white;
+    background-color: #773bff;
+    span {
+      font-weight: 600;
+    }
   }
   &_description {
     display: flex;
