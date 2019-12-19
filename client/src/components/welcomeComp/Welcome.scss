@@ -138,6 +138,9 @@ TYPOGRAPHY
 }
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
+  .main {
+    padding: 30px 25px 30px 25px;
+  }
   .main h1 {
     margin: 0px 10px 0px 10px;
     font-family: europa, sans-serif;
@@ -158,6 +161,6 @@ TYPOGRAPHY
   }
   .welcome_picture {
     margin: 40px 0px 40px 0px;
-    height: 170px;
+    height: 140px;
   }
 }

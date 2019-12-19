@@ -64,7 +64,6 @@ const StorePage = props => {
         "loadinganim" // need to do a placeholder
       ) : businessDataForId ? (
         <div className='storeInfo'>
-          {console.log(businessDataForId, businessDataForId.description)}
           <div className='storePresentation'>
             <h2>{businessDataForId.name}</h2>
             <div className='statContainer'>
@@ -78,9 +77,6 @@ const StorePage = props => {
               </p>
             </div>
           </div>
-          <a href={businessDataForId.gmapLink}>
-            <button>se rendre au store</button>
-          </a>
         </div>
       ) : (
         <h1> {/*errors*/} </h1>
@@ -91,6 +87,7 @@ const StorePage = props => {
           <button>Donate</button>
         </Link>
       )}
+      <a href={businessDataForId.gmapLink}>Se rendre au store</a>
       <div className='bottomCompenser'></div>
     </div>
   )
