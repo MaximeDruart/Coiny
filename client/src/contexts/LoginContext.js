@@ -19,7 +19,8 @@ class LoginContextProvider extends Component {
       loading: false,
       userData: null,
       localStorageHasBeenRead: false,
-      userType: "user"
+      userType: "user",
+      userHistoryData: ""
     }
   }
   // but you can also provide functions to mutate this data
@@ -86,6 +87,10 @@ class LoginContextProvider extends Component {
       })
   }
 
+  setUserHistoryData = data => {
+    this.setState({ userHistoryData: data })
+  }
+
   getExtendedData = () => {
     if (this.state.user) {
       axios
@@ -141,7 +146,8 @@ class LoginContextProvider extends Component {
           ...this.state,
           login: this.login,
           logout: this.logout,
-          getExtendedData: this.getExtendedData
+          getExtendedData: this.getExtendedData,
+          setUserHistoryData: this.setUserHistoryData
         }}
       >
         {this.props.children}

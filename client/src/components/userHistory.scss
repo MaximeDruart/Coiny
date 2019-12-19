@@ -49,9 +49,9 @@
     // }
 
     .placeholder {
-      width: 80%;
-      max-height: 130px;
-      min-height: 130px;
+      width: 88%;
+      max-height: 90px;
+      min-height: 90px;
       margin-bottom: 25px;
       border-radius: 10px;
       background-color: #f5f5f5;
@@ -62,9 +62,9 @@
     .history-item {
       @include smooth-shadow();
       display: flex;
-      width: 80%;
-      max-height: 130px;
-      min-height: 130px;
+      width: 88%;
+      max-height: 75px;
+      min-height: 75px;
       flex-flow: row nowrap;
       justify-content: center;
       margin-bottom: 30px;
