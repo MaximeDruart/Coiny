@@ -41,7 +41,10 @@ const StorePage = props => {
               <p>Description</p>
             </div>
           </div>
-          <button>se rendre au store</button>
+          <a href={businessDataForId.gmapLink}>
+            {console.log(businessDataForId)}
+            <button>se rendre au store</button>
+          </a>
         </div>
       ) : (
         <h1> {/*errors*/} </h1>
