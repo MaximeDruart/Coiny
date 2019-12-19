@@ -5,32 +5,30 @@
     box-sizing: border-box;
     font-family: europa;
   }
+  padding: 30px;
   width: 100%;
   height: 100%;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  background: linear-gradient(#6300ec, #3f0d83);
 
   .history-header {
-    @include flex-center;
-    @include smooth-shadow;
-    top: 2vh;
-    position: absolute;
-    width: 80%;
-    height: 60px;
-    border-radius: 20px;
-    background-color: $button-color;
+    margin-top: 10px;
     text-align: center;
-
     .text {
       color: white;
-      font-size: 28px;
+      font-size: 35px;
       font-weight: 600;
+    }
+    img {
+      margin-top: 30px;
+      width: 70%;
     }
   }
 
   .history-container {
-    padding-top: 13vh;
+    margin-top: 20px;
     width: 100%;
     height: calc(100vh - 80px);
     overflow-y: scroll;
@@ -61,17 +59,38 @@
 
     .history-item {
       @include smooth-shadow();
+      background-color: white;
       display: flex;
       width: 80%;
-      max-height: 130px;
-      min-height: 130px;
-      flex-flow: row nowrap;
+      max-height: 120px;
+      min-height: 120px;
       justify-content: center;
+      align-items: center;
       margin-bottom: 30px;
       border-radius: 10px;
       overflow: hidden;
       transition: all 0.6s ease-in-out;
       flex: auto;
+      font-size: 20px;
+      line-height: 30px;
+      padding: 15px;
+
+      &_text{
+        width: 60%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      &_img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        & img{
+          width: 100%;
+        }
+      }
 
       &-appear {
         opacity: 0;
@@ -80,5 +99,9 @@
         opacity: 1;
       }
     }
+  }
+  ::-webkit-scrollbar {
+    width: 0px; 
+    background: transparent; 
   }
 }
