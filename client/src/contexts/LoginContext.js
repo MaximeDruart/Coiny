@@ -14,6 +14,8 @@ class LoginContextProvider extends Component {
       user: null,
       business: null,
       errors: "",
+      userLogErrors: "",
+      businessLogErrors: "",
       loading: false,
       userData: null,
       localStorageHasBeenRead: false,
@@ -41,30 +43,47 @@ class LoginContextProvider extends Component {
           errors: ""
         })
       })
-      .catch(error =>
-        this.setState({ errors: error.response.data, loading: false })
-      )
-
-    axios
-      .post("/business/login", userData)
-      .then(res => {
-        // saving token to localStorage so user is remembered
-        const { token } = res.data
-        localStorage.setItem("jwtToken", token)
-        localStorage.setItem("userType", "business")
-        setAuthToken(token)
-        const decodedData = jwt_decode(token)
-        this.setState({
-          isAuthenticated: true,
-          business: decodedData,
-          loading: false,
-          userType: "business",
-          errors: ""
-        })
+      .catch(error => {
+        // if not a user, test for a business
+        this.setState({ userLogErrors: error.response.data, loading: false })
+        axios
+          .post("/business/login", userData)
+          .then(res => {
+            // saving token to localStorage so user is remembered
+            const { token } = res.data
+            localStorage.setItem("jwtToken", token)
+            localStorage.setItem("userType", "business")
+            setAuthToken(token)
+            const decodedData = jwt_decode(token)
+            this.setState({
+              isAuthenticated: true,
+              business: decodedData,
+              loading: false,
+              userType: "business",
+              errors: ""
+            })
+          })
+          .catch(error =>
+            this.setState(
+              {
+                businessLogErrors: error.response.data,
+                loading: false
+              },
+              () => {
+                let tempError = ""
+                const { businessLogErrors, userLogErrors } = this.state
+                if (!businessLogErrors.email && businessLogErrors.password)
+                  tempError = { password: businessLogErrors.password }
+                if (!userLogErrors.email && userLogErrors.password)
+                  tempError = { password: userLogErrors.password }
+                if (businessLogErrors.email && userLogErrors.email) {
+                  tempError = { email: userLogErrors.email }
+                }
+                this.setState({ errors: tempError })
+              }
+            )
+          )
       })
-      .catch(error =>
-        this.setState({ errors: error.response.data, loading: false })
-      )
   }
 
   getExtendedData = () => {
