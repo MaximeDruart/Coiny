@@ -58,53 +58,53 @@ const BusinessProfile = props => {
   }, [businessDataForId.description])
 
   return (
-    <div className='businessProfile'>
-      <div className='businessProfile_avatar'>
-        <img
-          src={
-            businessDataForId
-              ? businessDataForId.type !== "store"
-                ? storeImgs[businessDataForId.type]
+    businessDataForId && (
+      <div className='businessProfile'>
+        <div className='businessProfile_avatar'>
+          <img
+            src={
+              businessDataForId
+                ? businessDataForId.type !== "store"
+                  ? storeImgs[businessDataForId.type]
+                  : supermarche
                 : supermarche
-              : supermarche
-          }
-        ></img>
-        {/* <input type='file' name='business-img' onChange={handleFile} /> */}
-      </div>
-      {businessDataForId && (
-        <div>
-          <h1>{businessDataForId.name}</h1>
+            }
+          ></img>
+          {/* <input type='file' name='business-img' onChange={handleFile} /> */}
         </div>
-      )}
-      <div className='businessProfile_wallet'>
-        <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
+
+        <div className='name'>{businessDataForId.name}</div>
+
+        <div className='businessProfile_wallet'>
+          <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
+        </div>
+        <div className='businessProfile_description'>
+          <textarea
+            className={loading ? "loading" : undefined}
+            onChange={event => setDesc(event.target.value)}
+            value={desc}
+            name='desc'
+            placeholder='Décrivez votre commerce...'
+            maxLength='200'
+          ></textarea>
+        </div>
+        <div
+          style={{ cursor: "pointer" }}
+          onClick={submitDesc}
+          className={
+            loading
+              ? "businessProfile_valider disabled"
+              : "businessProfile_valider"
+          }
+        >
+          Valider
+        </div>
+        <div className='deconnexion'>
+          <button onClick={logout}>Déconnexion</button>
+        </div>
+        <div className='bottomBarBlock'></div>
       </div>
-      <div className='businessProfile_description'>
-        <textarea
-          className={loading ? "loading" : undefined}
-          onChange={event => setDesc(event.target.value)}
-          value={desc}
-          name='desc'
-          placeholder='Décrivez votre commerce...'
-          maxLength='200'
-        ></textarea>
-      </div>
-      <div
-        style={{ cursor: "pointer" }}
-        onClick={submitDesc}
-        className={
-          loading
-            ? "businessProfile_valider disabled"
-            : "businessProfile_valider"
-        }
-      >
-        Valider
-      </div>
-      <div className='deconnexion'>
-        <button onClick={logout}>Déconnexion</button>
-      </div>
-      <div className='bottomBarBlock'></div>
-    </div>
+    )
   )
 }
 
