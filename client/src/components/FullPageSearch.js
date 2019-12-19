@@ -29,23 +29,25 @@ const FullPageSearch = () => {
           timeout={500}
           classNames='business-item'
         >
-          <Link to={`/business/${business._id}`}>
-            <div key={uuid()} className='business-item'>
-              <div className='left'>
-                <div className='top'>
-                  <div className='name'>{business.name}</div>
-                  <div className='type'>{business.type}</div>
-                  <div className='money'>{business.moneyAllocated}€</div>
-                </div>
-                <div className='logo-container'>
-                  <img alt='logo' src={logo} className='logo'></img>
-                </div>
+          <Link
+            key={uuid()}
+            className='business-item'
+            to={`/business/${business._id}`}
+          >
+            <div className='left'>
+              <div className='top'>
+                <div className='name'>{business.name}</div>
+                <div className='type'>{business.type}</div>
+                <div className='money'>{business.moneyAllocated}€</div>
               </div>
-              <div
-                style={{ backgroundImage: `url(${business.picture})` }}
-                className='right'
-              ></div>
+              <div className='logo-container'>
+                <img alt='logo' src={logo} className='logo'></img>
+              </div>
             </div>
+            <div
+              style={{ backgroundImage: `url(${business.picture})` }}
+              className='right'
+            ></div>
           </Link>
         </CSSTransition>
       ))
