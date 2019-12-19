@@ -41,14 +41,14 @@
     }
 
     .placeholder {
-      width: 88%;
-      max-height: 90px;
-      min-height: 90px;
+      width: 80%;
+      max-height: 120px;
+      min-height: 120px;
       margin-bottom: 25px;
       border-radius: 10px;
       background-color: #f5f5f5;
+      opacity: 0.2;
       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-      // animation: glow infinite alternate 0.6s;
     }
 
     .history-item {

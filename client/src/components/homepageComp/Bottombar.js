@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { Link } from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import "./Bottombar.scss"
 import homelogo from "../img/icn_home_inactive.svg"
 import profilelogo from "../img/icn_profile_inactive.svg"
@@ -8,13 +8,17 @@ import { LoginContext } from "../../contexts/LoginContext"
 
 const Bottombar = props => {
   const { userType, receiverStatus } = useContext(LoginContext)
+  const { pathname } = useLocation()
   return (
     <div className='Bottombar'>
       <div
         style={{ opacity: props.location.pathname === "/homepage" && "0.5" }}
         className='Bottombar_iconBottombar'
       >
-        <Link to='/homepage'>
+        <Link
+          style={{ pointerEvents: pathname === "/homepage" && "none" }}
+          to='/homepage'
+        >
           <img src={homelogo} alt='' />
         </Link>
       </div>
