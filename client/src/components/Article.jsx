@@ -3,6 +3,7 @@ import "./Article.scss"
 import cedricPhotoOUahou from "./img/BrunoChallant.png"
 
 const Article = props => {
+  window.scrollTo(0, 0)
   return (
     <div className="articleContainer">
       <div className="articletop">
