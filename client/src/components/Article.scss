@@ -1,0 +1,31 @@
+.articleContainer{
+    width: 100vw;
+    min-height:100vh ;
+    background: rgb(81, 10, 82);
+    overflow: hidden;
+    font-size: 1.5em;
+    color: white;
+    padding: 20px 0;
+    .home_back{
+        margin-left: 20px;
+    }
+    .articleText,.articletitle,.articlequote{
+        margin: 20px 20px;
+    }
+    .articletop{
+        width: 100vw;
+        overflow: hidden;
+        margin:0 0 50px 0;
+        img{
+            width: 100%;
+        }
+    }
+}
+.blankSpace{
+    height: 120px;
+}
+.articlequote{
+    font-size: 1.2em;
+    font-weight: bolder;
+    line-height: 1.2em;
+}
