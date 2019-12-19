@@ -6,13 +6,13 @@
   align-items: center;
   max-width: 320px;
   max-height: 200px;
-  margin: 20px 0;
+  margin: 20px 20px;
   border-radius: 15px;
   background: #9140ff;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.374);
   color: white;
 
-  & img{
+  & img {
     width: 110%;
   }
 
@@ -53,7 +53,8 @@
 .weeklyContainer {
   display: flex;
   padding: 20px 0px 40px 0px;
-  flex-direction: column;
+  flex-direction: row;
+  flex-flow: wrap;
   justify-content: center;
   align-items: center;
 }
