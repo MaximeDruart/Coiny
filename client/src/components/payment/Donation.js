@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import "./donation.scss"
-import donationImg from "../img/donationImg.svg"
+import donationImg from "../img/mydonation.svg"
 import Back from "../auth/Back"
 import { useParams, Link } from "react-router-dom"
 
@@ -17,8 +17,8 @@ const Donation = props => {
   return (
     <div className='containDonation'>
       <Back history={props.history} />
-      <img className='donationImg' src={donationImg} alt='donation' />
       <h1>Donation pour la cagnotte de Franprix</h1>
+      <img className='donationImg' src={donationImg} alt='donation' />
       <div className='containDonation_montant'>
         <input
           name='amount'
