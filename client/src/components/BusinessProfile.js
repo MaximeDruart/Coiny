@@ -32,9 +32,6 @@ const BusinessProfile = props => {
         ></textarea>
       </div>
       <div className='businessProfile_valider'>Valider</div>
-      <Link to='/privilegeaccess'>
-        <button>Historique des dons</button>
-      </Link>
       <div className='deconnexion'>
         <button onClick={logout}>Déconexion</button>
       </div>
