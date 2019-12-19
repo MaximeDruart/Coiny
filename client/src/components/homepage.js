@@ -64,9 +64,9 @@ const Homepage = props => {
           <div className='featureFilter'>
             <h3>Témoignage de commerçant, regardez ce qu'ils en pensent.</h3>
            
-           <link to='./Article'>
+           <Link to='/Article'>
             <div className='buttonFilter'>Lire un témoignage</div>
-            </link>
+            </Link>
           </div>
         </div>
         <div className='partnerBand'>
