@@ -37,7 +37,7 @@ const StorePage = props => {
             <div className='statContainer'>
               <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
             </div>
-            <div class='storeDescription'>
+            <div className='storeDescription'>
               <p>Description</p>
             </div>
           </div>

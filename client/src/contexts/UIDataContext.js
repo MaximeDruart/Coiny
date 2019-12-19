@@ -17,14 +17,16 @@ class UIDataContextProvider extends Component {
   }
 
   getBusinessData = (query = null, resultsNumber = 0) => {
+    this.setState({ loading: true })
     if (!query) {
       axios
         .get("/business/find/all")
         .then(res => {
           !resultsNumber
-            ? this.setState({ businessQueryResults: res.data })
+            ? this.setState({ businessQueryResults: res.data, loading: false })
             : this.setState({
-                businessQueryResults: res.data.slice(0, resultsNumber)
+                businessQueryResults: res.data.slice(0, resultsNumber),
+                loading: false
               })
         })
         .catch(errors => this.setState({ errors }))
@@ -32,10 +34,10 @@ class UIDataContextProvider extends Component {
       axios
         .post("/business/search", { query, resultsNumber })
         .then(res => {
-          this.setState({ businessQueryResults: res.data })
+          this.setState({ businessQueryResults: res.data, loading: false })
           return res.data
         })
-        .catch(errors => this.setState({ errors }))
+        .catch(errors => this.setState({ errors, loading: false }))
     }
   }
 
@@ -55,10 +57,12 @@ class UIDataContextProvider extends Component {
   }
 
   getBusinessDataForType = async type => {
+    this.setState({ loading: true })
     try {
       const businesses = await axios.post("/business/find/type", { type })
-      this.setState({ businessDataForType: businesses.data })
+      this.setState({ businessDataForType: businesses.data, loading: false })
     } catch (error) {
+      this.setState({ loading: false })
       return error
     }
   }

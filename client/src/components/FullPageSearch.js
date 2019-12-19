@@ -5,20 +5,21 @@ import "./fullPageSearch.scss"
 import logo from "./img/logo.svg"
 import { CSSTransition } from "react-transition-group"
 import uuid from "uuid"
+import { Link } from "react-router-dom"
 
 const FullPageSearch = () => {
   const {
     getBusinessData,
     businessQueryResults,
     businessDataForType,
-    getBusinessDataForType
+    getBusinessDataForType,
+    loading
   } = useContext(UIDataContext)
 
   let [query, setQuery] = useState("")
 
   const getRenderedBusinesses = () => {
-    if (businessDataForType && businessQueryResults) {
-      console.log(businessDataForType, businessQueryResults)
+    if (businessDataForType && businessQueryResults && !loading) {
       const extendedData = [...businessDataForType, ...businessQueryResults]
       return extendedData.map(business => (
         <CSSTransition
@@ -35,9 +36,11 @@ const FullPageSearch = () => {
                 <div className='type'>{business.type}</div>
                 <div className='money'>{business.moneyAllocated}€</div>
               </div>
-              <div className='logo-container'>
-                <img alt='logo' src={logo} className='logo'></img>
-              </div>
+              <Link to={`/business/${business._id}`}>
+                <div className='logo-container'>
+                  <img alt='logo' src={logo} className='logo'></img>
+                </div>
+              </Link>
             </div>
             <div
               style={{ backgroundImage: `url(${business.picture})` }}
