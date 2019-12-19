@@ -54,7 +54,7 @@ class App extends Component {
               ></PrivateRoute>
 
               <PrivateRoute
-                path='/Category'
+                path='/category/:id'
                 component={Category}
               ></PrivateRoute>
 
@@ -66,13 +66,13 @@ class App extends Component {
               ></PrivateRoute>
 
               <PrivateRoute
-                path='/BarCode'
-                component={BarCodePage}
+                path='/search'
+                component={FullPageSearch}
               ></PrivateRoute>
 
               <PrivateRoute
-                path='/search'
-                component={FullPageSearch}
+                path='/barcode'
+                component={BarCodePage}
               ></PrivateRoute>
 
               <LoginContext.Consumer>

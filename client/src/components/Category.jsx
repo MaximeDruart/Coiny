@@ -1,44 +1,32 @@
-import React, { useContext, useEffect } from 'react';
-import './Category.scss'
+import React, { useContext, useEffect } from "react"
+import { useParams } from "react-router-dom"
+import "./Category.scss"
 import Storefiltercontainer from "./CategoryComp/Storefiltercontainer"
 import { UIDataContext } from "../contexts/UIDataContext"
-import { render } from 'node-sass';
+import uuid from "uuid"
 
+const Category = props => {
+  const { id } = useParams()
+  const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
 
+  useEffect(() => {
+    getBusinessData(null)
+  }, [getBusinessData])
 
-const Category=(props)=>{
-const typeOfBusiness=props.location.state.type 
-    const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
-
-    useEffect(() => {
-       getBusinessData(null)
-      }, [])
-
-
-
-
-const renderDivFilter = ()=>{
-    return(
-    businessQueryResults.map((business,i)=>{
-       if( business.type == typeOfBusiness)  {
-         <Storefiltercontainer key={i} business={business}></Storefiltercontainer>}
-    }))
-}
-
-    return(
-<div className='containCategory'>{businessQueryResults ? renderDivFilter() : ""}</div>
+  const renderDivFilter = () => {
+    let filteredArray = businessQueryResults.filter(
+      item => item.type === id.toLowerCase()
     )
+    return filteredArray.map(business => (
+      <Storefiltercontainer key={uuid()} business={business} />
+    ))
+  }
+
+  return (
+    <div className='containCategory'>
+      {businessQueryResults && renderDivFilter()}
+    </div>
+  )
 }
-
-
 
 export default Category
-
-
-
-
-
-
-
-
-

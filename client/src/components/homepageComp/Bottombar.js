@@ -7,7 +7,7 @@ import logoImg from "../img/logo.svg"
 import { LoginContext } from "../../contexts/LoginContext"
 
 const Bottombar = props => {
-  const { userType } = useContext(LoginContext)
+  const { userType, receiverStatus } = useContext(LoginContext)
   return (
     <div className='Bottombar'>
       <div
@@ -18,12 +18,11 @@ const Bottombar = props => {
           <img src={homelogo} alt='' />
         </Link>
       </div>
-      <Link to='/BarCode'>
 
-      <div className='Bottombar_iconBottombar middleQr'>
-        <img src={logoImg} alt='logo' />
-        
-      </div>
+      <Link to={receiverStatus ? "/barcode" : "/privilegeaccess"}>
+        <div className='Bottombar_iconBottombar middleQr'>
+          <img src={logoImg} alt='logo' />
+        </div>
       </Link>
       <div
         style={{ opacity: props.location.pathname === "/userprofile" && "0.5" }}
