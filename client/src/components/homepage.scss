@@ -122,3 +122,32 @@ body {
   width: 146px;
   background-color: rgb(238, 238, 238);
 }
+
+@media only screen and (min-device-width: 1024px) {
+  .partnerSlide {
+    justify-content: center;
+  }
+  .partnerBand p {
+    margin: 20px;
+    font-size: 40px;
+  }
+  .discoverPartners h2 {
+    margin: -20px 0px 0px 0px;
+    width: 70%;
+    font-size: 40px;
+  }
+  .lineContainer {
+    width: 70%;
+  }
+  .discoverPartners p {
+    margin: 0;
+    width: 70%;
+    font-size: 25px;
+  }
+  .discoverPartners {
+    height: 280px;
+  }
+  .featureFilterContainer {
+    display: none !important;
+  }
+}

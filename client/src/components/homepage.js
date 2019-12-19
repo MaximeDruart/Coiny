@@ -61,7 +61,7 @@ const Homepage = props => {
           <p>Des commerces qui s'engagent</p>
           <SearchBar goToSearch={goToSearch} />
         </div>
-        <div style={{ height: "50px" }} className="blankSpace"></div>
+        <div className="blankSpace"></div>
         <div className="showcasePartner">
           <div className="partnerBand">
             <p>Près de chez vous</p>
