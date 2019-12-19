@@ -60,10 +60,10 @@ const Homepage = props => {
           <p>Des commerces qui s'engagent</p>
           <SearchBar goToSearch={goToSearch} />
         </div>
-        <div style={{ height: "70px" }} className='blankSpace'></div>
+        <div style={{ height: "50px" }} className='blankSpace'></div>
         <div className='showcasePartner'>
           <div className='partnerBand'>
-            <p>près de chez vous</p>
+            <p>Près de chez vous</p>
           </div>
 
           <div className='partnerSlide'>{getRenderedBusinesses()}</div>
@@ -84,14 +84,16 @@ const Homepage = props => {
         <div className='weeklyContainer'>
           {}
           <StoreOfTheWeek type='Supermarché'></StoreOfTheWeek>
+          <StoreOfTheWeek type='restaurant'></StoreOfTheWeek>
+          <StoreOfTheWeek type='boulangerie'></StoreOfTheWeek>
           <StoreOfTheWeek type='boucherie'></StoreOfTheWeek>
           <StoreOfTheWeek type='Pharmacie'></StoreOfTheWeek>
-          <StoreOfTheWeek type='Droguerie'></StoreOfTheWeek>
+          <StoreOfTheWeek type='epicerie'></StoreOfTheWeek>
+          <StoreOfTheWeek type='friperie'></StoreOfTheWeek>
           <StoreOfTheWeek type='Coiffeur'></StoreOfTheWeek>
         </div>
 
         <div style={{ height: "60px" }} className='blankSpace'></div>
-        <div className='blankSpace'></div>
       </div>
     </div>
   )

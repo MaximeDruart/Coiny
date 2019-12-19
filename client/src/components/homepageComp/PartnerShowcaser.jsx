@@ -15,6 +15,7 @@ import restaurant from "../img/restaurant.svg"
 import store from "../img/store.svg"
 
 const storeImgs = {
+  supermarche,
   epicerie,
   boucherie,
   coiffeur,

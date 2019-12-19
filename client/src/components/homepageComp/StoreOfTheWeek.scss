@@ -1,64 +1,59 @@
 .squareStoreOfTheWeek {
+  display: flex;
+  overflow: hidden;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  max-width: 320px;
+  max-height: 200px;
+  margin: 20px 0;
+  border-radius: 15px;
+  background: #9140ff;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.374);
+  color: white;
+
+  & img{
+    width: 110%;
+  }
+
+  a {
+    width: 100%;
     display: flex;
-    overflow: hidden;
-    justify-content: flex-start;
-    position: relative;
+    justify-content: center;
     flex-direction: column;
     align-items: center;
-    width: 85%;
-    height: 250px;
-    margin: 20px 0;
-    border-radius: 15px;
-    background: #9140FF;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.374);
+    height: 100%;
+  }
+
+  h2 {
+    font-size: 1.2em;
     color: white;
+    margin: 0 0 0 0;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  }
 
+  .storeBg img {
+    height: 100%;
+  }
 
-    a {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        height: 100%;
-    }
-
-    h2 {
-        font-size: 1.2em;
-        color: white;
-        margin: 0 0 0 0;
-        margin-block-start: 0;
-        margin-block-end: 0;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-    }
-
-    .storeBg img {
-        height: 100%;
-    }
-
-    .storeBg {
-        overflow: hidden;
-        width: 100%;
-        height: 61%;
-        margin: 10px;
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-    }
-
-    .storeWeeklyName {
-        height: 60%;
-        display: flex;
-        justify-content: center;
-        text-align: center;
-    }
+  .storeBg {
+    overflow: hidden;
+    width: 100%;
+    height: 61%;
+    margin: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
 }
 
 .weeklyContainer {
-    display: flex;
-    padding: 20px 0px 0px 0px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  padding: 20px 0px 40px 0px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
