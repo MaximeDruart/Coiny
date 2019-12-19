@@ -42,10 +42,10 @@ const StorePage = props => {
   }, [getBusinessDataForId, id])
 
   return (
-    <div className='storeContainer'>
+    <div className="storeContainer">
       <Back history={props.history}>Go back</Back>
-      <div className='storeTop'>
-        <div className='roundLogo'>
+      <div className="storeTop">
+        <div className="roundLogo">
           {businessDataForId && (
             <img
               src={
@@ -55,7 +55,7 @@ const StorePage = props => {
                     : supermarche
                   : supermarche
               }
-              alt=''
+              alt=""
             />
           )}
         </div>
@@ -63,13 +63,13 @@ const StorePage = props => {
       {loading ? (
         "loadinganim" // need to do a placeholder
       ) : businessDataForId ? (
-        <div className='storeInfo'>
-          <div className='storePresentation'>
+        <div className="storeInfo">
+          <div className="storePresentation">
             <h2>{businessDataForId.name}</h2>
-            <div className='statContainer'>
+            <div className="statContainer">
               <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
             </div>
-            <div className='storeDescription'>
+            <div className="storeDescription">
               <p>
                 {businessDataForId && businessDataForId.desc > 0
                   ? businessDataForId.desc
@@ -77,9 +77,6 @@ const StorePage = props => {
               </p>
             </div>
           </div>
-          <a href={businessDataForId.gmapLink}>
-            <button>se rendre au store</button>
-          </a>
         </div>
       ) : (
         <h1> {/*errors*/} </h1>
@@ -90,7 +87,8 @@ const StorePage = props => {
           <button>Donate</button>
         </Link>
       )}
-      <div className='bottomCompenser'></div>
+      <a href={businessDataForId.gmapLink}>Se rendre au store</a>
+      <div className="bottomCompenser"></div>
     </div>
   )
 }
