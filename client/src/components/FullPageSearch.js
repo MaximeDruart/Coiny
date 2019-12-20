@@ -103,10 +103,11 @@ const FullPageSearch = () => {
   }, [state])
 
   useEffect(() => {
-    if (query === 'supermarche' ) query = 'supermarché'
-    if (query === 'epicerie') query = 'épicerie'
-    getBusinessData(query.toLowerCase())
-    getBusinessDataForType(query.toLowerCase())
+    let transformedQuery = query.toLowerCase()
+    if (transformedQuery === 'supermarche' ) transformedQuery = 'supermarché'
+    if (transformedQuery === 'epicerie') transformedQuery = 'épicerie'
+    getBusinessData(transformedQuery)
+    getBusinessDataForType(transformedQuery)
   }, [query, getBusinessData, getBusinessDataForType])
 
   const queryHandler = value => {
