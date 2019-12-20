@@ -88,28 +88,16 @@
       background: #d4abb3;
     }
   }
-  & button {
-    text-align: center;
-    width: 300px;
-    height: 50px;
-    background: transparent;
-    border-radius: 90px;
-    border: solid 1px #87bcbf;
-    margin: 10px 0px 10px 0px;
-    color: white;
-    font-size: 15px;
-    outline: none;
-  }
 }
 
 .deconnexion {
   & button {
+    cursor: pointer;
     background: transparent;
     // border: none;
-    margin: 20px 0px 0px 0px;
+    margin: 0px 0px 0px 0px;
     color: white;
     font-size: 15px;
-    width: 150px;
     font-weight: 600;
   }
 }
@@ -121,7 +109,7 @@
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
   .businessProfile_avatar {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
   }
 }

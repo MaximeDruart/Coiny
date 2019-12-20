@@ -63,10 +63,11 @@
 }
 
 .deconnexion {
+  margin: 20px 0px 0px 0px;
   & button {
+    width: 300px;
     height: 0px;
     border: none;
-    margin: 20px 0px 0px 0px;
   }
 }
 
@@ -77,8 +78,8 @@
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) {
   .profileContainer_avatar {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
   }
 }
 
