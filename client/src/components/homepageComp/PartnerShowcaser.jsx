@@ -33,22 +33,24 @@ function PartnerShowcase(props) {
       appear={true}
       in={!!business}
       timeout={300}
-      classNames='storeWindow'
+      classNames="storeWindow"
       key={uuid()}
     >
       <Link to={`/business/${business._id}`}>
-        <div className='storeWindow'>
-          <div className='storeWindow_viewStore'>
+        <div className="storeWindow">
+          <div className="storeWindow_viewStore">
             <img
               src={
                 business.type !== "store"
-                  ? storeImgs[business.type]
+                  ? business.type === "épicerie"
+                    ? storeImgs["epicerie"]
+                    : storeImgs[business.type]
                   : supermarche
               }
-              alt=''
+              alt=""
             />
           </div>
-          <div className='storeWindow_text'>
+          <div className="storeWindow_text">
             <h3>{business.name}</h3>
             <h4>{business.type}</h4>
           </div>

@@ -73,7 +73,6 @@ const Homepage = props => {
         </div>
 
         <div className='weeklyContainer'>
-          {}
           <StoreOfTheWeek type='Supermarché'></StoreOfTheWeek>
           <StoreOfTheWeek type='restaurant'></StoreOfTheWeek>
           <StoreOfTheWeek type='boulangerie'></StoreOfTheWeek>
