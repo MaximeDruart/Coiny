@@ -103,8 +103,8 @@ const FullPageSearch = () => {
   }, [state])
 
   useEffect(() => {
-    getBusinessData(query)
-    getBusinessDataForType(query)
+    getBusinessData(query.toLowerCase())
+    getBusinessDataForType(query.toLowerCase())
   }, [query, getBusinessData, getBusinessDataForType])
 
   const queryHandler = value => {

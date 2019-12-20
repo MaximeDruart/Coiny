@@ -30,7 +30,7 @@ const StoreOfTheWeek = props => {
         to={{
           pathname: `/search/${type}`,
           state: {
-            type
+            type : type.toLowerCase()
           }
         }}
       >
