@@ -77,7 +77,7 @@ const StorePage = props => {
       )}
       {userType === "user" && (
         <Link to={`/donate/${id}`}>
-          <button>Donate</button>
+          <button>Donation</button>
         </Link>
       )}
       <a href={businessDataForId && businessDataForId.gmapLink}>

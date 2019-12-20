@@ -24,7 +24,7 @@ class BusinessRegister extends Component {
         { key: "supermarché", text: "supermarché", value: "supermarché" },
         { key: "pharmacie", text: "pharmacie", value: "pharmacie" },
         { key: "friperie", text: "friperie", value: "friperie" },
-        { key: "resturant", text: "resturant", value: "resturant" }
+        { key: "restaurant", text: "restaurant", value: "restaurant" }
       ],
       errors: {}
     }
