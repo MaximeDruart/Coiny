@@ -103,6 +103,9 @@ const FullPageSearch = () => {
   }, [state])
 
   useEffect(() => {
+    let transformedQuery = query.toLowerCase()
+    if (query === 'supermarche' ) query = 'supermarché'
+    if (query === 'epicerie') query = 'épicerie'
     getBusinessData(query.toLowerCase())
     getBusinessDataForType(query.toLowerCase())
   }, [query, getBusinessData, getBusinessDataForType])
