@@ -1,43 +1,42 @@
-import React, { useEffect, useContext } from "react"
+import React, { useEffect, useContext, useState, Fragment } from "react"
 import "./homepage.scss"
 import Topbar from "./homepageComp/Topbar"
-import SearchBar from "./homepageComp/SearchBar"
 import PartnerShowcase from "./homepageComp/PartnerShowcaser"
 import { UIDataContext } from "../contexts/UIDataContext"
 import StoreOfTheWeek from "./homepageComp/StoreOfTheWeek.jsx"
 import uuid from "uuid"
 import { Link } from "react-router-dom"
-import posed from "react-pose"
 
+let emptyarr = [0, 0, 0, 0, 0]
+
+let placeholder = emptyarr.map(x => (
+  <div key={uuid()} className='storewindow-placeholder'></div>
+))
 const Homepage = props => {
   const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
+  let [mappedData, setMappedData] = useState("")
 
   useEffect(() => {
     getBusinessData(null)
-  }, [getBusinessData])
+    getRenderedBusinesses()
+  }, [getBusinessData, businessQueryResults.length])
 
   const getRenderedBusinesses = () => {
-    let emptyarr = [0, 0, 0, 0, 0]
-    return businessQueryResults
-      ? businessQueryResults
-          .slice(3, 8)
-          .map(business => (
-            <PartnerShowcase key={uuid()} business={business}></PartnerShowcase>
-          ))
-      : emptyarr.map(x => (
-          <div key={uuid()} className='storewindow-placeholder'></div>
+    if (businessQueryResults.length > 0 && !mappedData) {
+      console.log("mapping data", { businessQueryResults }, { mappedData })
+      let mappedDataTemp = businessQueryResults
+        .slice(3, 8)
+        .map(business => (
+          <PartnerShowcase key={uuid()} business={business}></PartnerShowcase>
         ))
-  }
-
-  const goToSearch = () => {
-    if (props.location.pathname === "/homepage") props.history.push("/search")
+      console.log(mappedDataTemp)
+      setMappedData(mappedDataTemp)
+    }
   }
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-
-  const PosedSearchbar = posed(Searchbar)
 
   return (
     <div>
@@ -45,20 +44,20 @@ const Homepage = props => {
       <div className='contentHome'>
         <div className='discoverPartners'>
           <h2>Retrouvez nos commerces partenaires.</h2>
-
           <div className='lineContainer'>
             <div className='line'></div>
           </div>
           <p>Des commerces qui s'engagent</p>
-          <SearchBar goToSearch={goToSearch} />
         </div>
-        <div className="blankSpace"></div>
-        <div className="showcasePartner">
-          <div className="partnerBand">
+        <div className='blankSpace'></div>
+        <div className='showcasePartner'>
+          <div className='partnerBand'>
             <p>Près de chez vous</p>
           </div>
 
-          <div className='partnerSlide'>{getRenderedBusinesses()}</div>
+          <div className='partnerSlide'>
+            {mappedData ? mappedData : placeholder}
+          </div>
         </div>
         <div className='featureFilterContainer'>
           <div className='featureFilter'>

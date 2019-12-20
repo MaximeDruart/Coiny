@@ -113,11 +113,11 @@ const FullPageSearch = () => {
 
   return (
     <div className='fullPageSearch'>
-      <SearchBar
+      {/* <SearchBar
         initialValue={state && state.type}
         className='fullPage-searchbar'
         queryHandler={queryHandler}
-      ></SearchBar>
+      ></SearchBar> */}
       <div className='results-container'>{getRenderedBusinesses()}</div>
     </div>
   )

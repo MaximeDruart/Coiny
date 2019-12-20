@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef, forwardRef } from "react"
 import "./SearchBar.scss"
 import searchMeImg from "../img/icn_search_light.svg"
-import { useLocation } from "react-router-dom"
+import { useLocation, useHistory } from "react-router-dom"
+import posed from "react-pose"
 
 const SearchBar = forwardRef((props, ref) => {
+  let history = useHistory()
   const { pathname } = useLocation()
   let [query, setQuery] = useState("")
 
@@ -21,7 +23,11 @@ const SearchBar = forwardRef((props, ref) => {
   }, [])
 
   return (
-    <div ref={ref} className='searchContainer'>
+    <div
+      onClick={() => history.push("/search")}
+      ref={ref}
+      className='searchContainer'
+    >
       <div className='searchContainer_searchInput'>
         <input
           defaultValue={props.initialValue}
@@ -41,4 +47,17 @@ const SearchBar = forwardRef((props, ref) => {
   )
 })
 
-export default SearchBar
+// export default SearchBar
+
+const PosedSearchBar = posed(SearchBar)({
+  home: {
+    top: 280 - 25,
+    width: "70%"
+  },
+  search: {
+    top: 30,
+    width: "90%"
+  }
+})
+
+export default PosedSearchBar

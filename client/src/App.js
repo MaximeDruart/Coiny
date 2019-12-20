@@ -24,109 +24,132 @@ import UserHistory from "./components/UserHistory"
 import Category from "./components/Category"
 import Article from "./components/Article"
 
-class App extends Component {
-  constructor() {
-    super()
-    this.state = {}
-  }
+import SearchBar from "./components/homepageComp/SearchBar"
 
-  render() {
-    return (
-      <Router>
-        <UIDataContextProvider>
-          <LoginContextProvider>
-            <div className='App' style={{ height: "100vh" }}>
-              {/* Switching so it's either the pre-auth components or the bottombar that's available */}
-              <Switch>
-                <Route path='/' exact component={Welcome}></Route>
-                <Route path='/getstarted' component={AuthDirection}></Route>
-                <Route path='/userregister' component={UserRegister}></Route>
-                <Route
-                  path='/businessregister'
-                  component={BusinessRegister}
-                ></Route>
-                <PrivateRoute path='/' component={Bottombar}></PrivateRoute>
-              </Switch>
-              {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
+import posed, { PoseGroup } from "react-pose"
+import uuid from "uuid"
 
-              <PrivateRoute
-                path='/donation'
-                component={Donation}
-              ></PrivateRoute>
+const RouteContainer = posed.div({
+  enter: { opacity: 1, delay: 300, beforeChildren: true },
+  exit: { opacity: 0 }
+})
 
-              <PrivateRoute
-                path='/category/:id'
-                component={Category}
-              ></PrivateRoute>
+const App = () => {
+  return (
+    <Router>
+      <Route
+        render={({ location }) => (
+          <UIDataContextProvider>
+            <LoginContextProvider>
+              <div className='App' style={{ height: "100vh" }}>
+                {/* Switching so it's either the pre-auth components or the bottombar that's available */}
+                <Switch>
+                  <Route path='/' exact component={Welcome}></Route>
+                  <Route path='/getstarted' component={AuthDirection}></Route>
+                  <Route path='/userregister' component={UserRegister}></Route>
+                  <Route
+                    path='/businessregister'
+                    component={BusinessRegister}
+                  ></Route>
+                  <PrivateRoute path='/' component={Bottombar}></PrivateRoute>
+                </Switch>
+                {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
 
-              <PrivateRoute path='/success' component={Success}></PrivateRoute>
+                <PrivateRoute
+                  path='/donation'
+                  component={Donation}
+                ></PrivateRoute>
 
-              <PrivateRoute
-                path='/homepage'
-                component={Homepage}
-              ></PrivateRoute>
+                <PrivateRoute
+                  path='/category/:id'
+                  component={Category}
+                ></PrivateRoute>
 
-              <PrivateRoute
-                path='/Article'
-                component={Article}
-              ></PrivateRoute>
+                <PrivateRoute
+                  path='/success'
+                  component={Success}
+                ></PrivateRoute>
+                <Route path={["/search", "/homepage"]}>
+                  <SearchBar
+                    pose={
+                      location.pathname.includes("/search") ? "search" : "home"
+                    }
+                  />
+                </Route>
 
-              <PrivateRoute
-                path='/search'
-                component={FullPageSearch}
-              ></PrivateRoute>
-
-              <PrivateRoute
-                path='/barcode'
-                component={BarCodePage}
-              ></PrivateRoute>
-
-              <LoginContext.Consumer>
-                {context =>
-                  context.userType === "user" ? (
-                    <div>
+                <PoseGroup>
+                  <RouteContainer key={location.key || uuid()}>
+                    <Switch location={location}>
                       <PrivateRoute
-                        path='/userprofile'
-                        component={UserProfile}
-                      />
-                      <PrivateRoute
-                        path='/userhistory'
-                        component={UserHistory}
-                      />
-                      <PrivateRoute
-                        path='/privilegeaccess'
-                        component={PrivilegeAccess}
-                      />
-                    </div>
-                  ) : (
-                    <PrivateRoute
-                      path='/businessprofile'
-                      component={BusinessProfile}
-                    />
-                  )
-                }
-              </LoginContext.Consumer>
+                        path='/homepage'
+                        component={Homepage}
+                      ></PrivateRoute>
 
-              <PrivateRoute
-                path='/business/:id'
-                // exact
-                component={StorePage}
-              ></PrivateRoute>
-              <PrivateRoute
-                path='/donate/:id'
-                component={Donation}
-              ></PrivateRoute>
+                      <PrivateRoute
+                        path='/search'
+                        component={FullPageSearch}
+                      ></PrivateRoute>
+                    </Switch>
+                  </RouteContainer>
+                </PoseGroup>
 
-              <PrivateRoute
-                path='/paymentform'
-                component={PaymentForm}
-              ></PrivateRoute>
-            </div>
-          </LoginContextProvider>
-        </UIDataContextProvider>
-      </Router>
-    )
-  }
+                <PrivateRoute
+                  path='/Article'
+                  component={Article}
+                ></PrivateRoute>
+
+                <PrivateRoute
+                  path='/barcode'
+                  component={BarCodePage}
+                ></PrivateRoute>
+
+                <LoginContext.Consumer>
+                  {context =>
+                    context.userType === "user" ? (
+                      <div>
+                        <PrivateRoute
+                          path='/userprofile'
+                          component={UserProfile}
+                        />
+                        <PrivateRoute
+                          path='/userhistory'
+                          component={UserHistory}
+                        />
+                        <PrivateRoute
+                          path='/privilegeaccess'
+                          component={PrivilegeAccess}
+                        />
+                      </div>
+                    ) : (
+                      <PrivateRoute
+                        path='/businessprofile'
+                        component={BusinessProfile}
+                      />
+                    )
+                  }
+                </LoginContext.Consumer>
+
+                <PrivateRoute
+                  path='/business/:id'
+                  // exact
+                  component={StorePage}
+                ></PrivateRoute>
+                <PrivateRoute
+                  path='/donate/:id'
+                  component={Donation}
+                ></PrivateRoute>
+
+                <PrivateRoute
+                  path='/paymentform'
+                  component={PaymentForm}
+                ></PrivateRoute>
+              </div>
+            </LoginContextProvider>
+          </UIDataContextProvider>
+        )}
+      ></Route>
+    </Router>
+  )
 }
 
 export default App
