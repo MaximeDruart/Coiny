@@ -37,7 +37,7 @@ const Homepage = props => {
     window.scrollTo(0, 0)
   }, [])
 
-  const PosedSearchbar = posed(Searchbar)
+  // const PosedSearchbar = posed(Searchbar)
 
   return (
     <div>
@@ -52,9 +52,9 @@ const Homepage = props => {
           <p>Des commerces qui s'engagent</p>
           <SearchBar goToSearch={goToSearch} />
         </div>
-        <div className="blankSpace"></div>
-        <div className="showcasePartner">
-          <div className="partnerBand">
+        <div className='blankSpace'></div>
+        <div className='showcasePartner'>
+          <div className='partnerBand'>
             <p>Près de chez vous</p>
           </div>
 
