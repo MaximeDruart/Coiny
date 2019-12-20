@@ -60,7 +60,7 @@ const businessSchema = new mongoose.Schema(
     },
     description: {
       type: String,
-      default: "Description de votre commerce"
+      default: "Ouvert 7 jours sur 7 votre magasin vous accueil ainsi que vos code barres en folie!"
     }
   },
   {
