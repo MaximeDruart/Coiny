@@ -28,7 +28,6 @@ let storeImgs = {
 
 const StorePage = props => {
   const {
-    loading,
     businessDataForId,
     getBusinessDataForId
     // errors
@@ -42,51 +41,48 @@ const StorePage = props => {
 
   return (
     <div className='storeContainer'>
-      <Back history={props.history}>Go back</Back>
-      <div className='storeTop'>
-        <div className='roundLogo'>
-          {businessDataForId && (
-            <img
-              src={
-                businessDataForId
-                  ? businessDataForId.type !== "store"
-                    ? storeImgs[businessDataForId.type]
+      {businessDataForId && (
+        <React.Fragment>
+          <Back history={props.history}>Go back</Back>
+          <div className='storeTop'>
+            <div className='roundLogo'>
+              <img
+                src={
+                  businessDataForId
+                    ? businessDataForId.type !== "store"
+                      ? storeImgs[businessDataForId.type]
+                      : supermarche
                     : supermarche
-                  : supermarche
-              }
-              alt=''
-            />
-          )}
-        </div>
-      </div>
-      {loading ? (
-        "loadinganim" // need to do a placeholder
-      ) : businessDataForId ? (
-        <div className='storeInfo'>
-          <div className='storePresentation'>
-            <h2>{businessDataForId.name}</h2>
-            <div className='statContainer'>
-              <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
-            </div>
-            <div className='storeDescription'>
-              <p>
-                {businessDataForId && businessDataForId.description.length > 0
-                  ? businessDataForId.description
-                  : "Aucune description disponible"}
-              </p>
+                }
+                alt=''
+              />
             </div>
           </div>
-        </div>
-      ) : (
-        <h1> {/*errors*/} </h1>
+          <div className='storeInfo'>
+            <div className='storePresentation'>
+              <h2>{businessDataForId.name}</h2>
+              <div className='statContainer'>
+                <span>{`Cagnotte : ${businessDataForId.moneyAllocated}€`}</span>
+              </div>
+              <div className='storeDescription'>
+                <p>
+                  {businessDataForId && businessDataForId.description.length > 0
+                    ? businessDataForId.description
+                    : "Aucune description disponible"}
+                </p>
+              </div>
+            </div>
+          </div>
+        </React.Fragment>
       )}
-
       {userType === "user" && (
         <Link to={`/donate/${id}`}>
           <button>Donate</button>
         </Link>
       )}
-      <a href={businessDataForId.gmapLink}>Se rendre au store</a>
+      <a href={businessDataForId && businessDataForId.gmapLink}>
+        Se rendre au store
+      </a>
       <div className='bottomCompenser'></div>
     </div>
   )

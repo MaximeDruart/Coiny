@@ -93,6 +93,12 @@ router.post("/login", (req, res) => {
   })
 })
 
+router.get("/clear", (req, res) => {
+  Business.remove({})
+    .then(business => res.json(business))
+    .catch(err => res.status(404).json(err))
+})
+
 router.post("/search", (req, res) => {
   let { query, resultsNumber } = req.body
   resultsNumber = resultsNumber ? resultsNumber : 10

@@ -18,6 +18,12 @@ router.post("/find", (req, res) => {
     )
 })
 
+router.get("/clear", (req, res) => {
+  User.remove({})
+    .then(user => res.json(user))
+    .catch(err => res.status(404).json(err))
+})
+
 router.get("/find/all", (req, res) => {
   User.find()
     .then(user => res.json(user))
