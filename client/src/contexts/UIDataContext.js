@@ -70,14 +70,12 @@ class UIDataContextProvider extends Component {
   updateBusiness = async (id, picture = null, desc = null) => {
     this.setState({ loading: true })
     try {
-      const imgUpdate =
-        picture &&
+      picture &&
         (await axios.post("/business/update/img", {
           id,
           picture
         }))
-      const descUpdate =
-        desc &&
+      desc &&
         (await axios.post("/business/update/desc", {
           id,
           desc

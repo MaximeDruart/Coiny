@@ -100,7 +100,7 @@ const FullPageSearch = () => {
 
   useEffect(() => {
     state && setQuery(state.type)
-  }, [])
+  }, [state])
 
   useEffect(() => {
     getBusinessData(query)

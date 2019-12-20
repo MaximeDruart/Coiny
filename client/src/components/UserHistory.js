@@ -25,7 +25,7 @@ const UserHistory = props => {
     if (!userHistoryData) {
       getExtendedData()
     }
-  }, [getExtendedData])
+  }, [getExtendedData, userHistoryData])
 
   useEffect(() => {
     if (userData) setIds(userData.donationHistory.map(item => item.target))
@@ -47,7 +47,7 @@ const UserHistory = props => {
     return () => {
       setBusinessesData([])
     }
-  }, [ids, getBusinessDataForId])
+  }, [ids, getBusinessDataForId, userHistoryData])
 
   const getData = () => {
     if (userHistoryData) {
@@ -56,7 +56,7 @@ const UserHistory = props => {
     // setUserHistoryData(renderedData)
 
     let placeholder = arr.map(x => (
-      <div key={uuid()} className="placeholder"></div>
+      <div key={uuid()} className='placeholder'></div>
     ))
     return userData &&
       ids.length === businessesData.length &&
@@ -73,20 +73,20 @@ const UserHistory = props => {
         key={uuid()}
         in={!!userData}
         timeout={500}
-        classNames="history-item"
+        classNames='history-item'
       >
-        <div key={uuid()} className="history-item">
-          <div className="history-item_text">
-            <div className="date">
+        <div key={uuid()} className='history-item'>
+          <div className='history-item_text'>
+            <div className='date'>
               {historyItem.date ? historyItem.date : "date error"}
             </div>
-            <div className="amount">{`${historyItem.amount}€ chez ${businessesData[index].name}`}</div>
+            <div className='amount'>{`${historyItem.amount}€ chez ${businessesData[index].name}`}</div>
           </div>
           <Link
-            className="history-item_img"
+            className='history-item_img'
             to={`/business/${businessesData[index]._id}`}
           >
-            <img src={boulangerieImg} alt="shop" />
+            <img src={boulangerieImg} alt='shop' />
           </Link>
         </div>
       </CSSTransition>
@@ -94,9 +94,9 @@ const UserHistory = props => {
   }
 
   return (
-    <div className="user-history">
-      <div className="history-container">
-        <div className="history-container_text">Vos dons</div>
+    <div className='user-history'>
+      <div className='history-container'>
+        <div className='history-container_text'>Vos dons</div>
         {getData()}
       </div>
     </div>

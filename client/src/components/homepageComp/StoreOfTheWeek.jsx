@@ -25,7 +25,7 @@ const storeImgs = {
 const StoreOfTheWeek = props => {
   const { type } = props
   return (
-    <div className="squareStoreOfTheWeek">
+    <div className='squareStoreOfTheWeek'>
       <Link
         to={{
           pathname: `/search/${type}`,
@@ -34,7 +34,7 @@ const StoreOfTheWeek = props => {
           }
         }}
       >
-        <img src={storeImgs[type]}></img>
+        <img alt='' src={storeImgs[type]}></img>
       </Link>
     </div>
   )

@@ -7,7 +7,6 @@ import { UIDataContext } from "../contexts/UIDataContext"
 import StoreOfTheWeek from "./homepageComp/StoreOfTheWeek.jsx"
 import uuid from "uuid"
 import { Link } from "react-router-dom"
-import posed from "react-pose"
 
 const Homepage = props => {
   const { getBusinessData, businessQueryResults } = useContext(UIDataContext)
