@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react"
 import { UIDataContext } from "../contexts/UIDataContext"
 import { LoginContext } from "../contexts/LoginContext"
-import { Link } from "react-router-dom"
 import "./businessProfile.scss"
 
 import epicerie from "./img/epicerie.svg"
@@ -55,13 +54,14 @@ const BusinessProfile = props => {
 
   useEffect(() => {
     businessDataForId && setDesc(businessDataForId.description)
-  }, [businessDataForId.description])
+  }, [businessDataForId.description, businessDataForId])
 
   return (
     businessDataForId && (
       <div className='businessProfile'>
         <div className='businessProfile_avatar'>
           <img
+            alt=''
             src={
               businessDataForId
                 ? businessDataForId.type !== "store"

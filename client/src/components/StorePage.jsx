@@ -1,6 +1,5 @@
 import React, { useEffect, useContext } from "react"
 import "./StorePage.scss"
-import storeImg from "./img/magasin1.jpg"
 import { useParams, Link } from "react-router-dom"
 import Back from "./auth/Back"
 import { UIDataContext } from "../contexts/UIDataContext"
