@@ -92,7 +92,7 @@ class PaymentForm extends Component {
                       this.donationSubmitHandler(event, loginContext.user.id)
                     }
                   >
-                    <h1>{`Paying ${this.state.amount}€ to ${this.context.businessDataForId.name}`}</h1>
+                    <h1>{`Payé ${this.state.amount}€ à ${this.context.businessDataForId.name}`}</h1>
                     <Form.Group>
                       <Form.Control
                         placeholder='Numéro de carte'
