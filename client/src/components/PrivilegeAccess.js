@@ -4,7 +4,6 @@ import isEmpty from "is-empty"
 import { LoginContext } from "../contexts/LoginContext"
 import axios from "axios"
 import "./privilegeAccess.scss"
-import Back from "./auth/Back"
 
 class PrivilegeAccess extends Component {
   static contextType = LoginContext
@@ -53,7 +52,6 @@ class PrivilegeAccess extends Component {
   render() {
     return (
       <Container className="AccessContainer">
-        <Back history={this.props.history} />
         <h1>Accès privilégié</h1>
         <div className="AccessContainer_line"></div>
         <h2>
