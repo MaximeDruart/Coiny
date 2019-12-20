@@ -33,7 +33,7 @@ const Profile = () => {
           </div>
         )}
         <div className='deconnexion'>
-          <button onClick={logout}>Déconexion</button>
+          <button onClick={logout}>Déconnexion</button>
         </div>
         <div className='bottomBarBlock'></div>
       </div>
