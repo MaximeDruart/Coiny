@@ -1,0 +1,59 @@
+@import "main";
+
+.desktop-overlay {
+  display: none;
+}
+
+@media (min-width: 756px) {
+  .desktop-overlay {
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    z-index: 100000;
+
+    .modal {
+      @include flex-center;
+      @include smooth-shadow;
+      width: 600px;
+      height: 300px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border-radius: 20px;
+      z-index: 1000001;
+
+      .content {
+        height: 50%;
+        width: 80%;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: space-between;
+        .body {
+          text-align: center;
+          // color: white;
+          font-size: 25px;
+        }
+
+        .accept {
+          background: $button-color;
+          cursor: pointer;
+          color: white;
+        }
+      }
+    }
+
+    .filter {
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+      opacity: 0.2;
+    }
+  }
+}

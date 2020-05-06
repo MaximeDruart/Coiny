@@ -23,6 +23,7 @@ import PaymentForm from "./components/payment/PaymentForm"
 import UserHistory from "./components/UserHistory"
 import Category from "./components/Category"
 import Article from "./components/Article"
+import DesktopOverlay from "./components/DesktopOverlay"
 
 class App extends Component {
   constructor() {
@@ -35,92 +36,47 @@ class App extends Component {
       <Router>
         <UIDataContextProvider>
           <LoginContextProvider>
-            <div className='App' style={{ height: "100vh" }}>
+            <div className="App" style={{ height: "100vh" }}>
+              <DesktopOverlay />
               {/* Switching so it's either the pre-auth components or the bottombar that's available */}
               <Switch>
-                <Route path='/' exact component={Welcome}></Route>
-                <Route path='/getstarted' component={AuthDirection}></Route>
-                <Route path='/userregister' component={UserRegister}></Route>
-                <Route
-                  path='/businessregister'
-                  component={BusinessRegister}
-                ></Route>
-                <PrivateRoute path='/' component={Bottombar}></PrivateRoute>
+                <Route path="/" exact component={Welcome}></Route>
+                <Route path="/getstarted" component={AuthDirection}></Route>
+                <Route path="/userregister" component={UserRegister}></Route>
+                <Route path="/businessregister" component={BusinessRegister}></Route>
+                <PrivateRoute path="/" component={Bottombar}></PrivateRoute>
               </Switch>
+
               {/* PRIVATE ROUTES : USER NEEDS TO BE AUTHENTICATED TO ACCESS */}
-
-              <PrivateRoute
-                path='/donation'
-                component={Donation}
-              ></PrivateRoute>
-
-              <PrivateRoute
-                path='/category/:id'
-                component={Category}
-              ></PrivateRoute>
-
-              <PrivateRoute path='/success' component={Success}></PrivateRoute>
-
-              <PrivateRoute
-                path='/homepage'
-                component={Homepage}
-              ></PrivateRoute>
-
-              <PrivateRoute
-                path='/Article'
-                component={Article}
-              ></PrivateRoute>
-
-              <PrivateRoute
-                path='/search'
-                component={FullPageSearch}
-              ></PrivateRoute>
-
-              <PrivateRoute
-                path='/barcode'
-                component={BarCodePage}
-              ></PrivateRoute>
+              <PrivateRoute path="/donation" component={Donation}></PrivateRoute>
+              <PrivateRoute path="/category/:id" component={Category}></PrivateRoute>
+              <PrivateRoute path="/success" component={Success}></PrivateRoute>
+              <PrivateRoute path="/homepage" component={Homepage}></PrivateRoute>
+              <PrivateRoute path="/Article" component={Article}></PrivateRoute>
+              <PrivateRoute path="/search" component={FullPageSearch}></PrivateRoute>
+              <PrivateRoute path="/barcode" component={BarCodePage}></PrivateRoute>
 
               <LoginContext.Consumer>
-                {context =>
+                {(context) =>
                   context.userType === "user" ? (
                     <div>
-                      <PrivateRoute
-                        path='/userprofile'
-                        component={UserProfile}
-                      />
-                      <PrivateRoute
-                        path='/userhistory'
-                        component={UserHistory}
-                      />
-                      <PrivateRoute
-                        path='/privilegeaccess'
-                        component={PrivilegeAccess}
-                      />
+                      <PrivateRoute path="/userprofile" component={UserProfile} />
+                      <PrivateRoute path="/userhistory" component={UserHistory} />
+                      <PrivateRoute path="/privilegeaccess" component={PrivilegeAccess} />
                     </div>
                   ) : (
-                    <PrivateRoute
-                      path='/businessprofile'
-                      component={BusinessProfile}
-                    />
+                    <PrivateRoute path="/businessprofile" component={BusinessProfile} />
                   )
                 }
               </LoginContext.Consumer>
 
               <PrivateRoute
-                path='/business/:id'
+                path="/business/:id"
                 // exact
-                component={StorePage}
-              ></PrivateRoute>
-              <PrivateRoute
-                path='/donate/:id'
-                component={Donation}
-              ></PrivateRoute>
+                component={StorePage}></PrivateRoute>
+              <PrivateRoute path="/donate/:id" component={Donation}></PrivateRoute>
 
-              <PrivateRoute
-                path='/paymentform'
-                component={PaymentForm}
-              ></PrivateRoute>
+              <PrivateRoute path="/paymentform" component={PaymentForm}></PrivateRoute>
             </div>
           </LoginContextProvider>
         </UIDataContextProvider>
